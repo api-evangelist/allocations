@@ -1,0 +1,53 @@
+# Allocations
+
+## Allocations
+
+- [Welcome to Allocations](https://docs.allocations.com/welcome-to-allocations.md)
+- [Investor](https://docs.allocations.com/dashboard/investor.md): Easy access for Investors to manage all of their current investments with Allocations
+- [Fund Manager](https://docs.allocations.com/dashboard/fund-manager.md): Easy access for Fund Managers to manage all of their deals with Allocations
+- [How to Signup?](https://docs.allocations.com/investor-onboarding/how-to-signup.md)
+- [How to Invest?](https://docs.allocations.com/investor-onboarding/how-to-invest.md)
+- [How to Invite Investors?](https://docs.allocations.com/investor-onboarding/how-to-invite-investors.md)
+- [How to close a deal](https://docs.allocations.com/investor-onboarding/how-to-close-a-deal.md)
+- [How to Issue Side Letters to Investors?](https://docs.allocations.com/investor-onboarding/how-to-issue-side-letters-to-investors.md)
+- [Deal Setup](https://docs.allocations.com/deals/deal-setup.md): How to setup a new deal on Allocations
+- [Manage Investments](https://docs.allocations.com/investments/manage-investments.md): How to view and track all your active investments on Allocations
+- [Adding New Identity](https://docs.allocations.com/identities/adding-new-identity.md): How to view, edit, and manage your saved identities on Allocations
+- [Manage Existing Identities](https://docs.allocations.com/identities/manage-existing-identities.md): How to add a new investor identity to your Allocations account
+- [Adding Brokerage Account](https://docs.allocations.com/brokerage-and-cash-accounts/adding-brokerage-account.md): How to connect a brokerage account for wire and ACH transactions on Allocations
+- [Adding Cash Account](https://docs.allocations.com/brokerage-and-cash-accounts/adding-cash-account.md): How to add and manage a bank account for your deal's capital operations on Allocations
+- [Investor](https://docs.allocations.com/taxes/investor.md): How to access and download your K-1s for all your investments on Allocations
+- [Fund Manager](https://docs.allocations.com/taxes/fund-manager.md): How to view the tax filing status for your deals on Allocations
+- [Tax Returns](https://docs.allocations.com/taxes/tax-returns.md)
+- [Managing Organisations](https://docs.allocations.com/organisations/managing-organisations.md): How to set up and manage organisations for your multi-entity fund structures on Allocations
+- [What are benefits of SPVs?](https://docs.allocations.com/spvs/what-are-benefits-of-spvs.md): Why fund managers and investors use SPVs to pool capital and close deals faster
+- [SPV Creation Timeline](https://docs.allocations.com/spvs/spv-creation-timeline.md): How long it takes to set up an SPV on Allocations, from formation to first close
+- [SPV filings and compliance](https://docs.allocations.com/spvs/spv-filings-and-compliance.md): What regulatory filings are required for your SPV and when they're due
+- [What are the different types of funds?](https://docs.allocations.com/funds/what-are-the-different-types-of-funds.md): A breakdown of fund structures and when to use each
+- [Fund Creation Timeline](https://docs.allocations.com/funds/fund-creation-timeline.md): How long it takes to launch a fund on Allocations, from formation to first close
+- [Fund filings and compliance](https://docs.allocations.com/funds/fund-filings-and-compliance.md): What regulatory filings are required for your fund and when they're due
+- [Fund Manager Manual New](https://docs.allocations.com/new-draft-add-here-or-below-this/fund-manager-manual-new.md)
+- [Entities](https://docs.allocations.com/new-draft-add-here-or-below-this/fund-manager-manual-new/entities.md)
+- [Portfolio](https://docs.allocations.com/new-draft-add-here-or-below-this/fund-manager-manual-new/portfolio.md)
+- [About This Manual](https://docs.allocations.com/new-draft-add-here-or-below-this/fund-manager-manual-new/about-this-manual.md)
+- [Funds Dashboard](https://docs.allocations.com/new-draft-add-here-or-below-this/fund-manager-manual-new/funds-dashboard.md)
+- [creating a deal](https://docs.allocations.com/new-draft-add-here-or-below-this/fund-manager-manual-new/funds-dashboard/creating-a-deal.md)
+- [deal setup](https://docs.allocations.com/new-draft-add-here-or-below-this/fund-manager-manual-new/funds-dashboard/creating-a-deal/deal-setup.md)
+- [overview tab](https://docs.allocations.com/new-draft-add-here-or-below-this/fund-manager-manual-new/funds-dashboard/creating-a-deal/overview-tab.md)
+- [investors tab](https://docs.allocations.com/new-draft-add-here-or-below-this/fund-manager-manual-new/funds-dashboard/creating-a-deal/investors-tab.md)
+
+
+---
+
+# Agent Instructions
+This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com.
+
+## Querying This Documentation
+If you need additional information, you can query the documentation dynamically by asking a question.
+Perform an HTTP GET request on a page URL with the `ask` query parameter:
+```
+GET https://docs.allocations.com/welcome-to-allocations.md?ask=<question>
+```
+The question should be specific, self-contained, and written in natural language.
+The response will contain a direct answer to the question and relevant excerpts and sources from the documentation.
+Use this mechanism when the answer is not explicitly present in the current page, you need clarification or additional context, or you want to retrieve related documentation sections.

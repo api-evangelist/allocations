@@ -1,0 +1,164 @@
+openapi: 3.2.0
+info:
+  title: Allocations Xero Auth Controller API
+  description: ''
+  version: 1.0.0
+  termsOfService: https://allocations.com
+  contact:
+    name: Allocations Support
+    url: https://allocations.com
+    email: support@allocations.com
+servers:
+- url: https://api.allocations.com
+security:
+- jwt: []
+tags:
+- name: XeroAuthController
+paths:
+  /v2/xero/authorize:
+    get:
+      x-controller-name: XeroAuthController
+      x-operation-name: authorize
+      tags:
+      - XeroAuthController
+      operationId: authorizeXero
+      responses:
+        '200':
+          description: Authorization URL for Xero OAuth flow
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  authorizationUrl:
+                    type: string
+                    description: URL to redirect user to for Xero authorization
+                  state:
+                    type: string
+                    description: State parameter for CSRF protection (stored server-side)
+        '500':
+          description: Failed to generate authorization URL
+      summary: Authorize xero
+      x-summary-source: derived
+  /v2/xero/callback:
+    get:
+      x-controller-name: XeroAuthController
+      x-operation-name: callback
+      tags:
+      - XeroAuthController
+      operationId: xeroCallback
+      responses:
+        '200':
+          description: Successfully connected to Xero
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Invalid callback parameters
+        '500':
+          description: Failed to complete OAuth flow
+      parameters:
+      - name: code
+        in: query
+        schema:
+          type: string
+        description: Authorization code from Xero
+        required: true
+      - name: state
+        in: query
+        schema:
+          type: string
+        description: State parameter for CSRF protection
+        required: true
+      - name: error
+        in: query
+        schema:
+          type: string
+        description: Error code if authorization failed
+        required: false
+      summary: Xero callback
+      x-summary-source: derived
+  /v2/xero/disconnect:
+    get:
+      x-controller-name: XeroAuthController
+      x-operation-name: disconnect
+      tags:
+      - XeroAuthController
+      operationId: disconnectXero
+      responses:
+        '200':
+          description: Successfully disconnected from Xero
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+      summary: Disconnect xero
+      x-summary-source: derived
+  /v2/xero/refresh:
+    get:
+      x-controller-name: XeroAuthController
+      x-operation-name: refresh
+      tags:
+      - XeroAuthController
+      operationId: refreshXeroToken
+      responses:
+        '200':
+          description: Successfully refreshed Xero token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: No refresh token available
+        '500':
+          description: Failed to refresh token
+      summary: Refresh xero token
+      x-summary-source: derived
+  /v2/xero/status:
+    get:
+      x-controller-name: XeroAuthController
+      x-operation-name: getStatus
+      tags:
+      - XeroAuthController
+      operationId: getXeroStatus
+      responses:
+        '200':
+          description: Xero connection status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connected:
+                    type: boolean
+                  hasCredentials:
+                    type: boolean
+                  expiresAt:
+                    type:
+                    - string
+                    - 'null'
+                    format: date-time
+      summary: Get xero status
+      x-summary-source: derived
+components:
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,260 @@
+openapi: 3.2.0
+info:
+  title: Allocations Support Tickets API
+  description: Engage the Allocations support team
+  version: 1.0.0
+  termsOfService: https://allocations.com
+  contact:
+    name: Allocations Support
+    url: https://allocations.com
+    email: support@allocations.com
+servers:
+- url: https://api.allocations.com
+security:
+- jwt: []
+tags:
+- name: Support Tickets
+  description: Engage the Allocations support team
+paths:
+  /v2/tickets/{type}:
+    post:
+      x-controller-name: TicketsController
+      x-operation-name: createTicket
+      tags:
+      - Support Tickets
+      operationId: createTicket
+      responses:
+        '200':
+          description: Support ticket created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Created ticket information from Intercom
+                properties:
+                  ticket:
+                    type: object
+                    description: Created ticket details
+                    properties:
+                      id:
+                        type: string
+                        description: Ticket ID
+                      ticket_type_id:
+                        type: string
+                        description: Type of ticket
+                      state:
+                        type: string
+                        description: Current state of the ticket
+                      created_at:
+                        type: number
+                        description: Ticket creation timestamp
+        '400':
+          description: Invalid ticket type or request data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Entity not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: type
+        in: path
+        schema:
+          type: string
+          enum:
+          - Tax
+        description: Type of support ticket to create
+        example: Tax
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - entityId
+              - message
+              properties:
+                entityId:
+                  type: string
+                  description: ID of the entity related to the ticket
+                  example: 123e4567-e89b-12d3-a456-426614174000
+                message:
+                  type: string
+                  description: Description of the issue or support request
+                  example: Need help with tax calculation for Q4 2023
+        x-parameter-index: 1
+      summary: Create ticket
+      x-summary-source: derived
+  /v2/tickets:
+    get:
+      x-controller-name: TicketsController
+      x-operation-name: getTickets
+      tags:
+      - Support Tickets
+      operationId: getTickets
+      responses:
+        '200':
+          description: User support tickets retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: Support ticket information from Intercom
+                  properties:
+                    id:
+                      type: string
+                      description: Ticket ID
+                    ticket_type_id:
+                      type: string
+                      description: Type of ticket
+                    state:
+                      type: string
+                      description: Current state of the ticket
+                    created_at:
+                      type: number
+                      description: Ticket creation timestamp
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      summary: Get tickets
+      x-summary-source: derived
+components:
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

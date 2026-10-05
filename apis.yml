@@ -1,23 +1,352 @@
 aid: allocations
+
 name: Allocations
-description: 'Allocations is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+
+image: https://framerusercontent.com/assets/Ck8iMxhd72aQ8s11wWAttjthVs.png
+
+description: Allocations provides a cloud‑based fund administration platform that enables general partners, syndicates and emerging managers to
+  launch and manage SPVs and private funds. The service automates legal formation, banking, compliance, investor onboarding and reporting, offering
+  pricing plans from $9,950 for single‑SPV setups to enterprise solutions. Backed by venture capital, Allocations serves over 30,000 clients and
+  has transacted more than $5 billion in assets across 1,800+ private funds.
+
 url: https://raw.githubusercontent.com/api-evangelist/allocations/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-05 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-09-24'
+
 modified: '2026-09-24'
+
 tags:
-- Company
-apis: []
+- FinTech
+- FundAdministration
+- PrivateMarkets
+- SaaS
+- InvestmentPlatform
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: AgenticAccess
+  url: agentic-access/allocations-agentic-access.yml
+- type: Plans
+  url: plans/allocations-plans-pricing.yml
+- type: Spectral
+  url: rules/allocations-rules.yml
+- type: JSONLD
+  url: json-ld/allocations-context.jsonld
+- type: Vocabulary
+  url: vocabulary/allocations-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/allocations-data-model.yml
+- type: ErrorCatalog
+  url: errors/allocations-problem-types.yml
+- type: Conformance
+  url: conformance/allocations-conformance.yml
+- type: LLMsTxt
+  url: llms/allocations-llms.txt
+- type: WellKnown
+  url: well-known/allocations-well-known.yml
+- type: Hosts
+  url: hosts/allocations-hosts.yml
+- type: Vendors
+  url: vendors/allocations-vendors.yml
+- type: TrustCenter
+  url: https://trust.allocations.com/
+- type: StatusPage
+  url: https://status.allocations.com/
+- type: SignUp
+  url: https://www.allocations.com/insights/registered-agent-duties-for-a-deal-spv
+- type: Newsroom
+  url: https://www.allocations.com/press
+- type: Leadership
+  url: https://www.allocations.com/team
+- type: GettingStarted
+  url: https://docs.allocations.com/investor-onboarding/how-to-signup
+- type: Authentication
+  url: authentication/allocations-authentication.yml
+- type: DomainSecurity
+  url: security/allocations-domain-security.yml
 - type: Website
-  url: https://equityzen.com/company/allocations
+  url: https://www.allocations.com
+- type: Documentation
+  url: https://docs.allocations.com
+- type: Blog
+  url: https://www.allocations.com/insights
+- type: Pricing
+  url: https://www.allocations.com/fees
+- type: TermsOfService
+  url: https://www.allocations.com/terms
+- type: PrivacyPolicy
+  url: https://www.allocations.com/privacy-policy
+
+apis:
+- name: Allocations API
+  description: Allocations API provides access to fund administration operations.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  openAPI:
+    url: openapi/allocations-openapi.json
+    type: OpenAPI
+  aid: allocations:allocations-api
+- aid: allocations:allocations-accreditations-api
+  name: Allocations Accreditations API
+  description: The Accreditations API from Allocations — 3 operation(s) for accreditations.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Accreditations
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-accreditations-api-openapi.yml
+- aid: allocations:allocations-announcements-api
+  name: Allocations Announcements API
+  description: The Announcements API from Allocations — 2 operation(s) for announcements.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Announcements
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-announcements-api-openapi.yml
+- aid: allocations:allocations-assets-api
+  name: Allocations Assets API
+  description: The Assets API from Allocations — 2 operation(s) for assets.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-assets-api-openapi.yml
+- aid: allocations:allocations-banking-api
+  name: Allocations Banking API
+  description: Currency storage and movement
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Banking
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-banking-api-openapi.yml
+- aid: allocations:allocations-closes-api
+  name: Allocations Closes API
+  description: The Closes API from Allocations — 3 operation(s) for closes.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Closes
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-closes-api-openapi.yml
+- aid: allocations:allocations-deals-api
+  name: Allocations Deals API
+  description: SPVs and Funds
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Deals
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-deals-api-openapi.yml
+- aid: allocations:allocations-distributions-api
+  name: Allocations Distributions API
+  description: The Distributions API from Allocations — 3 operation(s) for distributions.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Distributions
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-distributions-api-openapi.yml
+- aid: allocations:allocations-distributionsinvestments-api
+  name: Allocations Distributions Investments API
+  description: >-
+    The DistributionsInvestments API from Allocations — 2 operation(s) for distributionsinvestments.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - DistributionsInvestments
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-distributionsinvestments-api-openapi.yml
+- aid: allocations:allocations-documents-api
+  name: Allocations Documents API
+  description: Document Generation and Storage
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-documents-api-openapi.yml
+- aid: allocations:allocations-entities-api
+  name: Allocations Entities API
+  description: Legal Structures for SPVs and Funds
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Entities
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-entities-api-openapi.yml
+- aid: allocations:allocations-files-api
+  name: Allocations Files API
+  description: File Storage and Retrieval
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-files-api-openapi.yml
+- aid: allocations:allocations-identities-api
+  name: Allocations Identities API
+  description: Representations of Individuals and Corporations
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Identities
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-identities-api-openapi.yml
+- aid: allocations:allocations-investments-api
+  name: Allocations Investments API
+  description: Investment details
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Investments
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-investments-api-openapi.yml
+- aid: allocations:allocations-ledger-api
+  name: Allocations Ledger API
+  description: The Ledger API from Allocations — 11 operation(s) for ledger.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Ledger
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-ledger-api-openapi.yml
+- aid: allocations:allocations-notifications-api
+  name: Allocations Notifications API
+  description: Call-to-actions and informational data
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-notifications-api-openapi.yml
+- aid: allocations:allocations-organizations-api
+  name: Allocations Organizations API
+  description: Client Information and Account Grouping
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-organizations-api-openapi.yml
+- aid: allocations:allocations-providers-api
+  name: Allocations Providers API
+  description: The Providers API from Allocations — 3 operation(s) for providers.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-providers-api-openapi.yml
+- aid: allocations:allocations-static-references-api
+  name: Allocations Static References API
+  description: Standard Data References to be used with other objects
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Static References
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-static-references-api-openapi.yml
+- aid: allocations:allocations-support-tickets-api
+  name: Allocations Support Tickets API
+  description: Engage the Allocations support team
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Support Tickets
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-support-tickets-api-openapi.yml
+- aid: allocations:allocations-taxes-api
+  name: Allocations Taxes API
+  description: Deal and Entity related taxes
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Taxes
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-taxes-api-openapi.yml
+- aid: allocations:allocations-transfer-requests-api
+  name: Allocations Transfer Requests API
+  description: The Transfer Requests API from Allocations — 5 operation(s) for transfer requests.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - Transfer Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-transfer-requests-api-openapi.yml
+- aid: allocations:allocations-transferinformation-api
+  name: Allocations Transfer Information API
+  description: The TransferInformation API from Allocations — 3 operation(s) for transferinformation.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - TransferInformation
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-transferinformation-api-openapi.yml
+- aid: allocations:allocations-xeroauthcontroller-api
+  name: Allocations Xero Auth Controller API
+  description: The XeroAuthController API from Allocations — 5 operation(s) for xeroauthcontroller.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - XeroAuthController
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-xeroauthcontroller-api-openapi.yml
+- aid: allocations:allocations-xeroinvoicescontroller-api
+  name: Allocations Xero Invoices Controller API
+  description: >-
+    The XeroInvoicesController API from Allocations — 7 operation(s) for xeroinvoicescontroller.
+  humanURL: https://docs.allocations.com
+  baseURL: https://api.allocations.com
+  tags:
+  - XeroInvoicesController
+  properties:
+  - type: OpenAPI
+    url: openapi/allocations-xeroinvoicescontroller-api-openapi.yml
+x-enrichment:
+  date: '2026-10-05'
+  status: enriched
+  artifacts_added: 25
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

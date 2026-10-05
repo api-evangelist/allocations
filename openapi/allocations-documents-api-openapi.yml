@@ -1,0 +1,606 @@
+openapi: 3.2.0
+info:
+  title: Allocations Documents API
+  description: Document Generation and Storage
+  version: 1.0.0
+  termsOfService: https://allocations.com
+  contact:
+    name: Allocations Support
+    url: https://allocations.com
+    email: support@allocations.com
+servers:
+- url: https://api.allocations.com
+security:
+- jwt: []
+tags:
+- name: Documents
+  description: Document Generation and Storage
+paths:
+  /documents/master-service-agreement/{organizationId}/{dealId}/sign:
+    post:
+      x-controller-name: DocumentsController
+      x-operation-name: signMasterServiceAgreement
+      tags:
+      - Documents
+      operationId: signMasterServiceAgreement
+      responses:
+        '200':
+          description: Master Service Agreement signed successfully
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid organization ID, deal ID, or signing failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Organization not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: organizationId
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: dealId
+        in: path
+        schema:
+          type: string
+        required: true
+      summary: Sign master service agreement
+      x-summary-source: derived
+  /documents/master-service-agreement:
+    post:
+      x-controller-name: DocumentsController
+      x-operation-name: createMasterServiceAgreement
+      tags:
+      - Documents
+      operationId: createMasterServiceAgreement
+      responses:
+        '200':
+          description: Master Service Agreement PDF generated successfully
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Document generation failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: preview
+        in: query
+        schema:
+          type: boolean
+      summary: Create master service agreement
+      x-summary-source: derived
+  /documents/memorandum-of-understanding/{organizationId}:
+    post:
+      x-controller-name: DocumentsController
+      x-operation-name: createMOUDocument
+      tags:
+      - Documents
+      operationId: createMOUDocument
+      responses:
+        '200':
+          description: Memorandum of Understanding document path generated successfully
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid organization ID or document generation failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Organization not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: organizationId
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: preview
+        in: query
+        schema:
+          type: boolean
+      summary: Create MOU document
+      x-summary-source: derived
+  /documents/subscription-agreement/preview/{dealId}:
+    post:
+      x-controller-name: DocumentsController
+      x-operation-name: createSubscriptionAgreementDocumentPreview
+      tags:
+      - Documents
+      operationId: previewSubscriptionAgreement
+      responses:
+        '200':
+          description: Subscription Agreement preview generated successfully
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid deal ID or preview generation failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Deal not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: dealId
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: preview
+        in: query
+        schema:
+          type: boolean
+      summary: Preview subscription agreement
+      x-summary-source: derived
+  /documents/terms-and-conditions/{organizationId}:
+    post:
+      x-controller-name: DocumentsController
+      x-operation-name: createTermsAndConditions
+      tags:
+      - Documents
+      operationId: createTermsAndConditions
+      responses:
+        '200':
+          description: Terms and Conditions document path generated successfully
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid organization ID or document generation failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Organization not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: organizationId
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: preview
+        in: query
+        schema:
+          type: boolean
+      summary: Create terms and conditions
+      x-summary-source: derived
+components:
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

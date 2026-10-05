@@ -1,0 +1,273 @@
+openapi: 3.2.0
+info:
+  title: Allocations Files API
+  description: File Storage and Retrieval
+  version: 1.0.0
+  termsOfService: https://allocations.com
+  contact:
+    name: Allocations Support
+    url: https://allocations.com
+    email: support@allocations.com
+servers:
+- url: https://api.allocations.com
+security:
+- jwt: []
+tags:
+- name: Files
+  description: File Storage and Retrieval
+paths:
+  /files/download/{fileId}:
+    get:
+      x-controller-name: FilesController
+      x-operation-name: downloadFile
+      tags:
+      - Files
+      operationId: downloadFile
+      responses:
+        '200':
+          description: File downloaded successfully
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid file ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: File not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: fileId
+        in: path
+        schema:
+          type: string
+        description: Unique identifier of the file
+        example: 123e4567-e89b-12d3-a456-426614174000
+        required: true
+      summary: Download file
+      x-summary-source: derived
+  /files/download-bulk:
+    post:
+      x-controller-name: FilesController
+      x-operation-name: downloadBulkFiles
+      tags:
+      - Files
+      operationId: downloadBulkFiles
+      responses:
+        '200':
+          description: Bulk files downloaded successfully as ZIP
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid file IDs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Files not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      summary: Download bulk files
+      x-summary-source: derived
+components:
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

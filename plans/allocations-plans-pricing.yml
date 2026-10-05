@@ -1,0 +1,41 @@
+generated: '2026-10-05'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://www.allocations.com/fees
+sources:
+- https://www.allocations.com/fees
+name: Allocations pricing
+audience: business-product
+pricing_basis: per-call
+plans:
+- name: Standard SPV
+  price_text: $9,950 One-time fee
+  price: 9950
+  billing_period: one-time
+  description: Invest in a US based startup.
+- name: Premium SPV
+  price_text: $19,500 One-time fee
+  price: 19500
+  billing_period: one-time
+  description: Invest in unique assets like crypto, secondaries, SPVs or Funds, public markets, real estate or other alternative investments.
+- name: Fund
+  price_text: $19,500 Annual subscription
+  price: 19500
+  billing_period: annual
+  description: Invest in multiple VC assets in a fund structure.
+- name: Standard SPV Migration
+  price_text: $1,950 /year
+  price: 1950
+  billing_period: annual
+  description: Migrate your SPV from another provider to Allocations.
+- name: Premium SPV Migration
+  price_text: $4,950 /year
+  price: 4950
+  billing_period: annual
+  description: Migrate your SPV from another provider to Allocations.
+- name: Fund Migration
+  price_text: $19,950 /year
+  price: 19950
+  billing_period: annual
+  description: Migrate your Fund from another provider to Allocations.
+docs: https://www.allocations.com/fees

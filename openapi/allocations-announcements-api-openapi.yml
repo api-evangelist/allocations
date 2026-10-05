@@ -1,0 +1,738 @@
+openapi: 3.2.0
+info:
+  title: Allocations Announcements API
+  description: ''
+  version: 1.0.0
+  termsOfService: https://allocations.com
+  contact:
+    name: Allocations Support
+    url: https://allocations.com
+    email: support@allocations.com
+servers:
+- url: https://api.allocations.com
+security:
+- jwt: []
+tags:
+- name: Announcements
+paths:
+  /v1/announcements/{id}:
+    patch:
+      x-controller-name: AnnouncementsController
+      x-operation-name: updateById
+      tags:
+      - Announcements
+      operationId: updateAnnouncement
+      responses:
+        '200':
+          description: Announcement updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Announcements'
+        '400':
+          description: Invalid announcement data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Announcement not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        description: Unique identifier of the announcement
+        example: 123e4567-e89b-12d3-a456-426614174000
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAnnouncementRequestBody'
+        x-parameter-index: 1
+      summary: Update announcement
+      x-summary-source: derived
+    get:
+      x-controller-name: AnnouncementsController
+      x-operation-name: findById
+      tags:
+      - Announcements
+      operationId: getAnnouncementById
+      responses:
+        '200':
+          description: Announcement retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Announcements'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Announcement not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        description: Unique identifier of the announcement
+        example: 123e4567-e89b-12d3-a456-426614174000
+        required: true
+      - name: filter
+        in: query
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Announcements.Filter'
+      summary: Get announcement by id
+      x-summary-source: derived
+    delete:
+      x-controller-name: AnnouncementsController
+      x-operation-name: deleteById
+      tags:
+      - Announcements
+      operationId: deleteAnnouncement
+      responses:
+        '204':
+          description: Announcement deleted successfully
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Announcement not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        description: Unique identifier of the announcement
+        example: 123e4567-e89b-12d3-a456-426614174000
+        required: true
+      summary: Delete announcement
+      x-summary-source: derived
+  /v1/announcements:
+    post:
+      x-controller-name: AnnouncementsController
+      x-operation-name: create
+      tags:
+      - Announcements
+      operationId: createAnnouncement
+      responses:
+        '200':
+          description: Announcement created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Announcements'
+        '400':
+          description: Invalid announcement data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAnnouncementRequestBody'
+      summary: Create announcement
+      x-summary-source: derived
+    get:
+      x-controller-name: AnnouncementsController
+      x-operation-name: find
+      tags:
+      - Announcements
+      operationId: getAnnouncements
+      responses:
+        '200':
+          description: Announcements retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Announcements'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: filter
+        in: query
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Announcements.Filter1'
+      summary: Get announcements
+      x-summary-source: derived
+components:
+  schemas:
+    Announcements.Filter1:
+      type: object
+      title: Announcements.Filter
+      properties:
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          example: 100
+        skip:
+          type: integer
+          minimum: 0
+        order:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        where:
+          title: Announcements.WhereFilter
+          type: object
+          additionalProperties: true
+        fields:
+          oneOf:
+          - type: object
+            properties:
+              id:
+                type: boolean
+              deleted:
+                type: boolean
+              deletedOn:
+                type: boolean
+              deletedBy:
+                type: boolean
+              createdAt:
+                type: boolean
+              updatedAt:
+                type: boolean
+              slug:
+                type: boolean
+              message:
+                type: boolean
+              enabled:
+                type: boolean
+              title:
+                type: boolean
+              classes:
+                type: boolean
+            additionalProperties: false
+          - type: array
+            items:
+              type: string
+              enum:
+              - id
+              - deleted
+              - deletedOn
+              - deletedBy
+              - createdAt
+              - updatedAt
+              - slug
+              - message
+              - enabled
+              - title
+              - classes
+              example: id
+            uniqueItems: true
+          title: Announcements.Fields
+      additionalProperties: false
+      x-typescript-type: '@loopback/repository#Filter<Announcements>'
+    CreateAnnouncementRequestBody:
+      title: CreateAnnouncementRequestBody
+      type: object
+      description: '(tsType: Omit<Announcements, ''id'' | ''createdAt'' | ''updatedAt'' | ''deleted'' | ''deletedOn'' | ''deletedBy''>, schemaOptions: { title: ''CreateAnnouncementRequestBody'', exclude: [ ''id'', ''createdAt'', ''updatedAt'', ''deleted'', ''deletedOn'', ''deletedBy'' ] })'
+      properties:
+        slug:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        enabled:
+          type:
+          - boolean
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        classes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      x-typescript-type: Omit<Announcements, 'id' | 'createdAt' | 'updatedAt' | 'deleted' | 'deletedOn' | 'deletedBy'>
+    Announcements:
+      title: Announcements
+      type: object
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        slug:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        enabled:
+          type:
+          - boolean
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        classes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    UpdateAnnouncementRequestBody:
+      title: UpdateAnnouncementRequestBody
+      type: object
+      description: '(tsType: Omit<Partial<Announcements>, ''id'' | ''createdAt'' | ''updatedAt'' | ''deleted'' | ''deletedOn'' | ''deletedBy''>, schemaOptions: { title: ''UpdateAnnouncementRequestBody'', partial: true, exclude: [ ''id'', ''createdAt'', ''updatedAt'', ''deleted'', ''deletedOn'', ''deletedBy'' ] })'
+      properties:
+        slug:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        enabled:
+          type:
+          - boolean
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        classes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      x-typescript-type: Omit<Partial<Announcements>, 'id' | 'createdAt' | 'updatedAt' | 'deleted' | 'deletedOn' | 'deletedBy'>
+    Announcements.Filter:
+      type: object
+      title: Announcements.Filter
+      properties:
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          example: 100
+        skip:
+          type: integer
+          minimum: 0
+        order:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        fields:
+          oneOf:
+          - type: object
+            properties:
+              id:
+                type: boolean
+              deleted:
+                type: boolean
+              deletedOn:
+                type: boolean
+              deletedBy:
+                type: boolean
+              createdAt:
+                type: boolean
+              updatedAt:
+                type: boolean
+              slug:
+                type: boolean
+              message:
+                type: boolean
+              enabled:
+                type: boolean
+              title:
+                type: boolean
+              classes:
+                type: boolean
+            additionalProperties: false
+          - type: array
+            items:
+              type: string
+              enum:
+              - id
+              - deleted
+              - deletedOn
+              - deletedBy
+              - createdAt
+              - updatedAt
+              - slug
+              - message
+              - enabled
+              - title
+              - classes
+              example: id
+            uniqueItems: true
+          title: Announcements.Fields
+      additionalProperties: false
+      x-typescript-type: '@loopback/repository#Filter<Announcements>'
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

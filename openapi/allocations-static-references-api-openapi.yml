@@ -1,0 +1,199 @@
+openapi: 3.2.0
+info:
+  title: Allocations Static References API
+  description: Standard Data References to be used with other objects
+  version: 1.0.0
+  termsOfService: https://allocations.com
+  contact:
+    name: Allocations Support
+    url: https://allocations.com
+    email: support@allocations.com
+servers:
+- url: https://api.allocations.com
+security:
+- jwt: []
+tags:
+- name: Static References
+  description: Standard Data References to be used with other objects
+paths:
+  /static-reference/ISO-3166/countries:
+    get:
+      x-controller-name: StaticReferenceController
+      x-operation-name: getCountries
+      tags:
+      - Static References
+      operationId: getCountriesReference
+      responses:
+        '200':
+          description: ISO 3166 country codes retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Country name
+                    iso:
+                      type: string
+                      description: ISO 3166 country code
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      summary: Get countries reference
+      x-summary-source: derived
+  /static-reference/ISO-3166/{countryCode}/regions:
+    get:
+      x-controller-name: StaticReferenceController
+      x-operation-name: getRegions
+      tags:
+      - Static References
+      operationId: getRegionsReference
+      responses:
+        '200':
+          description: ISO 3166 region codes for the specified country retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Region name
+                    iso:
+                      type: string
+                      description: ISO 3166 region code
+        '400':
+          description: Invalid country code format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Country code not found or no regions available
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: countryCode
+        in: path
+        schema:
+          type: string
+        description: ISO 3166 country code (e.g., US, CA, GB)
+        example: US
+        required: true
+      summary: Get regions reference
+      x-summary-source: derived
+components:
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

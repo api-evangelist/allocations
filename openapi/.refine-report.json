@@ -1,0 +1,54 @@
+{
+  "provider": "allocations",
+  "sources": [
+    "allocations-openapi.json"
+  ],
+  "outputs": [
+    "allocations-accreditations-api-openapi.yml",
+    "allocations-announcements-api-openapi.yml",
+    "allocations-assets-api-openapi.yml",
+    "allocations-banking-api-openapi.yml",
+    "allocations-closes-api-openapi.yml",
+    "allocations-deals-api-openapi.yml",
+    "allocations-distributions-api-openapi.yml",
+    "allocations-distributionsinvestments-api-openapi.yml",
+    "allocations-documents-api-openapi.yml",
+    "allocations-entities-api-openapi.yml",
+    "allocations-files-api-openapi.yml",
+    "allocations-identities-api-openapi.yml",
+    "allocations-investments-api-openapi.yml",
+    "allocations-ledger-api-openapi.yml",
+    "allocations-notifications-api-openapi.yml",
+    "allocations-organizations-api-openapi.yml",
+    "allocations-providers-api-openapi.yml",
+    "allocations-static-references-api-openapi.yml",
+    "allocations-support-tickets-api-openapi.yml",
+    "allocations-taxes-api-openapi.yml",
+    "allocations-transfer-requests-api-openapi.yml",
+    "allocations-transferinformation-api-openapi.yml",
+    "allocations-xeroauthcontroller-api-openapi.yml",
+    "allocations-xeroinvoicescontroller-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/allocations-openapi.json"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "allocations-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "allocations-openapi.json: declared missing tag: Accreditations",
+    "allocations-openapi.json: declared missing tag: Announcements",
+    "allocations-openapi.json: declared missing tag: Assets",
+    "allocations-openapi.json: declared missing tag: Closes",
+    "allocations-openapi.json: declared missing tag: Distributions",
+    "allocations-openapi.json: declared missing tag: DistributionsInvestments",
+    "allocations-openapi.json: declared missing tag: Ledger",
+    "allocations-openapi.json: declared missing tag: Providers",
+    "allocations-openapi.json: declared missing tag: Transfer Requests",
+    "allocations-openapi.json: declared missing tag: TransferInformation",
+    "allocations-openapi.json: declared missing tag: XeroAuthController",
+    "allocations-openapi.json: declared missing tag: XeroInvoicesController",
+    "apis.yml register: written (+24 apis, 25 total)"
+  ],
+  "skipped": []
+}

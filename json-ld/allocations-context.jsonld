@@ -1,0 +1,2051 @@
+{
+  "@context": {
+    "@vocab": "https://allocations.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "allocations": "https://allocations.com/schema#",
+    "DealsWithRelations": "allocations:DealsWithRelations",
+    "id": {
+      "@id": "allocations:id",
+      "@type": "xsd:string"
+    },
+    "deleted": {
+      "@id": "allocations:deleted",
+      "@type": "xsd:boolean"
+    },
+    "deletedOn": {
+      "@id": "allocations:deletedOn",
+      "@type": "xsd:dateTime"
+    },
+    "deletedBy": {
+      "@id": "allocations:deletedBy",
+      "@type": "xsd:string"
+    },
+    "createdAt": {
+      "@id": "allocations:createdAt",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "allocations:updatedAt",
+      "@type": "xsd:dateTime"
+    },
+    "name": {
+      "@id": "allocations:name",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "allocations:type",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "allocations:status",
+      "@type": "xsd:string"
+    },
+    "minimumInvestment": {
+      "@id": "allocations:minimumInvestment",
+      "@type": "xsd:decimal"
+    },
+    "closingDate": {
+      "@id": "allocations:closingDate",
+      "@type": "xsd:dateTime"
+    },
+    "offeringType": {
+      "@id": "allocations:offeringType",
+      "@type": "xsd:string"
+    },
+    "managementFeeFrequency": {
+      "@id": "allocations:managementFeeFrequency",
+      "@type": "xsd:string"
+    },
+    "managementFeePercent": {
+      "@id": "allocations:managementFeePercent",
+      "@type": "xsd:decimal"
+    },
+    "userEmail": {
+      "@id": "allocations:userEmail",
+      "@type": "xsd:string"
+    },
+    "userId": {
+      "@id": "allocations:userId",
+      "@type": "xsd:string"
+    },
+    "mongoDealId": {
+      "@id": "allocations:mongoDealId",
+      "@type": "xsd:string"
+    },
+    "mongoOrganizationId": {
+      "@id": "allocations:mongoOrganizationId",
+      "@type": "xsd:string"
+    },
+    "isMigration": {
+      "@id": "allocations:isMigration",
+      "@type": "xsd:boolean"
+    },
+    "targetRaiseGoal": {
+      "@id": "allocations:targetRaiseGoal",
+      "@type": "xsd:decimal"
+    },
+    "totalCarry": {
+      "@id": "allocations:totalCarry",
+      "@type": "xsd:decimal"
+    },
+    "slug": {
+      "@id": "allocations:slug",
+      "@type": "xsd:string"
+    },
+    "memo": {
+      "@id": "allocations:memo",
+      "@type": "xsd:string"
+    },
+    "documentsTemplateId": {
+      "@id": "allocations:documentsTemplateId",
+      "@type": "xsd:string"
+    },
+    "documentsProvider": {
+      "@id": "allocations:documentsProvider",
+      "@type": "xsd:string"
+    },
+    "shortcodeId": {
+      "@id": "allocations:shortcodeId",
+      "@type": "xsd:string"
+    },
+    "totalCarryNotes": {
+      "@id": "allocations:totalCarryNotes",
+      "@type": "xsd:string"
+    },
+    "managementFeeNotes": {
+      "@id": "allocations:managementFeeNotes",
+      "@type": "xsd:string"
+    },
+    "closedDate": {
+      "@id": "allocations:closedDate",
+      "@type": "xsd:dateTime"
+    },
+    "tags": {
+      "@id": "allocations:tags",
+      "@type": "xsd:string"
+    },
+    "migrationApproval": {
+      "@id": "allocations:migrationApproval",
+      "@type": "xsd:boolean"
+    },
+    "migrationApprovalDate": {
+      "@id": "allocations:migrationApprovalDate",
+      "@type": "xsd:string"
+    },
+    "migrationApprovalEmail": {
+      "@id": "allocations:migrationApprovalEmail",
+      "@type": "xsd:string"
+    },
+    "migrationFmSent": {
+      "@id": "allocations:migrationFmSent",
+      "@type": "xsd:boolean"
+    },
+    "invoiceAmount": {
+      "@id": "allocations:invoiceAmount",
+      "@type": "xsd:decimal"
+    },
+    "invoiceNumber": {
+      "@id": "allocations:invoiceNumber",
+      "@type": "xsd:string"
+    },
+    "invoiceStatus": {
+      "@id": "allocations:invoiceStatus",
+      "@type": "xsd:string"
+    },
+    "capitalAccountStatementURI": {
+      "@id": "allocations:capitalAccountStatementURI",
+      "@type": "xsd:string"
+    },
+    "phoneNumber": {
+      "@id": "allocations:phoneNumber",
+      "@type": "xsd:string"
+    },
+    "invoiceDate": {
+      "@id": "allocations:invoiceDate",
+      "@type": "xsd:dateTime"
+    },
+    "advisorStatus": {
+      "@id": "allocations:advisorStatus",
+      "@type": "xsd:string"
+    },
+    "entityId": {
+      "@id": "allocations:entityId",
+      "@type": "xsd:string"
+    },
+    "fmIdentityId": {
+      "@id": "allocations:fmIdentityId",
+      "@type": "xsd:string"
+    },
+    "advisorId": {
+      "@id": "allocations:advisorId",
+      "@type": "xsd:string"
+    },
+    "organizationId": {
+      "@id": "allocations:organizationId",
+      "@type": "xsd:string"
+    },
+    "investments": {
+      "@id": "allocations:investments",
+      "@container": "@list"
+    },
+    "entity": {
+      "@id": "allocations:entity",
+      "@type": "@id"
+    },
+    "foreignKey": {
+      "@id": "allocations:foreignKey"
+    },
+    "fmIdentity": {
+      "@id": "allocations:fmIdentity",
+      "@type": "@id"
+    },
+    "advisorIdentity": {
+      "@id": "allocations:advisorIdentity",
+      "@type": "@id"
+    },
+    "closes": {
+      "@id": "allocations:closes",
+      "@container": "@list"
+    },
+    "organization": {
+      "@id": "allocations:organization",
+      "@type": "@id"
+    },
+    "assets": {
+      "@id": "allocations:assets",
+      "@container": "@list"
+    },
+    "invitations": {
+      "@id": "allocations:invitations",
+      "@container": "@list"
+    },
+    "dealDetails": {
+      "@id": "allocations:dealDetails",
+      "@type": "@id"
+    },
+    "files": {
+      "@id": "allocations:files",
+      "@container": "@list"
+    },
+    "EntitiesWithRelations": "allocations:EntitiesWithRelations",
+    "formationDate": {
+      "@id": "allocations:formationDate",
+      "@type": "xsd:dateTime"
+    },
+    "streetAddress": {
+      "@id": "allocations:streetAddress",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "allocations:city",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "allocations:state",
+      "@type": "xsd:string"
+    },
+    "postalCode": {
+      "@id": "allocations:postalCode",
+      "@type": "xsd:string"
+    },
+    "entityType": {
+      "@id": "allocations:entityType",
+      "@type": "xsd:string"
+    },
+    "organizationName": {
+      "@id": "allocations:organizationName",
+      "@type": "xsd:string"
+    },
+    "ein": {
+      "@id": "allocations:ein",
+      "@type": "xsd:string"
+    },
+    "fundManager": {
+      "@id": "allocations:fundManager",
+      "@type": "xsd:string"
+    },
+    "taxStatus": {
+      "@id": "allocations:taxStatus",
+      "@type": "xsd:string"
+    },
+    "returnId": {
+      "@id": "allocations:returnId",
+      "@type": "xsd:string"
+    },
+    "taxesProvider": {
+      "@id": "allocations:taxesProvider",
+      "@type": "xsd:string"
+    },
+    "taxesProviderId": {
+      "@id": "allocations:taxesProviderId",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeId": {
+      "@id": "allocations:partnershipRepresentativeId",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeDesignatedIndividualId": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividualId",
+      "@type": "xsd:string"
+    },
+    "parentEntityId": {
+      "@id": "allocations:parentEntityId",
+      "@type": "xsd:string"
+    },
+    "deals": {
+      "@id": "allocations:deals",
+      "@container": "@list"
+    },
+    "entitiesTaxes": {
+      "@id": "allocations:entitiesTaxes",
+      "@container": "@list"
+    },
+    "investmentsTaxes": {
+      "@id": "allocations:investmentsTaxes",
+      "@container": "@list"
+    },
+    "legacyLedgers": {
+      "@id": "allocations:legacyLedgers",
+      "@container": "@list"
+    },
+    "ledger": {
+      "@id": "allocations:ledger",
+      "@type": "@id"
+    },
+    "partnershipRepresentative": {
+      "@id": "allocations:partnershipRepresentative",
+      "@type": "@id"
+    },
+    "partnershipRepresentativeDesignatedIndividual": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividual",
+      "@type": "@id"
+    },
+    "parentEntity": {
+      "@id": "allocations:parentEntity",
+      "@type": "@id"
+    },
+    "entitiesTaxesMetadata": {
+      "@id": "allocations:entitiesTaxesMetadata",
+      "@container": "@list"
+    },
+    "OrganizationsWithRelations": "allocations:OrganizationsWithRelations",
+    "mongoId": {
+      "@id": "allocations:mongoId",
+      "@type": "xsd:string"
+    },
+    "approved": {
+      "@id": "allocations:approved",
+      "@type": "xsd:string"
+    },
+    "highVolumePartner": {
+      "@id": "allocations:highVolumePartner",
+      "@type": "xsd:boolean"
+    },
+    "accessDisabled": {
+      "@id": "allocations:accessDisabled",
+      "@type": "xsd:boolean"
+    },
+    "legalName": {
+      "@id": "allocations:legalName",
+      "@type": "xsd:string"
+    },
+    "mouSigned": {
+      "@id": "allocations:mouSigned",
+      "@type": "xsd:boolean"
+    },
+    "phase": {
+      "@id": "allocations:phase",
+      "@type": "xsd:string"
+    },
+    "addressLine1": {
+      "@id": "allocations:addressLine1",
+      "@type": "xsd:string"
+    },
+    "addressLine2": {
+      "@id": "allocations:addressLine2",
+      "@type": "xsd:string"
+    },
+    "region": {
+      "@id": "allocations:region",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "allocations:country",
+      "@type": "xsd:string"
+    },
+    "isArchived": {
+      "@id": "allocations:isArchived",
+      "@type": "xsd:boolean"
+    },
+    "representativeIdentityId": {
+      "@id": "allocations:representativeIdentityId",
+      "@type": "xsd:string"
+    },
+    "representativeIndividualIdentityId": {
+      "@id": "allocations:representativeIndividualIdentityId",
+      "@type": "xsd:string"
+    },
+    "entities": {
+      "@id": "allocations:entities",
+      "@container": "@list"
+    },
+    "roles": {
+      "@id": "allocations:roles",
+      "@container": "@list"
+    },
+    "representativeIdentity": {
+      "@id": "allocations:representativeIdentity",
+      "@type": "@id"
+    },
+    "representativeIndividualIdentity": {
+      "@id": "allocations:representativeIndividualIdentity",
+      "@type": "@id"
+    },
+    "InvoiceLineItemsWithRelations": "allocations:InvoiceLineItemsWithRelations",
+    "lineItemId": {
+      "@id": "allocations:lineItemId",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "allocations:description",
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@id": "allocations:quantity",
+      "@type": "xsd:decimal"
+    },
+    "unitAmount": {
+      "@id": "allocations:unitAmount",
+      "@type": "xsd:decimal"
+    },
+    "lineAmount": {
+      "@id": "allocations:lineAmount",
+      "@type": "xsd:decimal"
+    },
+    "accountCode": {
+      "@id": "allocations:accountCode",
+      "@type": "xsd:string"
+    },
+    "accountId": {
+      "@id": "allocations:accountId",
+      "@type": "xsd:string"
+    },
+    "taxType": {
+      "@id": "allocations:taxType",
+      "@type": "xsd:string"
+    },
+    "taxAmount": {
+      "@id": "allocations:taxAmount",
+      "@type": "xsd:decimal"
+    },
+    "itemCode": {
+      "@id": "allocations:itemCode",
+      "@type": "xsd:string"
+    },
+    "discountRate": {
+      "@id": "allocations:discountRate",
+      "@type": "xsd:decimal"
+    },
+    "discountAmount": {
+      "@id": "allocations:discountAmount",
+      "@type": "xsd:decimal"
+    },
+    "provider": {
+      "@id": "allocations:provider",
+      "@type": "xsd:string"
+    },
+    "providerId": {
+      "@id": "allocations:providerId",
+      "@type": "xsd:string"
+    },
+    "providerData": {
+      "@id": "allocations:providerData"
+    },
+    "lastSuccessfulSync": {
+      "@id": "allocations:lastSuccessfulSync",
+      "@type": "xsd:dateTime"
+    },
+    "syncStatus": {
+      "@id": "allocations:syncStatus",
+      "@type": "xsd:string"
+    },
+    "invoiceId": {
+      "@id": "allocations:invoiceId",
+      "@type": "xsd:string"
+    },
+    "invoice": {
+      "@id": "allocations:invoice",
+      "@type": "@id"
+    },
+    "InvoicesWithRelations": "allocations:InvoicesWithRelations",
+    "reference": {
+      "@id": "allocations:reference",
+      "@type": "xsd:string"
+    },
+    "date": {
+      "@id": "allocations:date",
+      "@type": "xsd:dateTime"
+    },
+    "dueDate": {
+      "@id": "allocations:dueDate",
+      "@type": "xsd:dateTime"
+    },
+    "expectedPaymentDate": {
+      "@id": "allocations:expectedPaymentDate",
+      "@type": "xsd:dateTime"
+    },
+    "plannedPaymentDate": {
+      "@id": "allocations:plannedPaymentDate",
+      "@type": "xsd:dateTime"
+    },
+    "subTotal": {
+      "@id": "allocations:subTotal",
+      "@type": "xsd:decimal"
+    },
+    "totalTax": {
+      "@id": "allocations:totalTax",
+      "@type": "xsd:decimal"
+    },
+    "total": {
+      "@id": "allocations:total",
+      "@type": "xsd:decimal"
+    },
+    "totalDiscount": {
+      "@id": "allocations:totalDiscount",
+      "@type": "xsd:decimal"
+    },
+    "amountDue": {
+      "@id": "allocations:amountDue",
+      "@type": "xsd:decimal"
+    },
+    "amountPaid": {
+      "@id": "allocations:amountPaid",
+      "@type": "xsd:decimal"
+    },
+    "amountCredited": {
+      "@id": "allocations:amountCredited",
+      "@type": "xsd:decimal"
+    },
+    "currencyCode": {
+      "@id": "allocations:currencyCode",
+      "@type": "xsd:string"
+    },
+    "currencyRate": {
+      "@id": "allocations:currencyRate",
+      "@type": "xsd:decimal"
+    },
+    "contactName": {
+      "@id": "allocations:contactName",
+      "@type": "xsd:string"
+    },
+    "contactId": {
+      "@id": "allocations:contactId",
+      "@type": "xsd:string"
+    },
+    "dealId": {
+      "@id": "allocations:dealId",
+      "@type": "xsd:string"
+    },
+    "sentToContact": {
+      "@id": "allocations:sentToContact",
+      "@type": "xsd:boolean"
+    },
+    "url": {
+      "@id": "allocations:url",
+      "@type": "xsd:string"
+    },
+    "lineAmountTypes": {
+      "@id": "allocations:lineAmountTypes",
+      "@type": "xsd:string"
+    },
+    "brandingThemeId": {
+      "@id": "allocations:brandingThemeId",
+      "@type": "xsd:string"
+    },
+    "notes": {
+      "@id": "allocations:notes",
+      "@type": "xsd:string"
+    },
+    "deal": {
+      "@id": "allocations:deal",
+      "@type": "@id"
+    },
+    "lineItems": {
+      "@id": "allocations:lineItems",
+      "@container": "@list"
+    },
+    "TransferInformationWithRelations": "allocations:TransferInformationWithRelations",
+    "routingNumber": {
+      "@id": "allocations:routingNumber",
+      "@type": "xsd:string"
+    },
+    "assetType": {
+      "@id": "allocations:assetType",
+      "@type": "xsd:string"
+    },
+    "method": {
+      "@id": "allocations:method",
+      "@type": "xsd:string"
+    },
+    "bankName": {
+      "@id": "allocations:bankName",
+      "@type": "xsd:string"
+    },
+    "bankAddress": {
+      "@id": "allocations:bankAddress",
+      "@type": "xsd:string"
+    },
+    "bankAccountType": {
+      "@id": "allocations:bankAccountType",
+      "@type": "xsd:string"
+    },
+    "beneficiaryName": {
+      "@id": "allocations:beneficiaryName",
+      "@type": "xsd:string"
+    },
+    "beneficiaryAddress": {
+      "@id": "allocations:beneficiaryAddress",
+      "@type": "xsd:string"
+    },
+    "beneficiaryPhoneNumber": {
+      "@id": "allocations:beneficiaryPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "brokerageFirmName": {
+      "@id": "allocations:brokerageFirmName",
+      "@type": "xsd:string"
+    },
+    "accountType": {
+      "@id": "allocations:accountType",
+      "@type": "xsd:string"
+    },
+    "dtcParticipantNumber": {
+      "@id": "allocations:dtcParticipantNumber",
+      "@type": "xsd:string"
+    },
+    "additionalAccountInformation": {
+      "@id": "allocations:additionalAccountInformation",
+      "@type": "xsd:string"
+    },
+    "identityId": {
+      "@id": "allocations:identityId",
+      "@type": "xsd:string"
+    },
+    "identity": {
+      "@id": "allocations:identity",
+      "@type": "@id"
+    },
+    "UsersWithRelations": "allocations:UsersWithRelations",
+    "email": {
+      "@id": "allocations:email",
+      "@type": "xsd:string"
+    },
+    "firstName": {
+      "@id": "allocations:firstName",
+      "@type": "xsd:string"
+    },
+    "investorType": {
+      "@id": "allocations:investorType",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "allocations:lastName",
+      "@type": "xsd:string"
+    },
+    "isSuperAdmin": {
+      "@id": "allocations:isSuperAdmin",
+      "@type": "xsd:boolean"
+    },
+    "birthdate": {
+      "@id": "allocations:birthdate",
+      "@type": "xsd:dateTime"
+    },
+    "citizenshipCountry": {
+      "@id": "allocations:citizenshipCountry",
+      "@type": "xsd:string"
+    },
+    "taxId": {
+      "@id": "allocations:taxId",
+      "@type": "xsd:string"
+    },
+    "TransferRequestWithRelations": "allocations:TransferRequestWithRelations",
+    "recipientId": {
+      "@id": "allocations:recipientId",
+      "@type": "xsd:string"
+    },
+    "requestedAmount": {
+      "@id": "allocations:requestedAmount",
+      "@type": "xsd:decimal"
+    },
+    "sentAmount": {
+      "@id": "allocations:sentAmount",
+      "@type": "xsd:decimal"
+    },
+    "declaredPurpose": {
+      "@id": "allocations:declaredPurpose",
+      "@type": "xsd:string"
+    },
+    "recipientData": {
+      "@id": "allocations:recipientData"
+    },
+    "recipient": {
+      "@id": "allocations:recipient",
+      "@type": "@id"
+    },
+    "requestedBy": {
+      "@id": "allocations:requestedBy",
+      "@type": "@id"
+    },
+    "NewTransferRequest": "allocations:NewTransferRequest",
+    "TransferRequestPartial": "allocations:TransferRequestPartial",
+    "TransferRequest": "allocations:TransferRequest",
+    "BulkUpdateTransferRequestDto": "allocations:BulkUpdateTransferRequestDto",
+    "NewTransferInformation": "allocations:NewTransferInformation",
+    "TransferInformationPartialExcluding_id-createdAt-updatedAt-deleted-deletedOn-deletedBy_": "allocations:TransferInformationPartialExcluding_id-createdAt-updatedAt-deleted-deletedOn-deletedBy_",
+    "TaxRecordsBundle": "allocations:TaxRecordsBundle",
+    "entityTaxRecord": {
+      "@id": "allocations:entityTaxRecord"
+    },
+    "investmentTaxRecords": {
+      "@id": "allocations:investmentTaxRecords",
+      "@container": "@list"
+    },
+    "sourceData": {
+      "@id": "allocations:sourceData"
+    },
+    "snapshot1065Data": {
+      "@id": "allocations:snapshot1065Data"
+    },
+    "confidenceReport": {
+      "@id": "allocations:confidenceReport"
+    },
+    "Ledger": "allocations:Ledger",
+    "user": {
+      "@id": "allocations:user",
+      "@type": "@id"
+    },
+    "accounts": {
+      "@id": "allocations:accounts",
+      "@container": "@list"
+    },
+    "NewLedger": "allocations:NewLedger",
+    "amount": {
+      "@id": "allocations:amount",
+      "@type": "xsd:decimal"
+    },
+    "debit": {
+      "@id": "allocations:debit",
+      "@type": "xsd:boolean"
+    },
+    "categoriesId": {
+      "@id": "allocations:categoriesId",
+      "@type": "xsd:string"
+    },
+    "entitiesId": {
+      "@id": "allocations:entitiesId",
+      "@type": "xsd:string"
+    },
+    "entryDate": {
+      "@id": "allocations:entryDate",
+      "@type": "xsd:string"
+    },
+    "newLedgerEntryId": {
+      "@id": "allocations:newLedgerEntryId",
+      "@type": "xsd:string"
+    },
+    "InvestmentsWithRelations": "allocations:InvestmentsWithRelations",
+    "blueskyFees": {
+      "@id": "allocations:blueskyFees",
+      "@type": "xsd:decimal"
+    },
+    "capitalWiredAmount": {
+      "@id": "allocations:capitalWiredAmount",
+      "@type": "xsd:decimal"
+    },
+    "carry": {
+      "@id": "allocations:carry",
+      "@type": "xsd:decimal"
+    },
+    "managementFeesDollars": {
+      "@id": "allocations:managementFeesDollars",
+      "@type": "xsd:decimal"
+    },
+    "netInvestment": {
+      "@id": "allocations:netInvestment",
+      "@type": "xsd:decimal"
+    },
+    "otherExpenses": {
+      "@id": "allocations:otherExpenses",
+      "@type": "xsd:decimal"
+    },
+    "privateFundExpenses": {
+      "@id": "allocations:privateFundExpenses",
+      "@type": "xsd:decimal"
+    },
+    "spvFees": {
+      "@id": "allocations:spvFees",
+      "@type": "xsd:decimal"
+    },
+    "subscriptionAmount": {
+      "@id": "allocations:subscriptionAmount",
+      "@type": "xsd:decimal"
+    },
+    "completeAt": {
+      "@id": "allocations:completeAt",
+      "@type": "xsd:dateTime"
+    },
+    "ledgerMatched": {
+      "@id": "allocations:ledgerMatched",
+      "@type": "xsd:boolean"
+    },
+    "mongoInvestmentId": {
+      "@id": "allocations:mongoInvestmentId",
+      "@type": "xsd:string"
+    },
+    "mongoUserId": {
+      "@id": "allocations:mongoUserId",
+      "@type": "xsd:string"
+    },
+    "invitedAtLegacy": {
+      "@id": "allocations:invitedAtLegacy",
+      "@type": "xsd:string"
+    },
+    "manualEntryWireDate": {
+      "@id": "allocations:manualEntryWireDate",
+      "@type": "xsd:dateTime"
+    },
+    "source": {
+      "@id": "allocations:source",
+      "@type": "xsd:string"
+    },
+    "invitedAt": {
+      "@id": "allocations:invitedAt",
+      "@type": "xsd:dateTime"
+    },
+    "wiredDate": {
+      "@id": "allocations:wiredDate",
+      "@type": "xsd:dateTime"
+    },
+    "distributionAssetType": {
+      "@id": "allocations:distributionAssetType",
+      "@type": "xsd:string"
+    },
+    "distributionTransferInfoId": {
+      "@id": "allocations:distributionTransferInfoId",
+      "@type": "xsd:string"
+    },
+    "identitiesId": {
+      "@id": "allocations:identitiesId",
+      "@type": "xsd:string"
+    },
+    "distributionTransferInformation": {
+      "@id": "allocations:distributionTransferInformation",
+      "@type": "@id"
+    },
+    "transferInformation": {
+      "@id": "allocations:transferInformation",
+      "@container": "@list"
+    },
+    "InvestmentTax": "allocations:InvestmentTax",
+    "taxYear": {
+      "@id": "allocations:taxYear",
+      "@type": "xsd:string"
+    },
+    "investorIdentitiesId": {
+      "@id": "allocations:investorIdentitiesId",
+      "@type": "xsd:string"
+    },
+    "investorLegalName": {
+      "@id": "allocations:investorLegalName",
+      "@type": "xsd:string"
+    },
+    "investorTaxId": {
+      "@id": "allocations:investorTaxId",
+      "@type": "xsd:string"
+    },
+    "investorStreetAddress": {
+      "@id": "allocations:investorStreetAddress",
+      "@type": "xsd:string"
+    },
+    "investorCity": {
+      "@id": "allocations:investorCity",
+      "@type": "xsd:string"
+    },
+    "investorState": {
+      "@id": "allocations:investorState",
+      "@type": "xsd:string"
+    },
+    "investorPostalCode": {
+      "@id": "allocations:investorPostalCode",
+      "@type": "xsd:string"
+    },
+    "investorIsUsDomestic": {
+      "@id": "allocations:investorIsUsDomestic",
+      "@type": "xsd:boolean"
+    },
+    "investorFcAndSoiAndDApplicable": {
+      "@id": "allocations:investorFcAndSoiAndDApplicable",
+      "@type": "xsd:boolean"
+    },
+    "investorOtherDeductions": {
+      "@id": "allocations:investorOtherDeductions",
+      "@type": "xsd:decimal"
+    },
+    "investorContributions": {
+      "@id": "allocations:investorContributions",
+      "@type": "xsd:decimal"
+    },
+    "investorDistributions": {
+      "@id": "allocations:investorDistributions",
+      "@type": "xsd:decimal"
+    },
+    "investorEntityType": {
+      "@id": "allocations:investorEntityType",
+      "@type": "xsd:string"
+    },
+    "investorEntityIsDisregarded": {
+      "@id": "allocations:investorEntityIsDisregarded",
+      "@type": "xsd:boolean"
+    },
+    "investorDisregardedOwnerName": {
+      "@id": "allocations:investorDisregardedOwnerName",
+      "@type": "xsd:string"
+    },
+    "investorDisregardedOwnerTaxId": {
+      "@id": "allocations:investorDisregardedOwnerTaxId",
+      "@type": "xsd:string"
+    },
+    "investorBeginningProfitPercentage": {
+      "@id": "allocations:investorBeginningProfitPercentage",
+      "@type": "xsd:decimal"
+    },
+    "investorBeginningLossPercentage": {
+      "@id": "allocations:investorBeginningLossPercentage",
+      "@type": "xsd:decimal"
+    },
+    "investorBeginningCapitalPercentage": {
+      "@id": "allocations:investorBeginningCapitalPercentage",
+      "@type": "xsd:decimal"
+    },
+    "investorForeignTaxCreditLimitationApplicable": {
+      "@id": "allocations:investorForeignTaxCreditLimitationApplicable",
+      "@type": "xsd:boolean"
+    },
+    "investorCountry": {
+      "@id": "allocations:investorCountry",
+      "@type": "xsd:string"
+    },
+    "investorEndingProfitPercentage": {
+      "@id": "allocations:investorEndingProfitPercentage",
+      "@type": "xsd:decimal"
+    },
+    "investorEndingLossPercentage": {
+      "@id": "allocations:investorEndingLossPercentage",
+      "@type": "xsd:decimal"
+    },
+    "investorEndingCapitalPercentage": {
+      "@id": "allocations:investorEndingCapitalPercentage",
+      "@type": "xsd:decimal"
+    },
+    "k1FilesId": {
+      "@id": "allocations:k1FilesId",
+      "@type": "xsd:string"
+    },
+    "investorOwnershipPercent": {
+      "@id": "allocations:investorOwnershipPercent",
+      "@type": "xsd:decimal"
+    },
+    "investorCurrentYearNetIncomeLoss": {
+      "@id": "allocations:investorCurrentYearNetIncomeLoss",
+      "@type": "xsd:decimal"
+    },
+    "investorEndingCapitalAccountAmount": {
+      "@id": "allocations:investorEndingCapitalAccountAmount",
+      "@type": "xsd:decimal"
+    },
+    "investorBeginningCapitalAccountAmount": {
+      "@id": "allocations:investorBeginningCapitalAccountAmount",
+      "@type": "xsd:decimal"
+    },
+    "legacyRecordId": {
+      "@id": "allocations:legacyRecordId",
+      "@type": "xsd:string"
+    },
+    "calculatorVersion": {
+      "@id": "allocations:calculatorVersion",
+      "@type": "xsd:string"
+    },
+    "partnerIndex": {
+      "@id": "allocations:partnerIndex",
+      "@type": "xsd:decimal"
+    },
+    "investorEmail": {
+      "@id": "allocations:investorEmail",
+      "@type": "xsd:string"
+    },
+    "lastPrintedAt": {
+      "@id": "allocations:lastPrintedAt",
+      "@type": "xsd:dateTime"
+    },
+    "investmentId": {
+      "@id": "allocations:investmentId",
+      "@type": "xsd:string"
+    },
+    "investment": {
+      "@id": "allocations:investment",
+      "@type": "@id"
+    },
+    "SellOrderRequestsWithRelations": "allocations:SellOrderRequestsWithRelations",
+    "NewSellOrderRequests": "allocations:NewSellOrderRequests",
+    "SecondaryRequestsWithRelations": "allocations:SecondaryRequestsWithRelations",
+    "NewSecondaryRequests": "allocations:NewSecondaryRequests",
+    "Organizations": "allocations:Organizations",
+    "CreateOrganizationRequestBody": "allocations:CreateOrganizationRequestBody",
+    "UpdateOrganizationRequestBody": "allocations:UpdateOrganizationRequestBody",
+    "LedgerAccountsWithRelations": "allocations:LedgerAccountsWithRelations",
+    "parentAccountId": {
+      "@id": "allocations:parentAccountId",
+      "@type": "xsd:string"
+    },
+    "ledgerId": {
+      "@id": "allocations:ledgerId",
+      "@type": "xsd:string"
+    },
+    "referenceNumberId": {
+      "@id": "allocations:referenceNumberId",
+      "@type": "xsd:string"
+    },
+    "currency": {
+      "@id": "allocations:currency",
+      "@type": "xsd:string"
+    },
+    "creditOrDebit": {
+      "@id": "allocations:creditOrDebit",
+      "@type": "xsd:string"
+    },
+    "bankAccountId": {
+      "@id": "allocations:bankAccountId",
+      "@type": "xsd:string"
+    },
+    "detail": {
+      "@id": "allocations:detail",
+      "@type": "xsd:string"
+    },
+    "parentAccount": {
+      "@id": "allocations:parentAccount",
+      "@type": "@id"
+    },
+    "bankAccount": {
+      "@id": "allocations:bankAccount",
+      "@type": "@id"
+    },
+    "associations": {
+      "@id": "allocations:associations",
+      "@container": "@list"
+    },
+    "entries": {
+      "@id": "allocations:entries",
+      "@container": "@list"
+    },
+    "LedgerAccountAssociation": "allocations:LedgerAccountAssociation",
+    "associationType": {
+      "@id": "allocations:associationType",
+      "@type": "xsd:string"
+    },
+    "objectId": {
+      "@id": "allocations:objectId",
+      "@type": "xsd:string"
+    },
+    "account": {
+      "@id": "allocations:account",
+      "@type": "@id"
+    },
+    "LedgersWithRelations": "allocations:LedgersWithRelations",
+    "BankAccountsWithRelations": "allocations:BankAccountsWithRelations",
+    "accountNumber": {
+      "@id": "allocations:accountNumber",
+      "@type": "xsd:string"
+    },
+    "accountName": {
+      "@id": "allocations:accountName",
+      "@type": "xsd:string"
+    },
+    "providerApplicationId": {
+      "@id": "allocations:providerApplicationId",
+      "@type": "xsd:string"
+    },
+    "applicationStatus": {
+      "@id": "allocations:applicationStatus",
+      "@type": "xsd:string"
+    },
+    "currentBalance": {
+      "@id": "allocations:currentBalance",
+      "@type": "xsd:decimal"
+    },
+    "availableBalance": {
+      "@id": "allocations:availableBalance",
+      "@type": "xsd:decimal"
+    },
+    "transactions": {
+      "@id": "allocations:transactions",
+      "@container": "@list"
+    },
+    "LedgerAccountAssociationsWithRelations": "allocations:LedgerAccountAssociationsWithRelations",
+    "LedgerEntriesWithRelations": "allocations:LedgerEntriesWithRelations",
+    "transactionId": {
+      "@id": "allocations:transactionId",
+      "@type": "xsd:string"
+    },
+    "counterAccountId": {
+      "@id": "allocations:counterAccountId",
+      "@type": "xsd:string"
+    },
+    "transaction": {
+      "@id": "allocations:transaction",
+      "@type": "@id"
+    },
+    "counterAccount": {
+      "@id": "allocations:counterAccount",
+      "@type": "@id"
+    },
+    "ledgerEntryRelationships": {
+      "@id": "allocations:ledgerEntryRelationships",
+      "@container": "@list"
+    },
+    "LedgerAccount": "allocations:LedgerAccount",
+    "LedgerEntry": "allocations:LedgerEntry",
+    "IdentitiesWithRelations": "allocations:IdentitiesWithRelations",
+    "taxIdType": {
+      "@id": "allocations:taxIdType",
+      "@type": "xsd:string"
+    },
+    "addressLine_1": {
+      "@id": "allocations:addressLine_1",
+      "@type": "xsd:string"
+    },
+    "addressLine_2": {
+      "@id": "allocations:addressLine_2",
+      "@type": "xsd:string"
+    },
+    "usDomestic": {
+      "@id": "allocations:usDomestic",
+      "@type": "xsd:boolean"
+    },
+    "entityIsDisregarded": {
+      "@id": "allocations:entityIsDisregarded",
+      "@type": "xsd:boolean"
+    },
+    "ownershipPercent": {
+      "@id": "allocations:ownershipPercent",
+      "@type": "xsd:decimal"
+    },
+    "phone": {
+      "@id": "allocations:phone",
+      "@type": "xsd:string"
+    },
+    "parentIdentityId": {
+      "@id": "allocations:parentIdentityId",
+      "@type": "xsd:string"
+    },
+    "dateOfEntityFormation": {
+      "@id": "allocations:dateOfEntityFormation",
+      "@type": "xsd:dateTime"
+    },
+    "title": {
+      "@id": "allocations:title",
+      "@type": "xsd:string"
+    },
+    "archived": {
+      "@id": "allocations:archived",
+      "@type": "xsd:boolean"
+    },
+    "countryOfCitizenship": {
+      "@id": "allocations:countryOfCitizenship",
+      "@type": "xsd:string"
+    },
+    "kycChecks": {
+      "@id": "allocations:kycChecks",
+      "@container": "@list"
+    },
+    "identityFiles": {
+      "@id": "allocations:identityFiles",
+      "@container": "@list"
+    },
+    "relations": {
+      "@id": "allocations:relations",
+      "@container": "@list"
+    },
+    "accreditations": {
+      "@id": "allocations:accreditations",
+      "@container": "@list"
+    },
+    "InvestmentsTaxesWithRelations": "allocations:InvestmentsTaxesWithRelations",
+    "FilesWithRelations": "allocations:FilesWithRelations",
+    "key": {
+      "@id": "allocations:key",
+      "@type": "xsd:string"
+    },
+    "mongoOwnerId": {
+      "@id": "allocations:mongoOwnerId",
+      "@type": "xsd:string"
+    },
+    "legacyBucket": {
+      "@id": "allocations:legacyBucket",
+      "@type": "xsd:string"
+    },
+    "legacyKey": {
+      "@id": "allocations:legacyKey",
+      "@type": "xsd:string"
+    },
+    "fileName": {
+      "@id": "allocations:fileName",
+      "@type": "xsd:string"
+    },
+    "mongoDocumentsId": {
+      "@id": "allocations:mongoDocumentsId",
+      "@type": "xsd:string"
+    },
+    "contentType": {
+      "@id": "allocations:contentType",
+      "@type": "xsd:string"
+    },
+    "bucket": {
+      "@id": "allocations:bucket",
+      "@type": "xsd:string"
+    },
+    "InvestmentsTransferInformationWithRelations": "allocations:InvestmentsTransferInformationWithRelations",
+    "transferInformationId": {
+      "@id": "allocations:transferInformationId",
+      "@type": "xsd:string"
+    },
+    "Investment": "allocations:Investment",
+    "updateInvestmentByIdBody": "allocations:updateInvestmentByIdBody",
+    "InvestmentTransferInformation": "allocations:InvestmentTransferInformation",
+    "IdentityFiles": "allocations:IdentityFiles",
+    "mimeType": {
+      "@id": "allocations:mimeType",
+      "@type": "xsd:string"
+    },
+    "fileType": {
+      "@id": "allocations:fileType",
+      "@type": "xsd:string"
+    },
+    "side": {
+      "@id": "allocations:side",
+      "@type": "xsd:string"
+    },
+    "IdentityFilesWithRelations": "allocations:IdentityFilesWithRelations",
+    "path": {
+      "@id": "allocations:path",
+      "@type": "xsd:string"
+    },
+    "validationResult": {
+      "@id": "allocations:validationResult",
+      "@type": "xsd:string"
+    },
+    "validationRawResult": {
+      "@id": "allocations:validationRawResult"
+    },
+    "Identities": "allocations:Identities",
+    "CreateIdentityRequestBody": "allocations:CreateIdentityRequestBody",
+    "AccreditationsWithRelations": "allocations:AccreditationsWithRelations",
+    "user_investment_entity_id": {
+      "@id": "allocations:user_investment_entity_id",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "allocations:value",
+      "@type": "xsd:string"
+    },
+    "IdentitiesRelationsWithRelations": "allocations:IdentitiesRelationsWithRelations",
+    "relationship": {
+      "@id": "allocations:relationship",
+      "@type": "xsd:string"
+    },
+    "ownershipPercentage": {
+      "@id": "allocations:ownershipPercentage",
+      "@type": "xsd:decimal"
+    },
+    "childId": {
+      "@id": "allocations:childId",
+      "@type": "xsd:string"
+    },
+    "parentId": {
+      "@id": "allocations:parentId",
+      "@type": "xsd:string"
+    },
+    "child": {
+      "@id": "allocations:child",
+      "@type": "@id"
+    },
+    "parent": {
+      "@id": "allocations:parent",
+      "@type": "@id"
+    },
+    "IdentityKycChecksWithRelations": "allocations:IdentityKycChecksWithRelations",
+    "result": {
+      "@id": "allocations:result",
+      "@type": "xsd:string"
+    },
+    "identityData": {
+      "@id": "allocations:identityData"
+    },
+    "rawResults": {
+      "@id": "allocations:rawResults"
+    },
+    "completedAt": {
+      "@id": "allocations:completedAt",
+      "@type": "xsd:dateTime"
+    },
+    "IdentityWithArchivableDtoWithRelations": "allocations:IdentityWithArchivableDtoWithRelations",
+    "archivable": {
+      "@id": "allocations:archivable",
+      "@type": "xsd:boolean"
+    },
+    "UpdateIdentityRequestBody": "allocations:UpdateIdentityRequestBody",
+    "InvalidIdentityWithArchivable": "allocations:InvalidIdentityWithArchivable",
+    "IdentitiesRelations": "allocations:IdentitiesRelations",
+    "CreateIdentityRelationshipRequestBody": "allocations:CreateIdentityRelationshipRequestBody",
+    "PlatformFeature": "allocations:PlatformFeature",
+    "isEnabled": {
+      "@id": "allocations:isEnabled",
+      "@type": "xsd:boolean"
+    },
+    "isActiveGlobally": {
+      "@id": "allocations:isActiveGlobally",
+      "@type": "xsd:boolean"
+    },
+    "CreateEntityRequestBody": "allocations:CreateEntityRequestBody",
+    "UpdateEntityRequestBody": "allocations:UpdateEntityRequestBody",
+    "Entities": "allocations:Entities",
+    "EntitiesTaxesWithRelations": "allocations:EntitiesTaxesWithRelations",
+    "irsAcceptedDate": {
+      "@id": "allocations:irsAcceptedDate",
+      "@type": "xsd:dateTime"
+    },
+    "importRequested": {
+      "@id": "allocations:importRequested",
+      "@type": "xsd:dateTime"
+    },
+    "lastImportedAt": {
+      "@id": "allocations:lastImportedAt",
+      "@type": "xsd:dateTime"
+    },
+    "printRequested": {
+      "@id": "allocations:printRequested",
+      "@type": "xsd:dateTime"
+    },
+    "importState": {
+      "@id": "allocations:importState",
+      "@type": "xsd:string"
+    },
+    "filingStatus": {
+      "@id": "allocations:filingStatus",
+      "@type": "xsd:string"
+    },
+    "entityName": {
+      "@id": "allocations:entityName",
+      "@type": "xsd:string"
+    },
+    "entityEin": {
+      "@id": "allocations:entityEin",
+      "@type": "xsd:string"
+    },
+    "entityFormationDate": {
+      "@id": "allocations:entityFormationDate",
+      "@type": "xsd:dateTime"
+    },
+    "entityStreetAddress": {
+      "@id": "allocations:entityStreetAddress",
+      "@type": "xsd:string"
+    },
+    "entityCity": {
+      "@id": "allocations:entityCity",
+      "@type": "xsd:string"
+    },
+    "entityState": {
+      "@id": "allocations:entityState",
+      "@type": "xsd:string"
+    },
+    "entityPostalCode": {
+      "@id": "allocations:entityPostalCode",
+      "@type": "xsd:string"
+    },
+    "entityPhoneNumber": {
+      "@id": "allocations:entityPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "signerFirstName": {
+      "@id": "allocations:signerFirstName",
+      "@type": "xsd:string"
+    },
+    "signerLastName": {
+      "@id": "allocations:signerLastName",
+      "@type": "xsd:string"
+    },
+    "signerTitle": {
+      "@id": "allocations:signerTitle",
+      "@type": "xsd:string"
+    },
+    "signerSignatureDate": {
+      "@id": "allocations:signerSignatureDate",
+      "@type": "xsd:dateTime"
+    },
+    "signerSignature": {
+      "@id": "allocations:signerSignature",
+      "@type": "xsd:string"
+    },
+    "isInitialReturn": {
+      "@id": "allocations:isInitialReturn",
+      "@type": "xsd:boolean"
+    },
+    "isAmendmentReturn": {
+      "@id": "allocations:isAmendmentReturn",
+      "@type": "xsd:boolean"
+    },
+    "isFinalReturn": {
+      "@id": "allocations:isFinalReturn",
+      "@type": "xsd:boolean"
+    },
+    "entitySatisfiesReceiptsAndAssets": {
+      "@id": "allocations:entitySatisfiesReceiptsAndAssets",
+      "@type": "xsd:boolean"
+    },
+    "partnershipRepresentativeName": {
+      "@id": "allocations:partnershipRepresentativeName",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeStreetAddress": {
+      "@id": "allocations:partnershipRepresentativeStreetAddress",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeCity": {
+      "@id": "allocations:partnershipRepresentativeCity",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeZip": {
+      "@id": "allocations:partnershipRepresentativeZip",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativePhone": {
+      "@id": "allocations:partnershipRepresentativePhone",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeDesignatedIndividualFirstName": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividualFirstName",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeDesignatedIndividualLastName": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividualLastName",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeDesignatedIndividualStreetAddress": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividualStreetAddress",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeDesignatedIndividualCity": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividualCity",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeDesignatedIndividualState": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividualState",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeDesignatedIndividualZip": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividualZip",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeDesignatedIndividualPhone": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividualPhone",
+      "@type": "xsd:string"
+    },
+    "entityBeginningCash": {
+      "@id": "allocations:entityBeginningCash",
+      "@type": "xsd:decimal"
+    },
+    "entityEndingCash": {
+      "@id": "allocations:entityEndingCash",
+      "@type": "xsd:decimal"
+    },
+    "entityBeginningLongTermAssets": {
+      "@id": "allocations:entityBeginningLongTermAssets",
+      "@type": "xsd:decimal"
+    },
+    "entityEndingLongTermAssets": {
+      "@id": "allocations:entityEndingLongTermAssets",
+      "@type": "xsd:decimal"
+    },
+    "entityBeginningCurrentLiabilities": {
+      "@id": "allocations:entityBeginningCurrentLiabilities",
+      "@type": "xsd:decimal"
+    },
+    "entityEndingCurrentLiabilities": {
+      "@id": "allocations:entityEndingCurrentLiabilities",
+      "@type": "xsd:decimal"
+    },
+    "entityBeginningCapital": {
+      "@id": "allocations:entityBeginningCapital",
+      "@type": "xsd:decimal"
+    },
+    "entityCapitalContributions": {
+      "@id": "allocations:entityCapitalContributions",
+      "@type": "xsd:decimal"
+    },
+    "entityCashDistributions": {
+      "@id": "allocations:entityCashDistributions",
+      "@type": "xsd:decimal"
+    },
+    "entityPortfolioExpense": {
+      "@id": "allocations:entityPortfolioExpense",
+      "@type": "xsd:decimal"
+    },
+    "entityHasForeignInvestors": {
+      "@id": "allocations:entityHasForeignInvestors",
+      "@type": "xsd:boolean"
+    },
+    "hasNotifiedLps": {
+      "@id": "allocations:hasNotifiedLps",
+      "@type": "xsd:boolean"
+    },
+    "portfolioExpenseDescription": {
+      "@id": "allocations:portfolioExpenseDescription",
+      "@type": "xsd:string"
+    },
+    "partnershipRepresentativeDesignatedIndividualEmail": {
+      "@id": "allocations:partnershipRepresentativeDesignatedIndividualEmail",
+      "@type": "xsd:string"
+    },
+    "extensionFiled": {
+      "@id": "allocations:extensionFiled",
+      "@type": "xsd:boolean"
+    },
+    "partnershipRepresentativeState": {
+      "@id": "allocations:partnershipRepresentativeState",
+      "@type": "xsd:string"
+    },
+    "batch": {
+      "@id": "allocations:batch",
+      "@type": "xsd:decimal"
+    },
+    "allocationsApproval": {
+      "@id": "allocations:allocationsApproval",
+      "@type": "xsd:dateTime"
+    },
+    "fundManagerApprovalDate": {
+      "@id": "allocations:fundManagerApprovalDate",
+      "@type": "xsd:string"
+    },
+    "fundManagerApprovalEmail": {
+      "@id": "allocations:fundManagerApprovalEmail",
+      "@type": "xsd:string"
+    },
+    "fundManagerInvited": {
+      "@id": "allocations:fundManagerInvited",
+      "@type": "xsd:boolean"
+    },
+    "fundManagerApproval": {
+      "@id": "allocations:fundManagerApproval",
+      "@type": "xsd:boolean"
+    },
+    "irsSubmissionId": {
+      "@id": "allocations:irsSubmissionId",
+      "@type": "xsd:string"
+    },
+    "DistributionEventsWithRelations": "allocations:DistributionEventsWithRelations",
+    "distributionId": {
+      "@id": "allocations:distributionId",
+      "@type": "xsd:string"
+    },
+    "receivingAssetType": {
+      "@id": "allocations:receivingAssetType",
+      "@type": "xsd:string"
+    },
+    "distributingAssetType": {
+      "@id": "allocations:distributingAssetType",
+      "@type": "xsd:string"
+    },
+    "requestedReceivingDate": {
+      "@id": "allocations:requestedReceivingDate",
+      "@type": "xsd:dateTime"
+    },
+    "note": {
+      "@id": "allocations:note",
+      "@type": "xsd:string"
+    },
+    "sheetUri": {
+      "@id": "allocations:sheetUri",
+      "@type": "xsd:string"
+    },
+    "distribution": {
+      "@id": "allocations:distribution",
+      "@type": "@id"
+    },
+    "DistributionsWithRelations": "allocations:DistributionsWithRelations",
+    "distributionsInvestments": {
+      "@id": "allocations:distributionsInvestments",
+      "@container": "@list"
+    },
+    "distributionEvents": {
+      "@id": "allocations:distributionEvents",
+      "@container": "@list"
+    },
+    "DistributionsInvestmentsWithRelations": "allocations:DistributionsInvestmentsWithRelations",
+    "distributionDate": {
+      "@id": "allocations:distributionDate",
+      "@type": "xsd:dateTime"
+    },
+    "transactionHash": {
+      "@id": "allocations:transactionHash",
+      "@type": "xsd:string"
+    },
+    "Distribution": "allocations:Distribution",
+    "CreateDistributionDto": "allocations:CreateDistributionDto",
+    "UpdateDistributionDto": "allocations:UpdateDistributionDto",
+    "BulkUpdateDistributionsDto": "allocations:BulkUpdateDistributionsDto",
+    "CreateDistributionInvestmentDto": "allocations:CreateDistributionInvestmentDto",
+    "UpdateDistributionInvestmentDto": "allocations:UpdateDistributionInvestmentDto",
+    "Deals": "allocations:Deals",
+    "NewDeals": "allocations:NewDeals",
+    "DealSummaryWithRelations": "allocations:DealSummaryWithRelations",
+    "totalRaisedWired": {
+      "@id": "allocations:totalRaisedWired",
+      "@type": "xsd:decimal"
+    },
+    "totalRaisedSubscribed": {
+      "@id": "allocations:totalRaisedSubscribed",
+      "@type": "xsd:decimal"
+    },
+    "investorCount": {
+      "@id": "allocations:investorCount",
+      "@type": "xsd:decimal"
+    },
+    "DealDetailsWithRelations": "allocations:DealDetailsWithRelations",
+    "acceptCrypto": {
+      "@id": "allocations:acceptCrypto",
+      "@type": "xsd:boolean"
+    },
+    "advisorType": {
+      "@id": "allocations:advisorType",
+      "@type": "xsd:string"
+    },
+    "assetId": {
+      "@id": "allocations:assetId",
+      "@type": "xsd:string"
+    },
+    "bankingProvider": {
+      "@id": "allocations:bankingProvider",
+      "@type": "xsd:string"
+    },
+    "dealTerm": {
+      "@id": "allocations:dealTerm",
+      "@type": "xsd:string"
+    },
+    "estimatedMultiple": {
+      "@id": "allocations:estimatedMultiple",
+      "@type": "xsd:decimal"
+    },
+    "estimatedAssetCount": {
+      "@id": "allocations:estimatedAssetCount",
+      "@type": "xsd:decimal"
+    },
+    "internationalInvestors": {
+      "@id": "allocations:internationalInvestors",
+      "@type": "xsd:boolean"
+    },
+    "hasAccreditedInvestors": {
+      "@id": "allocations:hasAccreditedInvestors",
+      "@type": "xsd:boolean"
+    },
+    "hasQualifiedPurchasers": {
+      "@id": "allocations:hasQualifiedPurchasers",
+      "@type": "xsd:boolean"
+    },
+    "hasInstitutionalInvestors": {
+      "@id": "allocations:hasInstitutionalInvestors",
+      "@type": "xsd:boolean"
+    },
+    "internationalTransactionsExpected": {
+      "@id": "allocations:internationalTransactionsExpected",
+      "@type": "xsd:boolean"
+    },
+    "nonUsFinancialInstitutions": {
+      "@id": "allocations:nonUsFinancialInstitutions",
+      "@type": "xsd:boolean"
+    },
+    "legacyCompanyName": {
+      "@id": "allocations:legacyCompanyName",
+      "@type": "xsd:string"
+    },
+    "legalTemplateOption": {
+      "@id": "allocations:legalTemplateOption",
+      "@type": "xsd:string"
+    },
+    "masterSeries": {
+      "@id": "allocations:masterSeries",
+      "@type": "xsd:string"
+    },
+    "onboardingLink": {
+      "@id": "allocations:onboardingLink",
+      "@type": "xsd:string"
+    },
+    "seriesName": {
+      "@id": "allocations:seriesName",
+      "@type": "xsd:string"
+    },
+    "subType": {
+      "@id": "allocations:subType",
+      "@type": "xsd:string"
+    },
+    "agreeMsa": {
+      "@id": "allocations:agreeMsa",
+      "@type": "xsd:boolean"
+    },
+    "agreeCosts": {
+      "@id": "allocations:agreeCosts",
+      "@type": "xsd:boolean"
+    },
+    "agreeSetup": {
+      "@id": "allocations:agreeSetup",
+      "@type": "xsd:boolean"
+    },
+    "masterSeriesId": {
+      "@id": "allocations:masterSeriesId",
+      "@type": "xsd:string"
+    },
+    "advisorTypeNote": {
+      "@id": "allocations:advisorTypeNote",
+      "@type": "xsd:string"
+    },
+    "bankingProviderNote": {
+      "@id": "allocations:bankingProviderNote",
+      "@type": "xsd:string"
+    },
+    "fundManagerEmail": {
+      "@id": "allocations:fundManagerEmail",
+      "@type": "xsd:string"
+    },
+    "financialStatementFrequency": {
+      "@id": "allocations:financialStatementFrequency",
+      "@type": "xsd:string"
+    },
+    "DealsPartial": "allocations:DealsPartial",
+    "DealDetailsPartial": "allocations:DealDetailsPartial",
+    "DealDetails": "allocations:DealDetails",
+    "ClosesWithRelations": "allocations:ClosesWithRelations",
+    "requestedCloseDate": {
+      "@id": "allocations:requestedCloseDate",
+      "@type": "xsd:dateTime"
+    },
+    "organizationsId": {
+      "@id": "allocations:organizationsId",
+      "@type": "xsd:string"
+    },
+    "portfolioWireAmount": {
+      "@id": "allocations:portfolioWireAmount",
+      "@type": "xsd:decimal"
+    },
+    "requestedCloseAmount": {
+      "@id": "allocations:requestedCloseAmount",
+      "@type": "xsd:decimal"
+    },
+    "dealsId": {
+      "@id": "allocations:dealsId",
+      "@type": "xsd:string"
+    },
+    "NewCloseRequest": "allocations:NewCloseRequest",
+    "ClosesPartial": "allocations:ClosesPartial",
+    "Closes": "allocations:Closes",
+    "InvitationsWithRelations": "allocations:InvitationsWithRelations",
+    "recipientEmail": {
+      "@id": "allocations:recipientEmail",
+      "@type": "xsd:string"
+    },
+    "NewInvitation": "allocations:NewInvitation",
+    "Files": "allocations:Files",
+    "AssetsWithRelations": "allocations:AssetsWithRelations",
+    "securityType": {
+      "@id": "allocations:securityType",
+      "@type": "xsd:string"
+    },
+    "purchaseAgreementId": {
+      "@id": "allocations:purchaseAgreementId",
+      "@type": "xsd:string"
+    },
+    "wireInstructionsId": {
+      "@id": "allocations:wireInstructionsId",
+      "@type": "xsd:string"
+    },
+    "location": {
+      "@id": "allocations:location",
+      "@type": "xsd:string"
+    },
+    "industry": {
+      "@id": "allocations:industry",
+      "@type": "xsd:string"
+    },
+    "portfolioCompanyContact": {
+      "@id": "allocations:portfolioCompanyContact",
+      "@type": "xsd:string"
+    },
+    "portfolioCompanyPhone": {
+      "@id": "allocations:portfolioCompanyPhone",
+      "@type": "xsd:string"
+    },
+    "companyWebsite": {
+      "@id": "allocations:companyWebsite",
+      "@type": "xsd:string"
+    },
+    "valuation": {
+      "@id": "allocations:valuation",
+      "@type": "xsd:decimal"
+    },
+    "valuationDate": {
+      "@id": "allocations:valuationDate",
+      "@type": "xsd:dateTime"
+    },
+    "conversionTarget": {
+      "@id": "allocations:conversionTarget",
+      "@type": "xsd:string"
+    },
+    "conversionTrigger": {
+      "@id": "allocations:conversionTrigger",
+      "@type": "xsd:string"
+    },
+    "hasTokenLinkedPayout": {
+      "@id": "allocations:hasTokenLinkedPayout",
+      "@type": "xsd:boolean"
+    },
+    "fundManagerLegalName": {
+      "@id": "allocations:fundManagerLegalName",
+      "@type": "xsd:string"
+    },
+    "issuerLegalName": {
+      "@id": "allocations:issuerLegalName",
+      "@type": "xsd:string"
+    },
+    "borrowerLegalName": {
+      "@id": "allocations:borrowerLegalName",
+      "@type": "xsd:string"
+    },
+    "stockCompanyLegalName": {
+      "@id": "allocations:stockCompanyLegalName",
+      "@type": "xsd:string"
+    },
+    "otherLegalName": {
+      "@id": "allocations:otherLegalName",
+      "@type": "xsd:string"
+    },
+    "fundManagerJurisdiction": {
+      "@id": "allocations:fundManagerJurisdiction",
+      "@type": "xsd:string"
+    },
+    "borrowerJurisdiction": {
+      "@id": "allocations:borrowerJurisdiction",
+      "@type": "xsd:string"
+    },
+    "otherJurisdiction": {
+      "@id": "allocations:otherJurisdiction",
+      "@type": "xsd:string"
+    },
+    "otherTypeDescription": {
+      "@id": "allocations:otherTypeDescription",
+      "@type": "xsd:string"
+    },
+    "otherRegulatedActivities": {
+      "@id": "allocations:otherRegulatedActivities",
+      "@type": "xsd:boolean"
+    },
+    "noteSecurity": {
+      "@id": "allocations:noteSecurity",
+      "@type": "xsd:string"
+    },
+    "debtRepayment": {
+      "@id": "allocations:debtRepayment",
+      "@type": "xsd:string"
+    },
+    "fundStrategy": {
+      "@id": "allocations:fundStrategy",
+      "@type": "xsd:string"
+    },
+    "hasDigitalAssetExposure": {
+      "@id": "allocations:hasDigitalAssetExposure",
+      "@type": "xsd:boolean"
+    },
+    "stockBlockchainProducts": {
+      "@id": "allocations:stockBlockchainProducts",
+      "@type": "xsd:boolean"
+    },
+    "stockRegulatedActivities": {
+      "@id": "allocations:stockRegulatedActivities",
+      "@type": "xsd:boolean"
+    },
+    "digitalAssetExposureDescription": {
+      "@id": "allocations:digitalAssetExposureDescription",
+      "@type": "xsd:string"
+    },
+    "isVaspRegistered": {
+      "@id": "allocations:isVaspRegistered",
+      "@type": "xsd:boolean"
+    },
+    "DealsViews": "allocations:DealsViews",
+    "BulkUpdateClosesDto": "allocations:BulkUpdateClosesDto",
+    "UpdateBankAccountRequestBody": "allocations:UpdateBankAccountRequestBody",
+    "CreateAssetRequestBody": "allocations:CreateAssetRequestBody",
+    "UpdateAssetRequestBody": "allocations:UpdateAssetRequestBody",
+    "Announcements": "allocations:Announcements",
+    "message": {
+      "@id": "allocations:message",
+      "@type": "xsd:string"
+    },
+    "enabled": {
+      "@id": "allocations:enabled",
+      "@type": "xsd:boolean"
+    },
+    "classes": {
+      "@id": "allocations:classes",
+      "@type": "xsd:string"
+    },
+    "CreateAnnouncementRequestBody": "allocations:CreateAnnouncementRequestBody",
+    "UpdateAnnouncementRequestBody": "allocations:UpdateAnnouncementRequestBody",
+    "CreateAccreditationRequestBody": "allocations:CreateAccreditationRequestBody",
+    "UpdateAccreditationRequestBody": "allocations:UpdateAccreditationRequestBody",
+    "Accreditations": "allocations:Accreditations",
+    "LedgerWithRelations": "allocations:LedgerWithRelations",
+    "LedgerCategoriesWithRelations": "allocations:LedgerCategoriesWithRelations",
+    "code": {
+      "@id": "allocations:code",
+      "@type": "xsd:string"
+    },
+    "EntitiesTaxesMetadataWithRelations": "allocations:EntitiesTaxesMetadataWithRelations",
+    "providerLocked": {
+      "@id": "allocations:providerLocked",
+      "@type": "xsd:boolean"
+    },
+    "irsSubmissionStatus": {
+      "@id": "allocations:irsSubmissionStatus",
+      "@type": "xsd:string"
+    },
+    "irsSubmissionDate": {
+      "@id": "allocations:irsSubmissionDate",
+      "@type": "xsd:dateTime"
+    },
+    "irsExtensionId": {
+      "@id": "allocations:irsExtensionId",
+      "@type": "xsd:string"
+    },
+    "irsExtensionStatus": {
+      "@id": "allocations:irsExtensionStatus",
+      "@type": "xsd:string"
+    },
+    "irsExtensionDate": {
+      "@id": "allocations:irsExtensionDate",
+      "@type": "xsd:dateTime"
+    },
+    "detectedDiscrepancies": {
+      "@id": "allocations:detectedDiscrepancies",
+      "@container": "@list"
+    },
+    "discrepancyDiff": {
+      "@id": "allocations:discrepancyDiff",
+      "@container": "@list"
+    },
+    "latestDiscrepancyCheck": {
+      "@id": "allocations:latestDiscrepancyCheck",
+      "@type": "xsd:dateTime"
+    },
+    "OrganizationsRolesWithRelations": "allocations:OrganizationsRolesWithRelations",
+    "isInvite": {
+      "@id": "allocations:isInvite",
+      "@type": "xsd:boolean"
+    },
+    "TransactionsWithRelations": "allocations:TransactionsWithRelations",
+    "authorizedAt": {
+      "@id": "allocations:authorizedAt",
+      "@type": "xsd:dateTime"
+    },
+    "postedAt": {
+      "@id": "allocations:postedAt",
+      "@type": "xsd:dateTime"
+    },
+    "LedgerEntryRelationshipsWithRelations": "allocations:LedgerEntryRelationshipsWithRelations",
+    "entryId": {
+      "@id": "allocations:entryId",
+      "@type": "xsd:string"
+    },
+    "relatedEntryId": {
+      "@id": "allocations:relatedEntryId",
+      "@type": "xsd:string"
+    },
+    "entry": {
+      "@id": "allocations:entry",
+      "@type": "@id"
+    },
+    "relatedEntry": {
+      "@id": "allocations:relatedEntry",
+      "@type": "@id"
+    },
+    "closes.ScopeFilter": "allocations:closes.ScopeFilter",
+    "offset": {
+      "@id": "allocations:offset",
+      "@type": "xsd:integer"
+    },
+    "limit": {
+      "@id": "allocations:limit",
+      "@type": "xsd:integer"
+    },
+    "skip": {
+      "@id": "allocations:skip",
+      "@type": "xsd:integer"
+    },
+    "order": {
+      "@id": "allocations:order"
+    },
+    "where": {
+      "@id": "allocations:where"
+    },
+    "fields": {
+      "@id": "allocations:fields"
+    },
+    "include": {
+      "@id": "allocations:include",
+      "@container": "@list"
+    },
+    "closes.IncludeFilter.Items": "allocations:closes.IncludeFilter.Items",
+    "relation": {
+      "@id": "allocations:relation",
+      "@type": "xsd:string"
+    },
+    "scope": {
+      "@id": "allocations:scope",
+      "@type": "@id"
+    },
+    "closes.Filter": "allocations:closes.Filter",
+    "closes.Filter1": "allocations:closes.Filter1",
+    "SecondaryRequests.ScopeFilter": "allocations:SecondaryRequests.ScopeFilter",
+    "SecondaryRequests.IncludeFilter.Items": "allocations:SecondaryRequests.IncludeFilter.Items",
+    "SecondaryRequests.Filter": "allocations:SecondaryRequests.Filter",
+    "Deals.ScopeFilter": "allocations:Deals.ScopeFilter",
+    "Deals.IncludeFilter.Items": "allocations:Deals.IncludeFilter.Items",
+    "Deals.Filter": "allocations:Deals.Filter",
+    "Assets.ScopeFilter": "allocations:Assets.ScopeFilter",
+    "Assets.IncludeFilter.Items": "allocations:Assets.IncludeFilter.Items",
+    "Assets.Filter": "allocations:Assets.Filter",
+    "Assets.Filter1": "allocations:Assets.Filter1",
+    "DealDetails.ScopeFilter": "allocations:DealDetails.ScopeFilter",
+    "DealDetails.IncludeFilter.Items": "allocations:DealDetails.IncludeFilter.Items",
+    "DealDetails.Filter": "allocations:DealDetails.Filter",
+    "Files.Filter": "allocations:Files.Filter",
+    "Investments.ScopeFilter": "allocations:Investments.ScopeFilter",
+    "Investments.IncludeFilter.Items": "allocations:Investments.IncludeFilter.Items",
+    "Investments.Filter": "allocations:Investments.Filter"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Allocations API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Allocations's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-05) from openapi/allocations-openapi.json.",
+  "dcterms:created": "2026-10-05",
+  "dcterms:source": [
+    "openapi/allocations-openapi.json"
+  ]
+}

@@ -1,0 +1,33 @@
+generated: '2026-10-05'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/allocations-openapi.json
+skills:
+- file: skills/allocations-create-and-list-ledger-entries.md
+  name: allocations-create-and-list-ledger-entries
+  api: openapi/allocations-openapi.json
+  operations:
+  - createLedgerEntry
+  - getLedgerEntriesByLedgerId
+- file: skills/allocations-bank-account-setup.md
+  name: allocations-bank-account-setup
+  api: openapi/allocations-openapi.json
+  operations:
+  - createApplication
+  - requestBankAccountSync
+  - getBankAccountById
+- file: skills/allocations-manage-entity.md
+  name: allocations-manage-entity
+  api: openapi/allocations-openapi.json
+  operations:
+  - createEntity
+  - getEntityById
+  - updateEntity
+  - getEntityTaxesByEntityId
+- file: skills/allocations-notifications-read.md
+  name: allocations-notifications-read
+  api: openapi/allocations-openapi.json
+  operations:
+  - getNotifications
+  - getNotificationsCount
+  - markNotificationAsRead

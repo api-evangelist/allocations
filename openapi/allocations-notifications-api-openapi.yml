@@ -1,0 +1,995 @@
+openapi: 3.2.0
+info:
+  title: Allocations Notifications API
+  description: Call-to-actions and informational data
+  version: 1.0.0
+  termsOfService: https://allocations.com
+  contact:
+    name: Allocations Support
+    url: https://allocations.com
+    email: support@allocations.com
+servers:
+- url: https://api.allocations.com
+security:
+- jwt: []
+tags:
+- name: Notifications
+  description: Call-to-actions and informational data
+paths:
+  /v2/notifications/count:
+    get:
+      x-controller-name: NotificationsController
+      x-operation-name: getNotificationsCount
+      tags:
+      - Notifications
+      operationId: getNotificationsCount
+      responses:
+        '200':
+          description: Notification count retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  read:
+                    type: number
+                    description: Number of read notifications
+                  unread:
+                    type: number
+                    description: Number of unread notifications
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      summary: Get notifications count
+      x-summary-source: derived
+  /v2/notifications/notify/k1-available/{entityId}/{taxYear}:
+    post:
+      x-controller-name: NotificationsController
+      x-operation-name: notifyEntityLpsK1
+      tags:
+      - Notifications
+      operationId: notifyLPsK1Available
+      responses:
+        '200':
+          description: K-1 notification sent successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  description: Email address of notification recipient
+        '400':
+          description: Invalid entity or tax year data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Entity not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: entityId
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: taxYear
+        in: path
+        schema:
+          type: number
+        required: true
+      - name: previewRecipients
+        in: query
+        schema:
+          type: boolean
+      summary: Notify LPs K1 available
+      x-summary-source: derived
+  /v2/notifications/notify/k1-available/{taxYear}:
+    post:
+      x-controller-name: NotificationsController
+      x-operation-name: notifyEntityLpsK1AllEntities
+      tags:
+      - Notifications
+      operationId: notifyLPsK1AvailableBulk
+      responses:
+        '200':
+          description: Bulk K-1 notifications sent successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    notification:
+                      $ref: '#/components/schemas/Notifications'
+                    users:
+                      type: array
+                      items:
+                        type: string
+                      description: User IDs who received the notification
+                    emails:
+                      type: array
+                      items:
+                        type: string
+                      description: Email addresses of notification recipients
+                    actions:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        url:
+                          type: string
+                      description: Action button configuration
+        '400':
+          description: Invalid tax year or entity data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: taxYear
+        in: path
+        schema:
+          type: number
+        required: true
+      - name: previewRecipients
+        in: query
+        schema:
+          type: boolean
+      summary: Notify LPs K1 available bulk
+      x-summary-source: derived
+  /v2/notifications/read:
+    patch:
+      x-controller-name: NotificationsController
+      x-operation-name: markAllNotificationsAsRead
+      tags:
+      - Notifications
+      operationId: markAllNotificationsRead
+      responses:
+        '204':
+          description: All notifications marked as read successfully
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      summary: Mark all notifications read
+      x-summary-source: derived
+  /v2/notifications/settings/{type}/{enabled}:
+    post:
+      x-controller-name: NotificationsController
+      x-operation-name: setNotificationSettingsByType
+      tags:
+      - Notifications
+      operationId: setNotificationSettingByType
+      responses:
+        '200':
+          description: Notification setting updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        description: Whether email notifications are enabled
+        '400':
+          description: Invalid notification type or enabled value
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 400
+                      name:
+                        type: string
+                        example: BadRequestError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Notification settings not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: type
+        in: path
+        schema:
+          enum:
+          - EMAIL
+          type: string
+        required: true
+      - name: enabled
+        in: path
+        schema:
+          type: boolean
+        required: true
+      summary: Set notification setting by type
+      x-summary-source: derived
+  /v2/notifications/settings:
+    get:
+      x-controller-name: NotificationsController
+      x-operation-name: getNotificationSettings
+      tags:
+      - Notifications
+      operationId: getNotificationSettings
+      responses:
+        '200':
+          description: Notification settings retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        description: Whether email notifications are enabled
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Notification settings not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      summary: Get notification settings
+      x-summary-source: derived
+  /v2/notifications/{id}/read:
+    patch:
+      x-controller-name: NotificationsController
+      x-operation-name: markNotificationAsRead
+      tags:
+      - Notifications
+      operationId: markNotificationAsRead
+      responses:
+        '204':
+          description: Notification marked as read successfully
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '404':
+          description: Notification not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 404
+                      name:
+                        type: string
+                        example: NotFoundError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        description: Unique identifier of the notification
+        example: 123e4567-e89b-12d3-a456-426614174000
+        required: true
+      summary: Mark notification as read
+      x-summary-source: derived
+  /v2/notifications:
+    get:
+      x-controller-name: NotificationsController
+      x-operation-name: getNotifications
+      tags:
+      - Notifications
+      operationId: getNotifications
+      responses:
+        '200':
+          description: Notifications retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ListingNotification'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 401
+                      name:
+                        type: string
+                        example: UnauthorizedError
+                      message:
+                        type: string
+                        example: message
+                    required:
+                    - statusCode
+                    - name
+                    - message
+                required:
+                - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: number
+                        example: 500
+                      message:
+                        type: string
+                        example: Internal Server Error
+                    required:
+                    - statusCode
+                    - message
+                required:
+                - error
+      parameters:
+      - name: filter
+        in: query
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationUsers.Filter'
+      summary: Get notifications
+      x-summary-source: derived
+components:
+  schemas:
+    NotificationUsers.Filter:
+      type: object
+      title: NotificationUsers.Filter
+      properties:
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          example: 100
+        skip:
+          type: integer
+          minimum: 0
+        order:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        where:
+          title: NotificationUsers.WhereFilter
+          type: object
+          additionalProperties: true
+        fields:
+          oneOf:
+          - type: object
+            properties:
+              id:
+                type: boolean
+              notificationId:
+                type: boolean
+              isRead:
+                type: boolean
+              types:
+                type: boolean
+              sentDate:
+                type: boolean
+              actionMeta:
+                type: boolean
+              userId:
+                type: boolean
+            additionalProperties: false
+          - type: array
+            items:
+              type: string
+              enum:
+              - id
+              - notificationId
+              - isRead
+              - types
+              - sentDate
+              - actionMeta
+              - userId
+              example: id
+            uniqueItems: true
+          title: NotificationUsers.Fields
+        include:
+          title: NotificationUsers.IncludeFilter
+          type: array
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/NotificationUsers.IncludeFilter.Items'
+            - type: string
+      additionalProperties: false
+      x-typescript-type: '@loopback/repository#Filter<NotificationUsers>'
+    Notification:
+      title: Notification
+      type: object
+      description: Notification Details
+      properties:
+        id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        subject:
+          type:
+          - string
+          - 'null'
+        body:
+          type: string
+        isCritical:
+          type: boolean
+      required:
+      - body
+      additionalProperties: false
+    Notifications:
+      title: Notifications
+      type: object
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        subject:
+          type:
+          - string
+          - 'null'
+        body:
+          type: string
+        options:
+          type: object
+        isCritical:
+          type: boolean
+        senderUserId:
+          type: string
+      required:
+      - body
+      additionalProperties: false
+      description: Notification details
+    NotificationUsers.IncludeFilter.Items:
+      title: NotificationUsers.IncludeFilter.Items
+      type: object
+      properties:
+        relation:
+          type: string
+          enum:
+          - notification
+          - user
+        scope:
+          $ref: '#/components/schemas/NotificationUsers.ScopeFilter'
+    NotificationUsers.ScopeFilter:
+      type: object
+      properties:
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          example: 100
+        skip:
+          type: integer
+          minimum: 0
+        order:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        where:
+          type: object
+          additionalProperties: true
+        fields:
+          oneOf:
+          - type: object
+            properties: {}
+            additionalProperties: true
+          - type: array
+            items:
+              type: string
+            uniqueItems: true
+        include:
+          type: array
+          items:
+            type: object
+            properties: {}
+            additionalProperties: true
+      additionalProperties: false
+      title: NotificationUsers.ScopeFilter
+    ListingNotification:
+      title: ListingNotification
+      type: object
+      description: Listing notifications for the current user
+      properties:
+        id:
+          type: string
+        notificationId:
+          type: string
+        isRead:
+          type: boolean
+        types:
+          type: array
+          items:
+            type: string
+        sentDate:
+          type: string
+          format: date-time
+        actionMeta:
+          type: object
+          description: Action Data for Notification, typically url and title
+        userId:
+          type: string
+        notification:
+          $ref: '#/components/schemas/Notification'
+      additionalProperties: false
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,420 @@
+generated: '2026-10-05'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/allocations-openapi.json
+vocabulary:
+  name: Allocations Domain Vocabulary
+  description: 'Terms declared by Allocations''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-05'
+  terms:
+  - term: Documents
+    definition: Document Generation and Storage
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Organizations
+    definition: Client Information and Account Grouping
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Files
+    definition: File Storage and Retrieval
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Entities
+    definition: Legal Structures for SPVs and Funds
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Identities
+    definition: Representations of Individuals and Corporations
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Deals
+    definition: SPVs and Funds
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Investments
+    definition: Investment details
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Static References
+    definition: Standard Data References to be used with other objects
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Banking
+    definition: Currency storage and movement
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Notifications
+    definition: Call-to-actions and informational data
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Support Tickets
+    definition: Engage the Allocations support team
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: Taxes
+    definition: Deal and Entity related taxes
+    tags:
+    - Resource Group
+    source: openapi/allocations-openapi.json
+  - term: DealsWithRelations
+    definition: '(tsType: DealsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/DealsWithRelations
+  - term: EntitiesWithRelations
+    definition: '(tsType: EntitiesWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/EntitiesWithRelations
+  - term: OrganizationsWithRelations
+    definition: '(tsType: OrganizationsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/OrganizationsWithRelations
+  - term: InvoiceLineItemsWithRelations
+    definition: '(tsType: InvoiceLineItemsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/InvoiceLineItemsWithRelations
+  - term: InvoicesWithRelations
+    definition: '(tsType: InvoicesWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/InvoicesWithRelations
+  - term: TransferInformationWithRelations
+    definition: '(tsType: TransferInformationWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/TransferInformationWithRelations
+  - term: UsersWithRelations
+    definition: '(tsType: UsersWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/UsersWithRelations
+  - term: TransferRequestWithRelations
+    definition: '(tsType: TransferRequestWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/TransferRequestWithRelations
+  - term: NewTransferRequest
+    definition: '(tsType: Omit, schemaOptions: { title: ''NewTransferRequest'', exclude: [ ''id'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/NewTransferRequest
+  - term: TransferRequestPartial
+    definition: '(tsType: Partial, schemaOptions: { partial: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/TransferRequestPartial
+  - term: TransferRequest
+    definition: 'Object declared by the contract with fields: id, deleted, deletedOn, deletedBy, createdAt, updatedAt, recipientId, status, requestedAmount,
+      sentAmount, declaredPurpose, recipientData. (3 more)'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/TransferRequest
+  - term: BulkUpdateTransferRequestDto
+    definition: '(tsType: BulkUpdateTransferRequestDto, schemaOptions: { includeRelations: false })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/BulkUpdateTransferRequestDto
+  - term: NewTransferInformation
+    definition: '(tsType: Omit, schemaOptions: { title: ''NewTransferInformation'', exclude: [ ''id'', ''createdAt'', ''updatedAt'', ''deleted'',
+      ''deletedOn'', ''deletedBy'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/NewTransferInformation
+  - term: TransferInformationPartialExcluding_id-createdAt-updatedAt-deleted-deletedOn-deletedBy_
+    definition: '(tsType: Omit, ''id'' | ''createdAt'' | ''updatedAt'' | ''deleted'' | ''deletedOn'' | ''deletedBy''>, schemaOptions: { partial:
+      true, exclude: [ ''id'', ''createdAt'', ''updatedAt'', ''deleted'', ''deletedOn'', ''deletedBy'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/TransferInformationPartialExcluding_id-createdAt-updatedAt-deleted-deletedOn-deletedBy_
+  - term: TaxRecordsBundle
+    definition: '(tsType: TaxRecordsBundleDto, schemaOptions: { title: ''TaxRecordsBundle'' })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/TaxRecordsBundle
+  - term: Ledger
+    definition: '(tsType: LedgersWithRelations, schemaOptions: { title: ''Ledger'', includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/Ledger
+  - term: NewLedger
+    definition: '(tsType: Omit, schemaOptions: { title: ''NewLedger'', exclude: [ ''id'', ''createdAt'', ''updatedAt'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/NewLedger
+  - term: InvestmentsWithRelations
+    definition: '(tsType: InvestmentsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/InvestmentsWithRelations
+  - term: InvestmentTax
+    definition: '(tsType: InvestmentsTaxesWithRelations, schemaOptions: { title: ''InvestmentTax'', includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/InvestmentTax
+  - term: SellOrderRequestsWithRelations
+    definition: '(tsType: SellOrderRequestsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/SellOrderRequestsWithRelations
+  - term: NewSellOrderRequests
+    definition: '(tsType: Omit, schemaOptions: { title: ''NewSellOrderRequests'', exclude: [ ''id'', ''dealId'', ''userId'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/NewSellOrderRequests
+  - term: SecondaryRequestsWithRelations
+    definition: '(tsType: SecondaryRequestsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/SecondaryRequestsWithRelations
+  - term: NewSecondaryRequests
+    definition: '(tsType: Omit, schemaOptions: { title: ''NewSecondaryRequests'', exclude: [ ''id'', ''dealId'', ''userId'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/NewSecondaryRequests
+  - term: CreateOrganizationRequestBody
+    definition: '(tsType: Omit, schemaOptions: { title: ''CreateOrganizationRequestBody'', exclude: [ ''id'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/CreateOrganizationRequestBody
+  - term: UpdateOrganizationRequestBody
+    definition: '(tsType: Partial, schemaOptions: { title: ''UpdateOrganizationRequestBody'', partial: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/UpdateOrganizationRequestBody
+  - term: LedgerAccountsWithRelations
+    definition: '(tsType: LedgerAccountsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/LedgerAccountsWithRelations
+  - term: LedgerAccountAssociation
+    definition: '(tsType: LedgerAccountAssociationsWithRelations, schemaOptions: { title: ''LedgerAccountAssociation'', includeRelations: true
+      })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/LedgerAccountAssociation
+  - term: LedgersWithRelations
+    definition: '(tsType: LedgersWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/LedgersWithRelations
+  - term: BankAccountsWithRelations
+    definition: '(tsType: BankAccountsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/BankAccountsWithRelations
+  - term: LedgerAccountAssociationsWithRelations
+    definition: '(tsType: LedgerAccountAssociationsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/LedgerAccountAssociationsWithRelations
+  - term: LedgerEntriesWithRelations
+    definition: '(tsType: LedgerEntriesWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/LedgerEntriesWithRelations
+  - term: LedgerAccount
+    definition: '(tsType: LedgerAccountsWithRelations, schemaOptions: { title: ''LedgerAccount'', includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/LedgerAccount
+  - term: LedgerEntry
+    definition: '(tsType: LedgerEntries, schemaOptions: { title: ''LedgerEntry'' })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/LedgerEntry
+  - term: IdentitiesWithRelations
+    definition: '(tsType: IdentitiesWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/IdentitiesWithRelations
+  - term: InvestmentsTaxesWithRelations
+    definition: '(tsType: InvestmentsTaxesWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/InvestmentsTaxesWithRelations
+  - term: FilesWithRelations
+    definition: '(tsType: FilesWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/FilesWithRelations
+  - term: InvestmentsTransferInformation
+    definition: '(tsType: InvestmentsTransferInformation, schemaOptions: { includeRelations: false })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/InvestmentsTransferInformationWithRelations
+  - term: Investment
+    definition: '(tsType: InvestmentsWithRelations, schemaOptions: { title: ''Investment'', includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/Investment
+  - term: updateInvestmentByIdBody
+    definition: '(tsType: Omit, ''id'' | ''createdAt'' | ''updatedAt'' | ''deleted'' | ''deletedOn''>, schemaOptions: { title: ''updateInvestmentByIdBody'',
+      partial: true, exclude: [ ''id'', ''createdAt'', ''updatedAt'', ''deleted'', ''deletedOn'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/updateInvestmentByIdBody
+  - term: InvestmentTransferInformation
+    definition: '(tsType: InvestmentsTransferInformation, schemaOptions: { title: ''InvestmentTransferInformation'' })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/InvestmentTransferInformation
+  - term: IdentityFiles
+    definition: '(tsType: Omit, schemaOptions: { title: ''IdentityFiles'', exclude: [ ''deleted'', ''deletedOn'', ''deletedBy'', ''validationResult'',
+      ''validationRawResult'', ''provider'', ''path'', ''providerId'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/IdentityFiles
+  - term: IdentityFilesWithRelations
+    definition: '(tsType: IdentityFilesWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/IdentityFilesWithRelations
+  - term: CreateIdentityRequestBody
+    definition: '(tsType: Omit, schemaOptions: { title: ''CreateIdentityRequestBody'', exclude: [ ''id'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/CreateIdentityRequestBody
+  - term: AccreditationsWithRelations
+    definition: '(tsType: AccreditationsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/AccreditationsWithRelations
+  - term: IdentitiesRelationsWithRelations
+    definition: '(tsType: IdentitiesRelationsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/IdentitiesRelationsWithRelations
+  - term: IdentityKycChecks
+    definition: '(tsType: IdentityKycChecks, schemaOptions: { includeRelations: false })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/IdentityKycChecksWithRelations
+  - term: IdentityWithArchivableDtoWithRelations
+    definition: '(tsType: IdentityWithArchivableDtoWithRelations, schemaOptions: { title: ''IdentityWithArchivableDtoWithRelations'', includeRelations:
+      true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/IdentityWithArchivableDtoWithRelations
+  - term: UpdateIdentityRequestBody
+    definition: '(tsType: Partial, schemaOptions: { title: ''UpdateIdentityRequestBody'', partial: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/UpdateIdentityRequestBody
+  - term: InvalidIdentityWithArchivable
+    definition: '(tsType: InvalidIdentityWithArchivableDto, schemaOptions: { title: ''InvalidIdentityWithArchivable'' })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/InvalidIdentityWithArchivable
+  - term: IdentitiesRelations
+    definition: 'Object declared by the contract with fields: id, deleted, deletedOn, deletedBy, createdAt, updatedAt, relationship, ownershipPercentage,
+      title, childId, parentId, userEmail. (1 more)'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/IdentitiesRelations
+  - term: CreateIdentityRelationshipRequestBody
+    definition: '(tsType: Omit, schemaOptions: { title: ''CreateIdentityRelationshipRequestBody'', exclude: [ ''id'', ''childId'', ''parentId'',
+      ''relationship'', ''userEmail'', ''userId'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/CreateIdentityRelationshipRequestBody
+  - term: PlatformFeature
+    definition: '(tsType: PlatformFeature, schemaOptions: { title: ''PlatformFeature'' })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/PlatformFeature
+  - term: CreateEntityRequestBody
+    definition: '(tsType: Omit, schemaOptions: { title: ''CreateEntityRequestBody'', exclude: [ ''id'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/CreateEntityRequestBody
+  - term: UpdateEntityRequestBody
+    definition: '(tsType: Partial, schemaOptions: { title: ''UpdateEntityRequestBody'', partial: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/UpdateEntityRequestBody
+  - term: EntitiesTaxes
+    definition: '(tsType: EntitiesTaxes, schemaOptions: { includeRelations: false })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/EntitiesTaxesWithRelations
+  - term: DistributionEventsWithRelations
+    definition: '(tsType: DistributionEventsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/DistributionEventsWithRelations
+  - term: DistributionsWithRelations
+    definition: '(tsType: DistributionsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/DistributionsWithRelations
+  - term: DistributionsInvestmentsWithRelations
+    definition: '(tsType: DistributionsInvestmentsWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/DistributionsInvestmentsWithRelations
+  - term: Distribution
+    definition: '(tsType: DistributionsWithRelations, schemaOptions: { title: ''Distribution'', includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/Distribution
+  - term: CreateDistributionDto
+    definition: 'Object declared by the contract with fields: status, userId, dealId, requestedReceivingDate, note, sheetUri.'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/CreateDistributionDto
+  - term: UpdateDistributionDto
+    definition: 'Object declared by the contract with fields: status, requestedReceivingDate, note, sheetUri.'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/UpdateDistributionDto
+  - term: BulkUpdateDistributionsDto
+    definition: '(tsType: BulkUpdateDistributionsDto, schemaOptions: { includeRelations: false })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/BulkUpdateDistributionsDto
+  - term: CreateDistributionInvestmentDto
+    definition: 'Object declared by the contract with fields: distributionId, investmentId, amount, transferInformationId, method, distributionDate,
+      status.'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/CreateDistributionInvestmentDto
+  - term: UpdateDistributionInvestmentDto
+    definition: 'Object declared by the contract with fields: distributionId, investmentId, amount, method, distributionDate, status.'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/UpdateDistributionInvestmentDto
+  - term: NewDeals
+    definition: '(tsType: Omit, schemaOptions: { title: ''NewDeals'', exclude: [ ''id'' ] })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/NewDeals
+  - term: DealSummaryWithRelations
+    definition: '(tsType: DealSummaryWithRelations, schemaOptions: { includeRelations: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/DealSummaryWithRelations
+  - term: DealDetails
+    definition: '(tsType: DealDetails, schemaOptions: { includeRelations: false })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/DealDetailsWithRelations
+  - term: DealsPartial
+    definition: '(tsType: Partial, schemaOptions: { partial: true })'
+    tags:
+    - Object
+    source: openapi/allocations-openapi.json#/components/schemas/DealsPartial

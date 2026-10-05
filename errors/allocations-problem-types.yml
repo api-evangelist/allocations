@@ -1,0 +1,69 @@
+generated: '2026-10-05'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/allocations-openapi.json
+format: custom
+envelope:
+  media_type: application/json
+  schema: GenericError
+coverage:
+  operations: 167
+  statuses_declared: 8
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad request - invalid parameters
+  operations: 89
+  media_types:
+  - application/json
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: Authentication error
+  operations: 150
+  media_types:
+  - application/json
+  schema: null
+- status: 404
+  title: Not Found
+  description: Deal not found
+  operations: 105
+  media_types:
+  - application/json
+  schema: null
+- status: 409
+  title: Conflict
+  description: A secondary request already exists for this deal
+  operations: 2
+  media_types:
+  - application/json
+  schema: GenericError
+- status: 413
+  title: Content Too Large
+  description: File too large
+  operations: 1
+  media_types:
+  - application/json
+  schema: null
+- status: 415
+  title: Unsupported Media Type
+  description: Unsupported file type
+  operations: 1
+  media_types:
+  - application/json
+  schema: null
+- status: 422
+  title: Unprocessable Content
+  description: Unable to delete file. Please try again
+  operations: 1
+  media_types:
+  - application/json
+  schema: null
+- status: 500
+  title: Internal Server Error
+  description: Internal Server Error
+  operations: 159
+  media_types:
+  - application/json
+  schema: null
