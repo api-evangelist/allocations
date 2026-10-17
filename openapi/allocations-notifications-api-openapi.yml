@@ -213,7 +213,7 @@ paths:
         in: query
         schema:
           type: boolean
-      summary: Notify LPs K1 available
+      summary: Notify LPs K1Available
       x-summary-source: derived
   /v2/notifications/notify/k1-available/{taxYear}:
     post:
@@ -333,7 +333,7 @@ paths:
         in: query
         schema:
           type: boolean
-      summary: Notify LPs K1 available bulk
+      summary: Notify LPs K1Available bulk
       x-summary-source: derived
   /v2/notifications/read:
     patch:
@@ -783,72 +783,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    NotificationUsers.Filter:
-      type: object
-      title: NotificationUsers.Filter
-      properties:
-        offset:
-          type: integer
-          minimum: 0
-        limit:
-          type: integer
-          minimum: 1
-          example: 100
-        skip:
-          type: integer
-          minimum: 0
-        order:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        where:
-          title: NotificationUsers.WhereFilter
-          type: object
-          additionalProperties: true
-        fields:
-          oneOf:
-          - type: object
-            properties:
-              id:
-                type: boolean
-              notificationId:
-                type: boolean
-              isRead:
-                type: boolean
-              types:
-                type: boolean
-              sentDate:
-                type: boolean
-              actionMeta:
-                type: boolean
-              userId:
-                type: boolean
-            additionalProperties: false
-          - type: array
-            items:
-              type: string
-              enum:
-              - id
-              - notificationId
-              - isRead
-              - types
-              - sentDate
-              - actionMeta
-              - userId
-              example: id
-            uniqueItems: true
-          title: NotificationUsers.Fields
-        include:
-          title: NotificationUsers.IncludeFilter
-          type: array
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/NotificationUsers.IncludeFilter.Items'
-            - type: string
-      additionalProperties: false
-      x-typescript-type: '@loopback/repository#Filter<NotificationUsers>'
     Notification:
       title: Notification
       type: object
@@ -923,6 +857,32 @@ components:
           - user
         scope:
           $ref: '#/components/schemas/NotificationUsers.ScopeFilter'
+    ListingNotification:
+      title: ListingNotification
+      type: object
+      description: Listing notifications for the current user
+      properties:
+        id:
+          type: string
+        notificationId:
+          type: string
+        isRead:
+          type: boolean
+        types:
+          type: array
+          items:
+            type: string
+        sentDate:
+          type: string
+          format: date-time
+        actionMeta:
+          type: object
+          description: Action Data for Notification, typically url and title
+        userId:
+          type: string
+        notification:
+          $ref: '#/components/schemas/Notification'
+      additionalProperties: false
     NotificationUsers.ScopeFilter:
       type: object
       properties:
@@ -962,32 +922,72 @@ components:
             additionalProperties: true
       additionalProperties: false
       title: NotificationUsers.ScopeFilter
-    ListingNotification:
-      title: ListingNotification
+    NotificationUsers.Filter:
       type: object
-      description: Listing notifications for the current user
+      title: NotificationUsers.Filter
       properties:
-        id:
-          type: string
-        notificationId:
-          type: string
-        isRead:
-          type: boolean
-        types:
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          example: 100
+        skip:
+          type: integer
+          minimum: 0
+        order:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        where:
+          title: NotificationUsers.WhereFilter
+          type: object
+          additionalProperties: true
+        fields:
+          oneOf:
+          - type: object
+            properties:
+              id:
+                type: boolean
+              notificationId:
+                type: boolean
+              isRead:
+                type: boolean
+              types:
+                type: boolean
+              sentDate:
+                type: boolean
+              actionMeta:
+                type: boolean
+              userId:
+                type: boolean
+            additionalProperties: false
+          - type: array
+            items:
+              type: string
+              enum:
+              - id
+              - notificationId
+              - isRead
+              - types
+              - sentDate
+              - actionMeta
+              - userId
+              example: id
+            uniqueItems: true
+          title: NotificationUsers.Fields
+        include:
+          title: NotificationUsers.IncludeFilter
           type: array
           items:
-            type: string
-        sentDate:
-          type: string
-          format: date-time
-        actionMeta:
-          type: object
-          description: Action Data for Notification, typically url and title
-        userId:
-          type: string
-        notification:
-          $ref: '#/components/schemas/Notification'
+            anyOf:
+            - $ref: '#/components/schemas/NotificationUsers.IncludeFilter.Items'
+            - type: string
       additionalProperties: false
+      x-typescript-type: '@loopback/repository#Filter<NotificationUsers>'
   securitySchemes:
     jwt:
       type: http

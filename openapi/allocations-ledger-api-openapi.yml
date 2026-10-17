@@ -1698,10 +1698,932 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AccreditationsWithRelations:
-      title: AccreditationsWithRelations
+    InvestmentsTransferInformationWithRelations:
+      title: InvestmentsTransferInformation
       type: object
-      description: '(tsType: AccreditationsWithRelations, schemaOptions: { includeRelations: true })'
+      description: '(tsType: InvestmentsTransferInformation, schemaOptions: { includeRelations: false })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        investmentId:
+          type:
+          - string
+          - 'null'
+        transferInformationId:
+          type: string
+      additionalProperties: false
+      x-typescript-type: InvestmentsTransferInformation
+    OrganizationsWithRelations:
+      title: OrganizationsWithRelations
+      type: object
+      description: '(tsType: OrganizationsWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
+        mongoId:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        slug:
+          type:
+          - string
+          - 'null'
+        approved:
+          type:
+          - string
+          - 'null'
+        highVolumePartner:
+          type:
+          - boolean
+          - 'null'
+        accessDisabled:
+          type: boolean
+        legalName:
+          type:
+          - string
+          - 'null'
+        mouSigned:
+          type:
+          - boolean
+          - 'null'
+        userEmail:
+          type:
+          - string
+          - 'null'
+        phase:
+          type:
+          - string
+          - 'null'
+        addressLine1:
+          type:
+          - string
+          - 'null'
+        addressLine2:
+          type:
+          - string
+          - 'null'
+        postalCode:
+          type:
+          - string
+          - 'null'
+        region:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        isArchived:
+          type:
+          - boolean
+          - 'null'
+        tags:
+          type:
+          - string
+          - 'null'
+        representativeIdentityId:
+          type:
+          - string
+          - 'null'
+        representativeIndividualIdentityId:
+          type:
+          - string
+          - 'null'
+        deals:
+          type: array
+          items:
+            $ref: '#/components/schemas/DealsWithRelations'
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntitiesWithRelations'
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationsRolesWithRelations'
+        representativeIdentity:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        foreignKey: {}
+        representativeIndividualIdentity:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+      additionalProperties: false
+      x-typescript-type: OrganizationsWithRelations
+    LedgerEntries.ScopeFilter:
+      type: object
+      properties:
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          example: 100
+        skip:
+          type: integer
+          minimum: 0
+        order:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        where:
+          type: object
+          additionalProperties: true
+        fields:
+          oneOf:
+          - type: object
+            properties: {}
+            additionalProperties: true
+          - type: array
+            items:
+              type: string
+            uniqueItems: true
+        include:
+          type: array
+          items:
+            type: object
+            properties: {}
+            additionalProperties: true
+      additionalProperties: false
+      title: LedgerEntries.ScopeFilter
+    LedgerWithRelations:
+      title: Ledger
+      type: object
+      description: '(tsType: Ledger, schemaOptions: { includeRelations: false })'
+      properties:
+        id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        amount:
+          type: number
+        debit:
+          type: boolean
+        categoriesId:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        entitiesId:
+          type:
+          - string
+          - 'null'
+        entryDate:
+          type: string
+        newLedgerEntryId:
+          type:
+          - string
+          - 'null'
+      required:
+      - createdAt
+      additionalProperties: false
+      x-typescript-type: Ledger
+    FilesWithRelations:
+      title: FilesWithRelations
+      type: object
+      description: '(tsType: FilesWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        key:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+        mongoOwnerId:
+          type:
+          - string
+          - 'null'
+        legacyBucket:
+          type:
+          - string
+          - 'null'
+        legacyKey:
+          type:
+          - string
+          - 'null'
+        fileName:
+          type:
+          - string
+          - 'null'
+        mongoDocumentsId:
+          type:
+          - string
+          - 'null'
+        contentType:
+          type:
+          - string
+          - 'null'
+        userEmail:
+          type:
+          - string
+          - 'null'
+        userId:
+          type:
+          - string
+          - 'null'
+        bucket:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      x-typescript-type: FilesWithRelations
+    LedgersWithRelations:
+      title: LedgersWithRelations
+      type: object
+      description: '(tsType: LedgersWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        organizationId:
+          type: string
+        entityId:
+          type:
+          - string
+          - 'null'
+        user:
+          $ref: '#/components/schemas/UsersWithRelations'
+        foreignKey: {}
+        organization:
+          $ref: '#/components/schemas/OrganizationsWithRelations'
+        entity:
+          $ref: '#/components/schemas/EntitiesWithRelations'
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/LedgerAccountsWithRelations'
+      additionalProperties: false
+      x-typescript-type: LedgersWithRelations
+    BankAccountsWithRelations:
+      title: BankAccountsWithRelations
+      type: object
+      description: '(tsType: BankAccountsWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        dealId:
+          type:
+          - string
+          - 'null'
+        accountNumber:
+          type:
+          - string
+          - 'null'
+        routingNumber:
+          type:
+          - string
+          - 'null'
+        accountName:
+          type:
+          - string
+          - 'null'
+        bankName:
+          type:
+          - string
+          - 'null'
+        lastSuccessfulSync:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        syncStatus:
+          type:
+          - string
+          - 'null'
+        provider:
+          type:
+          - string
+          - 'null'
+        providerId:
+          type:
+          - string
+          - 'null'
+        providerApplicationId:
+          type:
+          - string
+          - 'null'
+        applicationStatus:
+          type:
+          - string
+          - 'null'
+        userEmail:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        providerData:
+          type:
+          - object
+          - 'null'
+        currentBalance:
+          type:
+          - number
+          - 'null'
+        availableBalance:
+          type:
+          - number
+          - 'null'
+        notes:
+          type:
+          - string
+          - 'null'
+        entityId:
+          type:
+          - string
+          - 'null'
+        deal:
+          $ref: '#/components/schemas/DealsWithRelations'
+        foreignKey: {}
+        entity:
+          $ref: '#/components/schemas/EntitiesWithRelations'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionsWithRelations'
+      additionalProperties: false
+      x-typescript-type: BankAccountsWithRelations
+    EntitiesTaxesWithRelations:
+      title: EntitiesTaxes
+      type: object
+      description: '(tsType: EntitiesTaxes, schemaOptions: { includeRelations: false })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        irsAcceptedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        importRequested:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        lastImportedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        printRequested:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        lastPrintedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        importState:
+          type:
+          - string
+          - 'null'
+        filingStatus:
+          type:
+          - string
+          - 'null'
+        entityName:
+          type:
+          - string
+          - 'null'
+        entityEin:
+          type:
+          - string
+          - 'null'
+        entityFormationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        entityStreetAddress:
+          type:
+          - string
+          - 'null'
+        entityCity:
+          type:
+          - string
+          - 'null'
+        entityState:
+          type:
+          - string
+          - 'null'
+        entityPostalCode:
+          type:
+          - string
+          - 'null'
+        entityPhoneNumber:
+          type:
+          - string
+          - 'null'
+        signerFirstName:
+          type:
+          - string
+          - 'null'
+        signerLastName:
+          type:
+          - string
+          - 'null'
+        signerTitle:
+          type:
+          - string
+          - 'null'
+        signerSignatureDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        signerSignature:
+          type:
+          - string
+          - 'null'
+        isInitialReturn:
+          type: boolean
+        isAmendmentReturn:
+          type: boolean
+        isFinalReturn:
+          type: boolean
+        entityType:
+          type:
+          - string
+          - 'null'
+        entitySatisfiesReceiptsAndAssets:
+          type: boolean
+        partnershipRepresentativeName:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeStreetAddress:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeCity:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeZip:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativePhone:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeDesignatedIndividualFirstName:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeDesignatedIndividualLastName:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeDesignatedIndividualStreetAddress:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeDesignatedIndividualCity:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeDesignatedIndividualState:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeDesignatedIndividualZip:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeDesignatedIndividualPhone:
+          type:
+          - string
+          - 'null'
+        entityBeginningCash:
+          type:
+          - number
+          - 'null'
+        entityEndingCash:
+          type:
+          - number
+          - 'null'
+        entityBeginningLongTermAssets:
+          type:
+          - number
+          - 'null'
+        entityEndingLongTermAssets:
+          type:
+          - number
+          - 'null'
+        entityBeginningCurrentLiabilities:
+          type:
+          - number
+          - 'null'
+        entityEndingCurrentLiabilities:
+          type:
+          - number
+          - 'null'
+        entityBeginningCapital:
+          type:
+          - number
+          - 'null'
+        entityCapitalContributions:
+          type:
+          - number
+          - 'null'
+        entityCashDistributions:
+          type:
+          - number
+          - 'null'
+        entityPortfolioExpense:
+          type:
+          - number
+          - 'null'
+        entityHasForeignInvestors:
+          type: boolean
+        hasNotifiedLps:
+          type: boolean
+        taxYear:
+          type:
+          - string
+          - 'null'
+        provider:
+          type:
+          - string
+          - 'null'
+        taxType:
+          type:
+          - string
+          - 'null'
+        portfolioExpenseDescription:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeDesignatedIndividualEmail:
+          type:
+          - string
+          - 'null'
+        providerId:
+          type:
+          - string
+          - 'null'
+        extensionFiled:
+          type: boolean
+        partnershipRepresentativeState:
+          type:
+          - string
+          - 'null'
+        organizationId:
+          type:
+          - string
+          - 'null'
+        batch:
+          type:
+          - number
+          - 'null'
+        allocationsApproval:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        fundManagerApprovalDate:
+          type:
+          - string
+          - 'null'
+        1065FilesId:
+          type:
+          - string
+          - 'null'
+        fundManagerApprovalEmail:
+          type:
+          - string
+          - 'null'
+        fundManagerInvited:
+          type:
+          - boolean
+          - 'null'
+        fundManagerApproval:
+          type:
+          - boolean
+          - 'null'
+        calculatorVersion:
+          type:
+          - string
+          - 'null'
+        irsSubmissionId:
+          type:
+          - string
+          - 'null'
+        entityId:
+          type: string
+      required:
+      - isInitialReturn
+      - isAmendmentReturn
+      - isFinalReturn
+      - entitySatisfiesReceiptsAndAssets
+      - entityHasForeignInvestors
+      - hasNotifiedLps
+      - extensionFiled
+      additionalProperties: false
+      x-typescript-type: EntitiesTaxes
+    AssetsWithRelations:
+      title: AssetsWithRelations
+      type: object
+      description: '(tsType: AssetsWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        legalName:
+          type: string
+        securityType:
+          type: string
+        purchaseAgreementId:
+          type:
+          - string
+          - 'null'
+        wireInstructionsId:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+        location:
+          type: string
+        industry:
+          type:
+          - string
+          - 'null'
+        portfolioCompanyContact:
+          type:
+          - string
+          - 'null'
+        portfolioCompanyPhone:
+          type:
+          - string
+          - 'null'
+        companyWebsite:
+          type:
+          - string
+          - 'null'
+        valuation:
+          type:
+          - number
+          - 'null'
+        valuationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        dealId:
+          type: string
+        conversionTarget:
+          type:
+          - string
+          - 'null'
+          enum:
+          - equity
+          - tokens
+          - both
+          - tbd
+        conversionTrigger:
+          type:
+          - string
+          - 'null'
+          enum:
+          - priced_round
+          - token_launch
+          - liquidity_event
+          - other
+        hasTokenLinkedPayout:
+          type:
+          - boolean
+          - 'null'
+        fundManagerLegalName:
+          type:
+          - string
+          - 'null'
+        issuerLegalName:
+          type:
+          - string
+          - 'null'
+        borrowerLegalName:
+          type:
+          - string
+          - 'null'
+        stockCompanyLegalName:
+          type:
+          - string
+          - 'null'
+        otherLegalName:
+          type:
+          - string
+          - 'null'
+        fundManagerJurisdiction:
+          type:
+          - string
+          - 'null'
+        borrowerJurisdiction:
+          type:
+          - string
+          - 'null'
+        otherJurisdiction:
+          type:
+          - string
+          - 'null'
+        otherTypeDescription:
+          type:
+          - string
+          - 'null'
+        otherRegulatedActivities:
+          type:
+          - boolean
+          - 'null'
+        noteSecurity:
+          type:
+          - string
+          - 'null'
+        debtRepayment:
+          type:
+          - string
+          - 'null'
+        fundStrategy:
+          type:
+          - string
+          - 'null'
+        hasDigitalAssetExposure:
+          type:
+          - boolean
+          - 'null'
+        stockBlockchainProducts:
+          type:
+          - boolean
+          - 'null'
+        stockRegulatedActivities:
+          type:
+          - boolean
+          - 'null'
+        digitalAssetExposureDescription:
+          type:
+          - string
+          - 'null'
+        isVaspRegistered:
+          type:
+          - boolean
+          - 'null'
+        deal:
+          $ref: '#/components/schemas/DealsWithRelations'
+        foreignKey: {}
+      additionalProperties: false
+      x-typescript-type: AssetsWithRelations
+    InvitationsWithRelations:
+      title: InvitationsWithRelations
+      type: object
+      description: '(tsType: InvitationsWithRelations, schemaOptions: { includeRelations: true })'
       properties:
         id:
           type: string
@@ -1726,52 +2648,111 @@ components:
           type:
           - string
           - 'null'
-        type:
-          type:
-          - string
-          - 'null'
-        user_investment_entity_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        description:
-          type:
-          - string
-          - 'null'
-        value:
-          type:
-          - string
-          - 'null'
-        identitiesId:
-          type:
-          - string
-          - 'null'
-          format: uuid
         userId:
+          type:
+          - string
+          - 'null'
+        recipientEmail:
           type: string
-        identity:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
+        dealId:
+          type: string
+        amount:
+          type: number
+        type:
+          type: string
+        deal:
+          $ref: '#/components/schemas/DealsWithRelations'
         foreignKey: {}
-        user:
-          $ref: '#/components/schemas/UsersWithRelations'
+      required:
+      - recipientEmail
+      - dealId
+      - amount
       additionalProperties: false
-      x-typescript-type: AccreditationsWithRelations
-    LedgerEntries.IncludeFilter.Items:
-      title: LedgerEntries.IncludeFilter.Items
+      x-typescript-type: InvitationsWithRelations
+    Ledgers.ScopeFilter:
       type: object
       properties:
-        relation:
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          example: 100
+        skip:
+          type: integer
+          minimum: 0
+        order:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        where:
+          type: object
+          additionalProperties: true
+        fields:
+          oneOf:
+          - type: object
+            properties: {}
+            additionalProperties: true
+          - type: array
+            items:
+              type: string
+            uniqueItems: true
+        include:
+          type: array
+          items:
+            type: object
+            properties: {}
+            additionalProperties: true
+      additionalProperties: false
+      title: Ledgers.ScopeFilter
+    Ledger:
+      title: Ledger
+      type: object
+      description: '(tsType: LedgersWithRelations, schemaOptions: { title: ''Ledger'', includeRelations: true })'
+      properties:
+        id:
           type: string
-          enum:
-          - user
-          - transaction
-          - account
-          - counterAccount
-          - ledger
-          - ledgerEntryRelationships
-        scope:
-          $ref: '#/components/schemas/LedgerEntries.ScopeFilter'
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        organizationId:
+          type: string
+        entityId:
+          type:
+          - string
+          - 'null'
+        user:
+          $ref: '#/components/schemas/UsersWithRelations'
+        foreignKey: {}
+        organization:
+          $ref: '#/components/schemas/OrganizationsWithRelations'
+        entity:
+          $ref: '#/components/schemas/EntitiesWithRelations'
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/LedgerAccountsWithRelations'
+      additionalProperties: false
+      x-typescript-type: LedgersWithRelations
     IdentitiesWithRelations:
       title: IdentitiesWithRelations
       type: object
@@ -1942,10 +2923,10 @@ components:
             $ref: '#/components/schemas/TransferInformationWithRelations'
       additionalProperties: false
       x-typescript-type: IdentitiesWithRelations
-    EntitiesWithRelations:
-      title: EntitiesWithRelations
+    LedgerAccount:
+      title: LedgerAccount
       type: object
-      description: '(tsType: EntitiesWithRelations, schemaOptions: { includeRelations: true })'
+      description: '(tsType: LedgerAccountsWithRelations, schemaOptions: { title: ''LedgerAccount'', includeRelations: true })'
       properties:
         id:
           type: string
@@ -1966,64 +2947,162 @@ components:
         updatedAt:
           type: string
           format: date-time
-        formationDate:
+        parentAccountId:
           type:
           - string
           - 'null'
-          format: date-time
-        streetAddress:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        postalCode:
-          type:
-          - string
-          - 'null'
-        phoneNumber:
-          type:
-          - string
-          - 'null'
+        ledgerId:
+          type: string
+        referenceNumberId:
+          type: string
+        currency:
+          type: string
+        creditOrDebit:
+          type: string
+        bankAccountId:
+          type: string
         name:
           type:
           - string
           - 'null'
-        entityType:
+        detail:
           type:
           - string
           - 'null'
-        organizationName:
+        parentAccount:
+          $ref: '#/components/schemas/LedgerAccountsWithRelations'
+        foreignKey: {}
+        ledger:
+          $ref: '#/components/schemas/LedgersWithRelations'
+        bankAccount:
+          $ref: '#/components/schemas/BankAccountsWithRelations'
+        associations:
+          type: array
+          items:
+            $ref: '#/components/schemas/LedgerAccountAssociationsWithRelations'
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/LedgerEntriesWithRelations'
+      additionalProperties: false
+      x-typescript-type: LedgerAccountsWithRelations
+    LedgerEntry:
+      title: LedgerEntry
+      type: object
+      description: '(tsType: LedgerEntries, schemaOptions: { title: ''LedgerEntry'' })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
           type:
           - string
           - 'null'
-        mongoOrganizationId:
+          format: date-time
+        deletedBy:
           type:
           - string
           - 'null'
-        mongoDealId:
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        transactionId:
+          type: string
+        accountId:
+          type: string
+        counterAccountId:
+          type: string
+        ledgerId:
           type:
           - string
           - 'null'
-        ein:
+        amount:
+          type: number
+        description:
           type:
           - string
+          - 'null'
+        date:
+          type: string
+          format: date-time
+      required:
+      - amount
+      additionalProperties: false
+      x-typescript-type: LedgerEntries
+    Ledgers.IncludeFilter.Items:
+      title: Ledgers.IncludeFilter.Items
+      type: object
+      properties:
+        relation:
+          type: string
+          enum:
+          - user
+          - organization
+          - entity
+          - accounts
+        scope:
+          $ref: '#/components/schemas/Ledgers.ScopeFilter'
+    ClosesWithRelations:
+      title: ClosesWithRelations
+      type: object
+      description: '(tsType: ClosesWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        closedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        requestedCloseDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        organizationsId:
+          type:
+          - string
+          - 'null'
+        userId:
+          type:
+          - string
+          - 'null'
+        portfolioWireAmount:
+          type:
+          - number
+          - 'null'
+        requestedCloseAmount:
+          type:
+          - number
           - 'null'
         userEmail:
           type:
           - string
           - 'null'
-        fundManager:
-          type:
-          - string
-          - 'null'
-        taxStatus:
+        sheetUri:
           type:
           - string
           - 'null'
@@ -2031,75 +3110,33 @@ components:
           type:
           - string
           - 'null'
-        returnId:
+        dealsId:
           type:
           - string
           - 'null'
-        taxesProvider:
+        entitiesId:
           type:
           - string
           - 'null'
-        taxesProviderId:
-          type:
-          - string
-          - 'null'
-        isMigration:
-          type:
-          - boolean
-          - 'null'
-        partnershipRepresentativeId:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeDesignatedIndividualId:
-          type:
-          - string
-          - 'null'
-        parentEntityId:
-          type:
-          - string
-          - 'null'
-        organizationId:
-          type:
-          - string
-          - 'null'
-        deals:
+        investments:
           type: array
           items:
-            $ref: '#/components/schemas/DealsWithRelations'
-        entitiesTaxes:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntitiesTaxesWithRelations'
-        investmentsTaxes:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvestmentsTaxesWithRelations'
-        legacyLedgers:
-          type: array
-          items:
-            $ref: '#/components/schemas/LedgerWithRelations'
-        ledger:
-          $ref: '#/components/schemas/LedgersWithRelations'
-        partnershipRepresentative:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
+            $ref: '#/components/schemas/InvestmentsWithRelations'
+        deal:
+          $ref: '#/components/schemas/DealsWithRelations'
         foreignKey: {}
-        partnershipRepresentativeDesignatedIndividual:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
-        parentEntity:
+        entity:
           $ref: '#/components/schemas/EntitiesWithRelations'
-        organization:
-          $ref: '#/components/schemas/OrganizationsWithRelations'
-        entitiesTaxesMetadata:
+        assets:
           type: array
           items:
-            $ref: '#/components/schemas/EntitiesTaxesMetadataWithRelations'
+            $ref: '#/components/schemas/AssetsWithRelations'
       additionalProperties: false
-      x-typescript-type: EntitiesWithRelations
-    IdentityFilesWithRelations:
-      title: IdentityFilesWithRelations
+      x-typescript-type: ClosesWithRelations
+    LedgerAccountAssociationsWithRelations:
+      title: LedgerAccountAssociationsWithRelations
       type: object
-      description: '(tsType: IdentityFilesWithRelations, schemaOptions: { includeRelations: true })'
+      description: '(tsType: LedgerAccountAssociationsWithRelations, schemaOptions: { includeRelations: true })'
       properties:
         id:
           type: string
@@ -2120,248 +3157,173 @@ components:
         updatedAt:
           type: string
           format: date-time
-        path:
+        accountId:
+          type:
+          - string
+          - 'null'
+        associationType:
           type: string
-        mimeType:
-          type: string
-          enum:
-          - application/pdf
-          - image/png
-          - image/jpeg
-        fileType:
-          type: string
-          enum:
-          - source_of_funds
-          - w_8
-          - w_9
-          - w_8_ben
-          - w_8_bene
-          - passport
-          - driving_license
-          - national_identity_card
-          - residence_permit
-          - passport_card
-          - tax_id
-          - visa
-          - voter_id
-          - entity_formation
-          - residence_status_document
-          - postal_identity_card
-          - social_security_card
-          - work_permit
-          - asylum_registration_card
-          - national_health_insurance_card
-          - municipality_identity_card
-          - private_operators_card
-          - proof_of_citizenship
-          - service_id_card
-          - immigration_status_document
-          - indigenous_card
-          - vehicle_registration_card
-          - certificate_of_naturalisation
-          - professional_qualification_card
-          - consular_id
-          - international_driving_licence
-          - bank_building_society_statement
-          - utility_bill
-          - council_tax
-          - benefit_letters
-          - mortgage_statement
-          - mobile_phone_bill
-          - general_letter
-          - pension_property_statement_letter
-          - insurance_statement
-          - exchange_house_statement
-          - accommodation_tenancy_certificate
-          - wire_instructions
-        side:
-          type: string
-          enum:
-          - front
-          - back
-        validationResult:
-          type: string
-        validationRawResult:
-          type: object
-        provider:
-          type: string
-        providerId:
-          type: string
-        identityId:
-          type: string
-        identity:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
+        objectId:
+          type:
+          - string
+          - 'null'
+        account:
+          $ref: '#/components/schemas/LedgerAccountsWithRelations'
         foreignKey: {}
       additionalProperties: false
-      x-typescript-type: IdentityFilesWithRelations
-    InvestmentsTaxesWithRelations:
-      title: InvestmentsTaxesWithRelations
+      x-typescript-type: LedgerAccountAssociationsWithRelations
+    DealDetailsWithRelations:
+      title: DealDetails
       type: object
-      description: '(tsType: InvestmentsTaxesWithRelations, schemaOptions: { includeRelations: true })'
+      description: '(tsType: DealDetails, schemaOptions: { includeRelations: false })'
       properties:
         id:
-          type:
-          - string
-          - 'null'
-        taxYear:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        investorIdentitiesId:
-          type:
-          - string
-          - 'null'
-        investorLegalName:
-          type:
-          - string
-          - 'null'
-        investorTaxId:
-          type:
-          - string
-          - 'null'
-        investorStreetAddress:
-          type:
-          - string
-          - 'null'
-        investorCity:
-          type:
-          - string
-          - 'null'
-        investorState:
-          type:
-          - string
-          - 'null'
-        investorPostalCode:
-          type:
-          - string
-          - 'null'
-        investorIsUsDomestic:
-          type:
-          - boolean
-          - 'null'
-        investorFcAndSoiAndDApplicable:
-          type:
-          - boolean
-          - 'null'
-        investorOtherDeductions:
-          type:
-          - number
-          - 'null'
-        investorContributions:
-          type: number
-          default: 0
-        investorDistributions:
-          type:
-          - number
-          - 'null'
-        dealId:
-          type:
-          - string
-          - 'null'
-        investorEntityType:
-          type:
-          - string
-          - 'null'
-        investorEntityIsDisregarded:
+          type: string
+        deleted:
           type: boolean
-          default: false
-        investorDisregardedOwnerName:
-          type:
-          - string
-          - 'null'
-        investorDisregardedOwnerTaxId:
-          type:
-          - string
-          - 'null'
-        investorBeginningProfitPercentage:
-          type: number
-          default: 0
-        investorBeginningLossPercentage:
-          type: number
-          default: 0
-        investorBeginningCapitalPercentage:
-          type: number
-          default: 0
-        investorForeignTaxCreditLimitationApplicable:
-          type:
-          - boolean
-          - 'null'
-          default: false
-        investorCountry:
-          type:
-          - string
-          - 'null'
-        investorEndingProfitPercentage:
-          type: number
-          default: 0
-        investorEndingLossPercentage:
-          type: number
-          default: 0
-        investorEndingCapitalPercentage:
-          type: number
-          default: 0
-        k1FilesId:
-          type:
-          - string
-          - 'null'
-        investorOwnershipPercent:
-          type: number
-          default: 0
-        investorCurrentYearNetIncomeLoss:
-          type: number
-          default: 0
-        investorEndingCapitalAccountAmount:
-          type: number
-          default: 0
-        investorBeginningCapitalAccountAmount:
-          type: number
-          default: 0
-        legacyRecordId:
-          type:
-          - string
-          - 'null'
-        calculatorVersion:
-          type:
-          - string
-          - 'null'
-        partnerIndex:
-          type:
-          - number
-          - 'null'
-        investorEmail:
-          type:
-          - string
-          - 'null'
-        lastPrintedAt:
+        deletedOn:
           type:
           - string
           - 'null'
           format: date-time
-        createdAt:
+        deletedBy:
           type:
           - string
           - 'null'
+        createdAt:
+          type: string
           format: date-time
         updatedAt:
+          type: string
+          format: date-time
+        dealId:
+          type: string
+        acceptCrypto:
+          type:
+          - boolean
+          - 'null'
+        advisorType:
           type:
           - string
           - 'null'
-          format: date-time
-        investmentId:
-          type: string
-        entityId:
-          type: string
-        investment:
-          $ref: '#/components/schemas/InvestmentsWithRelations'
-        foreignKey: {}
-        entities:
-          $ref: '#/components/schemas/EntitiesWithRelations'
+        assetId:
+          type:
+          - string
+          - 'null'
+        bankAccountId:
+          type:
+          - string
+          - 'null'
+        bankingProvider:
+          type:
+          - string
+          - 'null'
+        dealTerm:
+          type:
+          - string
+          - 'null'
+        documentsProvider:
+          type:
+          - string
+          - 'null'
+        entityName:
+          type:
+          - string
+          - 'null'
+        estimatedMultiple:
+          type:
+          - number
+          - 'null'
+        estimatedAssetCount:
+          type:
+          - number
+          - 'null'
+        internationalInvestors:
+          type:
+          - boolean
+          - 'null'
+        hasAccreditedInvestors:
+          type:
+          - boolean
+          - 'null'
+        hasQualifiedPurchasers:
+          type:
+          - boolean
+          - 'null'
+        hasInstitutionalInvestors:
+          type:
+          - boolean
+          - 'null'
+        internationalTransactionsExpected:
+          type:
+          - boolean
+          - 'null'
+        nonUsFinancialInstitutions:
+          type:
+          - boolean
+          - 'null'
+        legacyCompanyName:
+          type:
+          - string
+          - 'null'
+        legalTemplateOption:
+          type:
+          - string
+          - 'null'
+        masterSeries:
+          type:
+          - string
+          - 'null'
+        onboardingLink:
+          type:
+          - string
+          - 'null'
+        seriesName:
+          type:
+          - string
+          - 'null'
+        subType:
+          type:
+          - string
+          - 'null'
+        agreeMsa:
+          type:
+          - boolean
+          - 'null'
+        agreeCosts:
+          type:
+          - boolean
+          - 'null'
+        agreeSetup:
+          type:
+          - boolean
+          - 'null'
+        masterSeriesId:
+          type:
+          - string
+          - 'null'
+        investorType:
+          type:
+          - string
+          - 'null'
+        advisorTypeNote:
+          type:
+          - string
+          - 'null'
+        bankingProviderNote:
+          type:
+          - string
+          - 'null'
+        fundManagerEmail:
+          type:
+          - string
+          - 'null'
+        financialStatementFrequency:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-      x-typescript-type: InvestmentsTaxesWithRelations
+      x-typescript-type: DealDetails
     InvestmentsWithRelations:
       title: InvestmentsWithRelations
       type: object
@@ -2521,1414 +3483,6 @@ components:
       - userId
       additionalProperties: false
       x-typescript-type: InvestmentsWithRelations
-    DealDetailsWithRelations:
-      title: DealDetails
-      type: object
-      description: '(tsType: DealDetails, schemaOptions: { includeRelations: false })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        dealId:
-          type: string
-        acceptCrypto:
-          type:
-          - boolean
-          - 'null'
-        advisorType:
-          type:
-          - string
-          - 'null'
-        assetId:
-          type:
-          - string
-          - 'null'
-        bankAccountId:
-          type:
-          - string
-          - 'null'
-        bankingProvider:
-          type:
-          - string
-          - 'null'
-        dealTerm:
-          type:
-          - string
-          - 'null'
-        documentsProvider:
-          type:
-          - string
-          - 'null'
-        entityName:
-          type:
-          - string
-          - 'null'
-        estimatedMultiple:
-          type:
-          - number
-          - 'null'
-        estimatedAssetCount:
-          type:
-          - number
-          - 'null'
-        internationalInvestors:
-          type:
-          - boolean
-          - 'null'
-        hasAccreditedInvestors:
-          type:
-          - boolean
-          - 'null'
-        hasQualifiedPurchasers:
-          type:
-          - boolean
-          - 'null'
-        hasInstitutionalInvestors:
-          type:
-          - boolean
-          - 'null'
-        internationalTransactionsExpected:
-          type:
-          - boolean
-          - 'null'
-        nonUsFinancialInstitutions:
-          type:
-          - boolean
-          - 'null'
-        legacyCompanyName:
-          type:
-          - string
-          - 'null'
-        legalTemplateOption:
-          type:
-          - string
-          - 'null'
-        masterSeries:
-          type:
-          - string
-          - 'null'
-        onboardingLink:
-          type:
-          - string
-          - 'null'
-        seriesName:
-          type:
-          - string
-          - 'null'
-        subType:
-          type:
-          - string
-          - 'null'
-        agreeMsa:
-          type:
-          - boolean
-          - 'null'
-        agreeCosts:
-          type:
-          - boolean
-          - 'null'
-        agreeSetup:
-          type:
-          - boolean
-          - 'null'
-        masterSeriesId:
-          type:
-          - string
-          - 'null'
-        investorType:
-          type:
-          - string
-          - 'null'
-        advisorTypeNote:
-          type:
-          - string
-          - 'null'
-        bankingProviderNote:
-          type:
-          - string
-          - 'null'
-        fundManagerEmail:
-          type:
-          - string
-          - 'null'
-        financialStatementFrequency:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      x-typescript-type: DealDetails
-    LedgerEntry:
-      title: LedgerEntry
-      type: object
-      description: '(tsType: LedgerEntries, schemaOptions: { title: ''LedgerEntry'' })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
-          type: string
-        transactionId:
-          type: string
-        accountId:
-          type: string
-        counterAccountId:
-          type: string
-        ledgerId:
-          type:
-          - string
-          - 'null'
-        amount:
-          type: number
-        description:
-          type:
-          - string
-          - 'null'
-        date:
-          type: string
-          format: date-time
-      required:
-      - amount
-      additionalProperties: false
-      x-typescript-type: LedgerEntries
-    LedgerAccountAssociation:
-      title: LedgerAccountAssociation
-      type: object
-      description: '(tsType: LedgerAccountAssociationsWithRelations, schemaOptions: { title: ''LedgerAccountAssociation'', includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        accountId:
-          type:
-          - string
-          - 'null'
-        associationType:
-          type: string
-        objectId:
-          type:
-          - string
-          - 'null'
-        account:
-          $ref: '#/components/schemas/LedgerAccountsWithRelations'
-        foreignKey: {}
-      additionalProperties: false
-      x-typescript-type: LedgerAccountAssociationsWithRelations
-    Ledgers.IncludeFilter.Items:
-      title: Ledgers.IncludeFilter.Items
-      type: object
-      properties:
-        relation:
-          type: string
-          enum:
-          - user
-          - organization
-          - entity
-          - accounts
-        scope:
-          $ref: '#/components/schemas/Ledgers.ScopeFilter'
-    LedgerEntries.Filter:
-      type: object
-      title: LedgerEntries.Filter
-      properties:
-        offset:
-          type: integer
-          minimum: 0
-        limit:
-          type: integer
-          minimum: 1
-          example: 100
-        skip:
-          type: integer
-          minimum: 0
-        order:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        where:
-          title: LedgerEntries.WhereFilter
-          type: object
-          additionalProperties: true
-        fields:
-          oneOf:
-          - type: object
-            properties:
-              id:
-                type: boolean
-              deleted:
-                type: boolean
-              deletedOn:
-                type: boolean
-              deletedBy:
-                type: boolean
-              createdAt:
-                type: boolean
-              updatedAt:
-                type: boolean
-              userId:
-                type: boolean
-              transactionId:
-                type: boolean
-              accountId:
-                type: boolean
-              counterAccountId:
-                type: boolean
-              ledgerId:
-                type: boolean
-              amount:
-                type: boolean
-              description:
-                type: boolean
-              date:
-                type: boolean
-            additionalProperties: false
-          - type: array
-            items:
-              type: string
-              enum:
-              - id
-              - deleted
-              - deletedOn
-              - deletedBy
-              - createdAt
-              - updatedAt
-              - userId
-              - transactionId
-              - accountId
-              - counterAccountId
-              - ledgerId
-              - amount
-              - description
-              - date
-              example: id
-            uniqueItems: true
-          title: LedgerEntries.Fields
-        include:
-          title: LedgerEntries.IncludeFilter
-          type: array
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/LedgerEntries.IncludeFilter.Items'
-            - type: string
-      additionalProperties: false
-      x-typescript-type: '@loopback/repository#Filter<LedgerEntries>'
-    AssetsWithRelations:
-      title: AssetsWithRelations
-      type: object
-      description: '(tsType: AssetsWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        legalName:
-          type: string
-        securityType:
-          type: string
-        purchaseAgreementId:
-          type:
-          - string
-          - 'null'
-        wireInstructionsId:
-          type:
-          - string
-          - 'null'
-        type:
-          type:
-          - string
-          - 'null'
-        location:
-          type: string
-        industry:
-          type:
-          - string
-          - 'null'
-        portfolioCompanyContact:
-          type:
-          - string
-          - 'null'
-        portfolioCompanyPhone:
-          type:
-          - string
-          - 'null'
-        companyWebsite:
-          type:
-          - string
-          - 'null'
-        valuation:
-          type:
-          - number
-          - 'null'
-        valuationDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        dealId:
-          type: string
-        conversionTarget:
-          type:
-          - string
-          - 'null'
-          enum:
-          - equity
-          - tokens
-          - both
-          - tbd
-        conversionTrigger:
-          type:
-          - string
-          - 'null'
-          enum:
-          - priced_round
-          - token_launch
-          - liquidity_event
-          - other
-        hasTokenLinkedPayout:
-          type:
-          - boolean
-          - 'null'
-        fundManagerLegalName:
-          type:
-          - string
-          - 'null'
-        issuerLegalName:
-          type:
-          - string
-          - 'null'
-        borrowerLegalName:
-          type:
-          - string
-          - 'null'
-        stockCompanyLegalName:
-          type:
-          - string
-          - 'null'
-        otherLegalName:
-          type:
-          - string
-          - 'null'
-        fundManagerJurisdiction:
-          type:
-          - string
-          - 'null'
-        borrowerJurisdiction:
-          type:
-          - string
-          - 'null'
-        otherJurisdiction:
-          type:
-          - string
-          - 'null'
-        otherTypeDescription:
-          type:
-          - string
-          - 'null'
-        otherRegulatedActivities:
-          type:
-          - boolean
-          - 'null'
-        noteSecurity:
-          type:
-          - string
-          - 'null'
-        debtRepayment:
-          type:
-          - string
-          - 'null'
-        fundStrategy:
-          type:
-          - string
-          - 'null'
-        hasDigitalAssetExposure:
-          type:
-          - boolean
-          - 'null'
-        stockBlockchainProducts:
-          type:
-          - boolean
-          - 'null'
-        stockRegulatedActivities:
-          type:
-          - boolean
-          - 'null'
-        digitalAssetExposureDescription:
-          type:
-          - string
-          - 'null'
-        isVaspRegistered:
-          type:
-          - boolean
-          - 'null'
-        deal:
-          $ref: '#/components/schemas/DealsWithRelations'
-        foreignKey: {}
-      additionalProperties: false
-      x-typescript-type: AssetsWithRelations
-    LedgerWithRelations:
-      title: Ledger
-      type: object
-      description: '(tsType: Ledger, schemaOptions: { includeRelations: false })'
-      properties:
-        id:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        amount:
-          type: number
-        debit:
-          type: boolean
-        categoriesId:
-          type: string
-        description:
-          type:
-          - string
-          - 'null'
-        entitiesId:
-          type:
-          - string
-          - 'null'
-        entryDate:
-          type: string
-        newLedgerEntryId:
-          type:
-          - string
-          - 'null'
-      required:
-      - createdAt
-      additionalProperties: false
-      x-typescript-type: Ledger
-    LedgerAccountAssociationsWithRelations:
-      title: LedgerAccountAssociationsWithRelations
-      type: object
-      description: '(tsType: LedgerAccountAssociationsWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        accountId:
-          type:
-          - string
-          - 'null'
-        associationType:
-          type: string
-        objectId:
-          type:
-          - string
-          - 'null'
-        account:
-          $ref: '#/components/schemas/LedgerAccountsWithRelations'
-        foreignKey: {}
-      additionalProperties: false
-      x-typescript-type: LedgerAccountAssociationsWithRelations
-    UsersWithRelations:
-      title: UsersWithRelations
-      type: object
-      description: '(tsType: UsersWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        mongoId:
-          type:
-          - string
-          - 'null'
-        email:
-          type: string
-        firstName:
-          type:
-          - string
-          - 'null'
-        investorType:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        isSuperAdmin:
-          type: boolean
-          default: false
-        isMigration:
-          type:
-          - boolean
-          - 'null'
-        birthdate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        citizenshipCountry:
-          type:
-          - string
-          - 'null'
-        taxId:
-          type:
-          - string
-          - 'null'
-      required:
-      - email
-      additionalProperties: false
-      x-typescript-type: UsersWithRelations
-    BankAccountsWithRelations:
-      title: BankAccountsWithRelations
-      type: object
-      description: '(tsType: BankAccountsWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        dealId:
-          type:
-          - string
-          - 'null'
-        accountNumber:
-          type:
-          - string
-          - 'null'
-        routingNumber:
-          type:
-          - string
-          - 'null'
-        accountName:
-          type:
-          - string
-          - 'null'
-        bankName:
-          type:
-          - string
-          - 'null'
-        lastSuccessfulSync:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        syncStatus:
-          type:
-          - string
-          - 'null'
-        provider:
-          type:
-          - string
-          - 'null'
-        providerId:
-          type:
-          - string
-          - 'null'
-        providerApplicationId:
-          type:
-          - string
-          - 'null'
-        applicationStatus:
-          type:
-          - string
-          - 'null'
-        userEmail:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        providerData:
-          type:
-          - object
-          - 'null'
-        currentBalance:
-          type:
-          - number
-          - 'null'
-        availableBalance:
-          type:
-          - number
-          - 'null'
-        notes:
-          type:
-          - string
-          - 'null'
-        entityId:
-          type:
-          - string
-          - 'null'
-        deal:
-          $ref: '#/components/schemas/DealsWithRelations'
-        foreignKey: {}
-        entity:
-          $ref: '#/components/schemas/EntitiesWithRelations'
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionsWithRelations'
-      additionalProperties: false
-      x-typescript-type: BankAccountsWithRelations
-    IdentitiesRelationsWithRelations:
-      title: IdentitiesRelationsWithRelations
-      type: object
-      description: '(tsType: IdentitiesRelationsWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        relationship:
-          type: string
-          enum:
-          - signer
-          - partnership_representative
-          - designated_individual
-          - beneficial_owner
-          - control_person
-        ownershipPercentage:
-          type:
-          - number
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        childId:
-          type: string
-        parentId:
-          type: string
-        userEmail:
-          type: string
-        userId:
-          type: string
-        child:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
-        foreignKey: {}
-        parent:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
-        user:
-          $ref: '#/components/schemas/UsersWithRelations'
-      additionalProperties: false
-      x-typescript-type: IdentitiesRelationsWithRelations
-    Ledgers.Filter:
-      type: object
-      title: Ledgers.Filter
-      properties:
-        offset:
-          type: integer
-          minimum: 0
-        limit:
-          type: integer
-          minimum: 1
-          example: 100
-        skip:
-          type: integer
-          minimum: 0
-        order:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        where:
-          title: Ledgers.WhereFilter
-          type: object
-          additionalProperties: true
-        fields:
-          oneOf:
-          - type: object
-            properties:
-              id:
-                type: boolean
-              deleted:
-                type: boolean
-              deletedOn:
-                type: boolean
-              deletedBy:
-                type: boolean
-              createdAt:
-                type: boolean
-              updatedAt:
-                type: boolean
-              userId:
-                type: boolean
-              organizationId:
-                type: boolean
-              entityId:
-                type: boolean
-            additionalProperties: false
-          - type: array
-            items:
-              type: string
-              enum:
-              - id
-              - deleted
-              - deletedOn
-              - deletedBy
-              - createdAt
-              - updatedAt
-              - userId
-              - organizationId
-              - entityId
-              example: id
-            uniqueItems: true
-          title: Ledgers.Fields
-        include:
-          title: Ledgers.IncludeFilter
-          type: array
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/Ledgers.IncludeFilter.Items'
-            - type: string
-      additionalProperties: false
-      x-typescript-type: '@loopback/repository#Filter<Ledgers>'
-    InvitationsWithRelations:
-      title: InvitationsWithRelations
-      type: object
-      description: '(tsType: InvitationsWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userEmail:
-          type:
-          - string
-          - 'null'
-        userId:
-          type:
-          - string
-          - 'null'
-        recipientEmail:
-          type: string
-        dealId:
-          type: string
-        amount:
-          type: number
-        type:
-          type: string
-        deal:
-          $ref: '#/components/schemas/DealsWithRelations'
-        foreignKey: {}
-      required:
-      - recipientEmail
-      - dealId
-      - amount
-      additionalProperties: false
-      x-typescript-type: InvitationsWithRelations
-    InvestmentsTransferInformationWithRelations:
-      title: InvestmentsTransferInformation
-      type: object
-      description: '(tsType: InvestmentsTransferInformation, schemaOptions: { includeRelations: false })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        investmentId:
-          type:
-          - string
-          - 'null'
-        transferInformationId:
-          type: string
-      additionalProperties: false
-      x-typescript-type: InvestmentsTransferInformation
-    LedgerEntryRelationshipsWithRelations:
-      title: LedgerEntryRelationshipsWithRelations
-      type: object
-      description: '(tsType: LedgerEntryRelationshipsWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        entryId:
-          type: string
-        relatedEntryId:
-          type: string
-        entry:
-          $ref: '#/components/schemas/LedgerEntriesWithRelations'
-        foreignKey: {}
-        relatedEntry:
-          $ref: '#/components/schemas/LedgerEntriesWithRelations'
-      additionalProperties: false
-      x-typescript-type: LedgerEntryRelationshipsWithRelations
-    LedgersWithRelations:
-      title: LedgersWithRelations
-      type: object
-      description: '(tsType: LedgersWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
-          type: string
-        organizationId:
-          type: string
-        entityId:
-          type:
-          - string
-          - 'null'
-        user:
-          $ref: '#/components/schemas/UsersWithRelations'
-        foreignKey: {}
-        organization:
-          $ref: '#/components/schemas/OrganizationsWithRelations'
-        entity:
-          $ref: '#/components/schemas/EntitiesWithRelations'
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/LedgerAccountsWithRelations'
-      additionalProperties: false
-      x-typescript-type: LedgersWithRelations
-    Ledger:
-      title: Ledger
-      type: object
-      description: '(tsType: LedgersWithRelations, schemaOptions: { title: ''Ledger'', includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
-          type: string
-        organizationId:
-          type: string
-        entityId:
-          type:
-          - string
-          - 'null'
-        user:
-          $ref: '#/components/schemas/UsersWithRelations'
-        foreignKey: {}
-        organization:
-          $ref: '#/components/schemas/OrganizationsWithRelations'
-        entity:
-          $ref: '#/components/schemas/EntitiesWithRelations'
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/LedgerAccountsWithRelations'
-      additionalProperties: false
-      x-typescript-type: LedgersWithRelations
-    LedgerAccount:
-      title: LedgerAccount
-      type: object
-      description: '(tsType: LedgerAccountsWithRelations, schemaOptions: { title: ''LedgerAccount'', includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        parentAccountId:
-          type:
-          - string
-          - 'null'
-        ledgerId:
-          type: string
-        referenceNumberId:
-          type: string
-        currency:
-          type: string
-        creditOrDebit:
-          type: string
-        bankAccountId:
-          type: string
-        name:
-          type:
-          - string
-          - 'null'
-        detail:
-          type:
-          - string
-          - 'null'
-        parentAccount:
-          $ref: '#/components/schemas/LedgerAccountsWithRelations'
-        foreignKey: {}
-        ledger:
-          $ref: '#/components/schemas/LedgersWithRelations'
-        bankAccount:
-          $ref: '#/components/schemas/BankAccountsWithRelations'
-        associations:
-          type: array
-          items:
-            $ref: '#/components/schemas/LedgerAccountAssociationsWithRelations'
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/LedgerEntriesWithRelations'
-      additionalProperties: false
-      x-typescript-type: LedgerAccountsWithRelations
-    DealsWithRelations:
-      title: DealsWithRelations
-      type: object
-      description: '(tsType: DealsWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        name:
-          type:
-          - string
-          - 'null'
-        type:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        minimumInvestment:
-          type:
-          - number
-          - 'null'
-        closingDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        offeringType:
-          type:
-          - string
-          - 'null'
-        managementFeeFrequency:
-          type:
-          - string
-          - 'null'
-        managementFeePercent:
-          type:
-          - number
-          - 'null'
-        userEmail:
-          type:
-          - string
-          - 'null'
-        userId:
-          type:
-          - string
-          - 'null'
-        mongoDealId:
-          type:
-          - string
-          - 'null'
-        mongoOrganizationId:
-          type:
-          - string
-          - 'null'
-        isMigration:
-          type:
-          - boolean
-          - 'null'
-        targetRaiseGoal:
-          type:
-          - number
-          - 'null'
-        totalCarry:
-          type:
-          - number
-          - 'null'
-        slug:
-          type:
-          - string
-          - 'null'
-        memo:
-          type:
-          - string
-          - 'null'
-        documentsTemplateId:
-          type:
-          - string
-          - 'null'
-        documentsProvider:
-          type:
-          - string
-          - 'null'
-        shortcodeId:
-          type:
-          - string
-          - 'null'
-        totalCarryNotes:
-          type:
-          - string
-          - 'null'
-        managementFeeNotes:
-          type:
-          - string
-          - 'null'
-        closedDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        tags:
-          type:
-          - string
-          - 'null'
-        migrationApproval:
-          type:
-          - boolean
-          - 'null'
-        migrationApprovalDate:
-          type:
-          - string
-          - 'null'
-        migrationApprovalEmail:
-          type:
-          - string
-          - 'null'
-        migrationFmSent:
-          type:
-          - boolean
-          - 'null'
-        invoiceAmount:
-          type:
-          - number
-          - 'null'
-        invoiceNumber:
-          type:
-          - string
-          - 'null'
-        invoiceStatus:
-          type:
-          - string
-          - 'null'
-        capitalAccountStatementURI:
-          type:
-          - string
-          - 'null'
-        phoneNumber:
-          type:
-          - string
-          - 'null'
-        invoiceDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        advisorStatus:
-          type:
-          - string
-          - 'null'
-        entityId:
-          type: string
-        fmIdentityId:
-          type: string
-        advisorId:
-          type:
-          - string
-          - 'null'
-        organizationId:
-          type: string
-        investments:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvestmentsWithRelations'
-        entity:
-          $ref: '#/components/schemas/EntitiesWithRelations'
-        foreignKey: {}
-        fmIdentity:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
-        advisorIdentity:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
-        closes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClosesWithRelations'
-        organization:
-          $ref: '#/components/schemas/OrganizationsWithRelations'
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssetsWithRelations'
-        invitations:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvitationsWithRelations'
-        dealDetails:
-          $ref: '#/components/schemas/DealDetailsWithRelations'
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/FilesWithRelations'
-      additionalProperties: false
-      x-typescript-type: DealsWithRelations
-    IdentityKycChecksWithRelations:
-      title: IdentityKycChecks
-      type: object
-      description: '(tsType: IdentityKycChecks, schemaOptions: { includeRelations: false })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userEmail:
-          type:
-          - string
-          - 'null'
-        result:
-          type: string
-        status:
-          type: string
-        provider:
-          type: string
-        providerId:
-          type: string
-        identityData:
-          type: object
-        rawResults:
-          type:
-          - object
-          - 'null'
-        completedAt:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        identityId:
-          type: string
-      required:
-      - identityData
-      additionalProperties: false
-      x-typescript-type: IdentityKycChecks
     LedgerEntriesWithRelations:
       title: LedgerEntriesWithRelations
       type: object
@@ -3993,10 +3547,10 @@ components:
       - amount
       additionalProperties: false
       x-typescript-type: LedgerEntriesWithRelations
-    OrganizationsWithRelations:
-      title: OrganizationsWithRelations
+    LedgerEntryRelationshipsWithRelations:
+      title: LedgerEntryRelationshipsWithRelations
       type: object
-      description: '(tsType: OrganizationsWithRelations, schemaOptions: { includeRelations: true })'
+      description: '(tsType: LedgerEntryRelationshipsWithRelations, schemaOptions: { includeRelations: true })'
       properties:
         id:
           type: string
@@ -4017,430 +3571,17 @@ components:
         updatedAt:
           type: string
           format: date-time
-        status:
-          type:
-          - string
-          - 'null'
-        mongoId:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        slug:
-          type:
-          - string
-          - 'null'
-        approved:
-          type:
-          - string
-          - 'null'
-        highVolumePartner:
-          type:
-          - boolean
-          - 'null'
-        accessDisabled:
-          type: boolean
-        legalName:
-          type:
-          - string
-          - 'null'
-        mouSigned:
-          type:
-          - boolean
-          - 'null'
-        userEmail:
-          type:
-          - string
-          - 'null'
-        phase:
-          type:
-          - string
-          - 'null'
-        addressLine1:
-          type:
-          - string
-          - 'null'
-        addressLine2:
-          type:
-          - string
-          - 'null'
-        postalCode:
-          type:
-          - string
-          - 'null'
-        region:
-          type:
-          - string
-          - 'null'
-        country:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        isArchived:
-          type:
-          - boolean
-          - 'null'
-        tags:
-          type:
-          - string
-          - 'null'
-        representativeIdentityId:
-          type:
-          - string
-          - 'null'
-        representativeIndividualIdentityId:
-          type:
-          - string
-          - 'null'
-        deals:
-          type: array
-          items:
-            $ref: '#/components/schemas/DealsWithRelations'
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntitiesWithRelations'
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizationsRolesWithRelations'
-        representativeIdentity:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
+        entryId:
+          type: string
+        relatedEntryId:
+          type: string
+        entry:
+          $ref: '#/components/schemas/LedgerEntriesWithRelations'
         foreignKey: {}
-        representativeIndividualIdentity:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
+        relatedEntry:
+          $ref: '#/components/schemas/LedgerEntriesWithRelations'
       additionalProperties: false
-      x-typescript-type: OrganizationsWithRelations
-    ClosesWithRelations:
-      title: ClosesWithRelations
-      type: object
-      description: '(tsType: ClosesWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        closedDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        requestedCloseDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        organizationsId:
-          type:
-          - string
-          - 'null'
-        userId:
-          type:
-          - string
-          - 'null'
-        portfolioWireAmount:
-          type:
-          - number
-          - 'null'
-        requestedCloseAmount:
-          type:
-          - number
-          - 'null'
-        userEmail:
-          type:
-          - string
-          - 'null'
-        sheetUri:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        dealsId:
-          type:
-          - string
-          - 'null'
-        entitiesId:
-          type:
-          - string
-          - 'null'
-        investments:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvestmentsWithRelations'
-        deal:
-          $ref: '#/components/schemas/DealsWithRelations'
-        foreignKey: {}
-        entity:
-          $ref: '#/components/schemas/EntitiesWithRelations'
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssetsWithRelations'
-      additionalProperties: false
-      x-typescript-type: ClosesWithRelations
-    LedgerEntries.ScopeFilter:
-      type: object
-      properties:
-        offset:
-          type: integer
-          minimum: 0
-        limit:
-          type: integer
-          minimum: 1
-          example: 100
-        skip:
-          type: integer
-          minimum: 0
-        order:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        where:
-          type: object
-          additionalProperties: true
-        fields:
-          oneOf:
-          - type: object
-            properties: {}
-            additionalProperties: true
-          - type: array
-            items:
-              type: string
-            uniqueItems: true
-        include:
-          type: array
-          items:
-            type: object
-            properties: {}
-            additionalProperties: true
-      additionalProperties: false
-      title: LedgerEntries.ScopeFilter
-    Ledgers.ScopeFilter:
-      type: object
-      properties:
-        offset:
-          type: integer
-          minimum: 0
-        limit:
-          type: integer
-          minimum: 1
-          example: 100
-        skip:
-          type: integer
-          minimum: 0
-        order:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        where:
-          type: object
-          additionalProperties: true
-        fields:
-          oneOf:
-          - type: object
-            properties: {}
-            additionalProperties: true
-          - type: array
-            items:
-              type: string
-            uniqueItems: true
-        include:
-          type: array
-          items:
-            type: object
-            properties: {}
-            additionalProperties: true
-      additionalProperties: false
-      title: Ledgers.ScopeFilter
-    TransferInformationWithRelations:
-      title: TransferInformationWithRelations
-      type: object
-      description: '(tsType: TransferInformationWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        accountId:
-          type: string
-        routingNumber:
-          type: string
-        assetType:
-          type: string
-          enum:
-          - USD
-          - USDC
-          - USDT
-          - Broker
-        method:
-          type: string
-          enum:
-          - ACH
-          - WIRE
-          - SWIFT
-          - CRYPTO
-          - BROKER
-        bankName:
-          type: string
-        bankAddress:
-          type:
-          - string
-          - 'null'
-        bankAccountType:
-          type: string
-          enum:
-          - Domestic
-          - International
-          - Broker
-        beneficiaryName:
-          type: string
-        beneficiaryAddress:
-          type:
-          - string
-          - 'null'
-        beneficiaryPhoneNumber:
-          type:
-          - string
-          - 'null'
-        memo:
-          type:
-          - string
-          - 'null'
-        brokerageFirmName:
-          type:
-          - string
-          - 'null'
-        accountType:
-          type:
-          - string
-          - 'null'
-        dtcParticipantNumber:
-          type:
-          - string
-          - 'null'
-        additionalAccountInformation:
-          type:
-          - string
-          - 'null'
-        identityId:
-          type: string
-        identity:
-          $ref: '#/components/schemas/IdentitiesWithRelations'
-        foreignKey: {}
-      required:
-      - accountId
-      - assetType
-      - method
-      - bankAccountType
-      - beneficiaryName
-      - identityId
-      additionalProperties: false
-      x-typescript-type: TransferInformationWithRelations
-    TransactionsWithRelations:
-      title: TransactionsWithRelations
-      type: object
-      description: '(tsType: TransactionsWithRelations, schemaOptions: { includeRelations: true })'
-      properties:
-        id:
-          type: string
-        deleted:
-          type: boolean
-        deletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        deletedBy:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        amount:
-          type: number
-        status:
-          type:
-          - string
-          - 'null'
-        providerData:
-          type:
-          - object
-          - 'null'
-        providerId:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        authorizedAt:
-          type: string
-          format: date-time
-        postedAt:
-          type: string
-          format: date-time
-        investmentId:
-          type:
-          - string
-          - 'null'
-        bankAccountId:
-          type: string
-        investment:
-          $ref: '#/components/schemas/InvestmentsWithRelations'
-        foreignKey: {}
-        bankAccount:
-          $ref: '#/components/schemas/BankAccountsWithRelations'
-      additionalProperties: false
-      x-typescript-type: TransactionsWithRelations
+      x-typescript-type: LedgerEntryRelationshipsWithRelations
     OrganizationsRolesWithRelations:
       title: OrganizationsRolesWithRelations
       type: object
@@ -6193,6 +5334,343 @@ components:
           additionalProperties: false
           x-typescript-type: UsersWithRelations
       x-typescript-type: OrganizationsRolesWithRelations
+    IdentitiesRelationsWithRelations:
+      title: IdentitiesRelationsWithRelations
+      type: object
+      description: '(tsType: IdentitiesRelationsWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        relationship:
+          type: string
+          enum:
+          - signer
+          - partnership_representative
+          - designated_individual
+          - beneficial_owner
+          - control_person
+        ownershipPercentage:
+          type:
+          - number
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        childId:
+          type: string
+        parentId:
+          type: string
+        userEmail:
+          type: string
+        userId:
+          type: string
+        child:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        foreignKey: {}
+        parent:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        user:
+          $ref: '#/components/schemas/UsersWithRelations'
+      additionalProperties: false
+      x-typescript-type: IdentitiesRelationsWithRelations
+    LedgerAccountAssociation:
+      title: LedgerAccountAssociation
+      type: object
+      description: '(tsType: LedgerAccountAssociationsWithRelations, schemaOptions: { title: ''LedgerAccountAssociation'', includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        accountId:
+          type:
+          - string
+          - 'null'
+        associationType:
+          type: string
+        objectId:
+          type:
+          - string
+          - 'null'
+        account:
+          $ref: '#/components/schemas/LedgerAccountsWithRelations'
+        foreignKey: {}
+      additionalProperties: false
+      x-typescript-type: LedgerAccountAssociationsWithRelations
+    LedgerEntries.Filter:
+      type: object
+      title: LedgerEntries.Filter
+      properties:
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          example: 100
+        skip:
+          type: integer
+          minimum: 0
+        order:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        where:
+          title: LedgerEntries.WhereFilter
+          type: object
+          additionalProperties: true
+        fields:
+          oneOf:
+          - type: object
+            properties:
+              id:
+                type: boolean
+              deleted:
+                type: boolean
+              deletedOn:
+                type: boolean
+              deletedBy:
+                type: boolean
+              createdAt:
+                type: boolean
+              updatedAt:
+                type: boolean
+              userId:
+                type: boolean
+              transactionId:
+                type: boolean
+              accountId:
+                type: boolean
+              counterAccountId:
+                type: boolean
+              ledgerId:
+                type: boolean
+              amount:
+                type: boolean
+              description:
+                type: boolean
+              date:
+                type: boolean
+            additionalProperties: false
+          - type: array
+            items:
+              type: string
+              enum:
+              - id
+              - deleted
+              - deletedOn
+              - deletedBy
+              - createdAt
+              - updatedAt
+              - userId
+              - transactionId
+              - accountId
+              - counterAccountId
+              - ledgerId
+              - amount
+              - description
+              - date
+              example: id
+            uniqueItems: true
+          title: LedgerEntries.Fields
+        include:
+          title: LedgerEntries.IncludeFilter
+          type: array
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/LedgerEntries.IncludeFilter.Items'
+            - type: string
+      additionalProperties: false
+      x-typescript-type: '@loopback/repository#Filter<LedgerEntries>'
+    EntitiesWithRelations:
+      title: EntitiesWithRelations
+      type: object
+      description: '(tsType: EntitiesWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        formationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        streetAddress:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        postalCode:
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        entityType:
+          type:
+          - string
+          - 'null'
+        organizationName:
+          type:
+          - string
+          - 'null'
+        mongoOrganizationId:
+          type:
+          - string
+          - 'null'
+        mongoDealId:
+          type:
+          - string
+          - 'null'
+        ein:
+          type:
+          - string
+          - 'null'
+        userEmail:
+          type:
+          - string
+          - 'null'
+        fundManager:
+          type:
+          - string
+          - 'null'
+        taxStatus:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        returnId:
+          type:
+          - string
+          - 'null'
+        taxesProvider:
+          type:
+          - string
+          - 'null'
+        taxesProviderId:
+          type:
+          - string
+          - 'null'
+        isMigration:
+          type:
+          - boolean
+          - 'null'
+        partnershipRepresentativeId:
+          type:
+          - string
+          - 'null'
+        partnershipRepresentativeDesignatedIndividualId:
+          type:
+          - string
+          - 'null'
+        parentEntityId:
+          type:
+          - string
+          - 'null'
+        organizationId:
+          type:
+          - string
+          - 'null'
+        deals:
+          type: array
+          items:
+            $ref: '#/components/schemas/DealsWithRelations'
+        entitiesTaxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntitiesTaxesWithRelations'
+        investmentsTaxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvestmentsTaxesWithRelations'
+        legacyLedgers:
+          type: array
+          items:
+            $ref: '#/components/schemas/LedgerWithRelations'
+        ledger:
+          $ref: '#/components/schemas/LedgersWithRelations'
+        partnershipRepresentative:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        foreignKey: {}
+        partnershipRepresentativeDesignatedIndividual:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        parentEntity:
+          $ref: '#/components/schemas/EntitiesWithRelations'
+        organization:
+          $ref: '#/components/schemas/OrganizationsWithRelations'
+        entitiesTaxesMetadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntitiesTaxesMetadataWithRelations'
+      additionalProperties: false
+      x-typescript-type: EntitiesWithRelations
     EntitiesTaxesMetadataWithRelations:
       title: EntitiesTaxesMetadata
       type: object
@@ -6293,6 +5771,78 @@ components:
           format: date-time
       additionalProperties: false
       x-typescript-type: EntitiesTaxesMetadata
+    Ledgers.Filter:
+      type: object
+      title: Ledgers.Filter
+      properties:
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          example: 100
+        skip:
+          type: integer
+          minimum: 0
+        order:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        where:
+          title: Ledgers.WhereFilter
+          type: object
+          additionalProperties: true
+        fields:
+          oneOf:
+          - type: object
+            properties:
+              id:
+                type: boolean
+              deleted:
+                type: boolean
+              deletedOn:
+                type: boolean
+              deletedBy:
+                type: boolean
+              createdAt:
+                type: boolean
+              updatedAt:
+                type: boolean
+              userId:
+                type: boolean
+              organizationId:
+                type: boolean
+              entityId:
+                type: boolean
+            additionalProperties: false
+          - type: array
+            items:
+              type: string
+              enum:
+              - id
+              - deleted
+              - deletedOn
+              - deletedBy
+              - createdAt
+              - updatedAt
+              - userId
+              - organizationId
+              - entityId
+              example: id
+            uniqueItems: true
+          title: Ledgers.Fields
+        include:
+          title: Ledgers.IncludeFilter
+          type: array
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/Ledgers.IncludeFilter.Items'
+            - type: string
+      additionalProperties: false
+      x-typescript-type: '@loopback/repository#Filter<Ledgers>'
     LedgerAccountsWithRelations:
       title: LedgerAccountsWithRelations
       type: object
@@ -6356,10 +5906,10 @@ components:
             $ref: '#/components/schemas/LedgerEntriesWithRelations'
       additionalProperties: false
       x-typescript-type: LedgerAccountsWithRelations
-    FilesWithRelations:
-      title: FilesWithRelations
+    IdentityKycChecksWithRelations:
+      title: IdentityKycChecks
       type: object
-      description: '(tsType: FilesWithRelations, schemaOptions: { includeRelations: true })'
+      description: '(tsType: IdentityKycChecks, schemaOptions: { includeRelations: false })'
       properties:
         id:
           type: string
@@ -6380,7 +5930,159 @@ components:
         updatedAt:
           type: string
           format: date-time
-        key:
+        userEmail:
+          type:
+          - string
+          - 'null'
+        result:
+          type: string
+        status:
+          type: string
+        provider:
+          type: string
+        providerId:
+          type: string
+        identityData:
+          type: object
+        rawResults:
+          type:
+          - object
+          - 'null'
+        completedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        identityId:
+          type: string
+      required:
+      - identityData
+      additionalProperties: false
+      x-typescript-type: IdentityKycChecks
+    TransferInformationWithRelations:
+      title: TransferInformationWithRelations
+      type: object
+      description: '(tsType: TransferInformationWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        accountId:
+          type: string
+        routingNumber:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - USD
+          - USDC
+          - USDT
+          - Broker
+        method:
+          type: string
+          enum:
+          - ACH
+          - WIRE
+          - SWIFT
+          - CRYPTO
+          - BROKER
+        bankName:
+          type: string
+        bankAddress:
+          type:
+          - string
+          - 'null'
+        bankAccountType:
+          type: string
+          enum:
+          - Domestic
+          - International
+          - Broker
+        beneficiaryName:
+          type: string
+        beneficiaryAddress:
+          type:
+          - string
+          - 'null'
+        beneficiaryPhoneNumber:
+          type:
+          - string
+          - 'null'
+        memo:
+          type:
+          - string
+          - 'null'
+        brokerageFirmName:
+          type:
+          - string
+          - 'null'
+        accountType:
+          type:
+          - string
+          - 'null'
+        dtcParticipantNumber:
+          type:
+          - string
+          - 'null'
+        additionalAccountInformation:
+          type:
+          - string
+          - 'null'
+        identityId:
+          type: string
+        identity:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        foreignKey: {}
+      required:
+      - accountId
+      - assetType
+      - method
+      - bankAccountType
+      - beneficiaryName
+      - identityId
+      additionalProperties: false
+      x-typescript-type: TransferInformationWithRelations
+    DealsWithRelations:
+      title: DealsWithRelations
+      type: object
+      description: '(tsType: DealsWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        name:
           type:
           - string
           - 'null'
@@ -6388,29 +6090,30 @@ components:
           type:
           - string
           - 'null'
-        mongoOwnerId:
+        status:
           type:
           - string
           - 'null'
-        legacyBucket:
+        minimumInvestment:
+          type:
+          - number
+          - 'null'
+        closingDate:
           type:
           - string
           - 'null'
-        legacyKey:
+          format: date-time
+        offeringType:
           type:
           - string
           - 'null'
-        fileName:
+        managementFeeFrequency:
           type:
           - string
           - 'null'
-        mongoDocumentsId:
+        managementFeePercent:
           type:
-          - string
-          - 'null'
-        contentType:
-          type:
-          - string
+          - number
           - 'null'
         userEmail:
           type:
@@ -6420,16 +6123,155 @@ components:
           type:
           - string
           - 'null'
-        bucket:
+        mongoDealId:
           type:
           - string
           - 'null'
+        mongoOrganizationId:
+          type:
+          - string
+          - 'null'
+        isMigration:
+          type:
+          - boolean
+          - 'null'
+        targetRaiseGoal:
+          type:
+          - number
+          - 'null'
+        totalCarry:
+          type:
+          - number
+          - 'null'
+        slug:
+          type:
+          - string
+          - 'null'
+        memo:
+          type:
+          - string
+          - 'null'
+        documentsTemplateId:
+          type:
+          - string
+          - 'null'
+        documentsProvider:
+          type:
+          - string
+          - 'null'
+        shortcodeId:
+          type:
+          - string
+          - 'null'
+        totalCarryNotes:
+          type:
+          - string
+          - 'null'
+        managementFeeNotes:
+          type:
+          - string
+          - 'null'
+        closedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        tags:
+          type:
+          - string
+          - 'null'
+        migrationApproval:
+          type:
+          - boolean
+          - 'null'
+        migrationApprovalDate:
+          type:
+          - string
+          - 'null'
+        migrationApprovalEmail:
+          type:
+          - string
+          - 'null'
+        migrationFmSent:
+          type:
+          - boolean
+          - 'null'
+        invoiceAmount:
+          type:
+          - number
+          - 'null'
+        invoiceNumber:
+          type:
+          - string
+          - 'null'
+        invoiceStatus:
+          type:
+          - string
+          - 'null'
+        capitalAccountStatementURI:
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          type:
+          - string
+          - 'null'
+        invoiceDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        advisorStatus:
+          type:
+          - string
+          - 'null'
+        entityId:
+          type: string
+        fmIdentityId:
+          type: string
+        advisorId:
+          type:
+          - string
+          - 'null'
+        organizationId:
+          type: string
+        investments:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvestmentsWithRelations'
+        entity:
+          $ref: '#/components/schemas/EntitiesWithRelations'
+        foreignKey: {}
+        fmIdentity:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        advisorIdentity:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        closes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClosesWithRelations'
+        organization:
+          $ref: '#/components/schemas/OrganizationsWithRelations'
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetsWithRelations'
+        invitations:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvitationsWithRelations'
+        dealDetails:
+          $ref: '#/components/schemas/DealDetailsWithRelations'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FilesWithRelations'
       additionalProperties: false
-      x-typescript-type: FilesWithRelations
-    EntitiesTaxesWithRelations:
-      title: EntitiesTaxes
+      x-typescript-type: DealsWithRelations
+    IdentityFilesWithRelations:
+      title: IdentityFilesWithRelations
       type: object
-      description: '(tsType: EntitiesTaxes, schemaOptions: { includeRelations: false })'
+      description: '(tsType: IdentityFilesWithRelations, schemaOptions: { includeRelations: true })'
       properties:
         id:
           type: string
@@ -6450,280 +6292,438 @@ components:
         updatedAt:
           type: string
           format: date-time
-        irsAcceptedDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        importRequested:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        lastImportedAt:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        printRequested:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        lastPrintedAt:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        importState:
-          type:
-          - string
-          - 'null'
-        filingStatus:
-          type:
-          - string
-          - 'null'
-        entityName:
-          type:
-          - string
-          - 'null'
-        entityEin:
-          type:
-          - string
-          - 'null'
-        entityFormationDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        entityStreetAddress:
-          type:
-          - string
-          - 'null'
-        entityCity:
-          type:
-          - string
-          - 'null'
-        entityState:
-          type:
-          - string
-          - 'null'
-        entityPostalCode:
-          type:
-          - string
-          - 'null'
-        entityPhoneNumber:
-          type:
-          - string
-          - 'null'
-        signerFirstName:
-          type:
-          - string
-          - 'null'
-        signerLastName:
-          type:
-          - string
-          - 'null'
-        signerTitle:
-          type:
-          - string
-          - 'null'
-        signerSignatureDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        signerSignature:
-          type:
-          - string
-          - 'null'
-        isInitialReturn:
-          type: boolean
-        isAmendmentReturn:
-          type: boolean
-        isFinalReturn:
-          type: boolean
-        entityType:
-          type:
-          - string
-          - 'null'
-        entitySatisfiesReceiptsAndAssets:
-          type: boolean
-        partnershipRepresentativeName:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeStreetAddress:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeCity:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeZip:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativePhone:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeDesignatedIndividualFirstName:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeDesignatedIndividualLastName:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeDesignatedIndividualStreetAddress:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeDesignatedIndividualCity:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeDesignatedIndividualState:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeDesignatedIndividualZip:
-          type:
-          - string
-          - 'null'
-        partnershipRepresentativeDesignatedIndividualPhone:
-          type:
-          - string
-          - 'null'
-        entityBeginningCash:
-          type:
-          - number
-          - 'null'
-        entityEndingCash:
-          type:
-          - number
-          - 'null'
-        entityBeginningLongTermAssets:
-          type:
-          - number
-          - 'null'
-        entityEndingLongTermAssets:
-          type:
-          - number
-          - 'null'
-        entityBeginningCurrentLiabilities:
-          type:
-          - number
-          - 'null'
-        entityEndingCurrentLiabilities:
-          type:
-          - number
-          - 'null'
-        entityBeginningCapital:
-          type:
-          - number
-          - 'null'
-        entityCapitalContributions:
-          type:
-          - number
-          - 'null'
-        entityCashDistributions:
-          type:
-          - number
-          - 'null'
-        entityPortfolioExpense:
-          type:
-          - number
-          - 'null'
-        entityHasForeignInvestors:
-          type: boolean
-        hasNotifiedLps:
-          type: boolean
-        taxYear:
-          type:
-          - string
-          - 'null'
+        path:
+          type: string
+        mimeType:
+          type: string
+          enum:
+          - application/pdf
+          - image/png
+          - image/jpeg
+        fileType:
+          type: string
+          enum:
+          - source_of_funds
+          - w_8
+          - w_9
+          - w_8_ben
+          - w_8_bene
+          - passport
+          - driving_license
+          - national_identity_card
+          - residence_permit
+          - passport_card
+          - tax_id
+          - visa
+          - voter_id
+          - entity_formation
+          - residence_status_document
+          - postal_identity_card
+          - social_security_card
+          - work_permit
+          - asylum_registration_card
+          - national_health_insurance_card
+          - municipality_identity_card
+          - private_operators_card
+          - proof_of_citizenship
+          - service_id_card
+          - immigration_status_document
+          - indigenous_card
+          - vehicle_registration_card
+          - certificate_of_naturalisation
+          - professional_qualification_card
+          - consular_id
+          - international_driving_licence
+          - bank_building_society_statement
+          - utility_bill
+          - council_tax
+          - benefit_letters
+          - mortgage_statement
+          - mobile_phone_bill
+          - general_letter
+          - pension_property_statement_letter
+          - insurance_statement
+          - exchange_house_statement
+          - accommodation_tenancy_certificate
+          - wire_instructions
+        side:
+          type: string
+          enum:
+          - front
+          - back
+        validationResult:
+          type: string
+        validationRawResult:
+          type: object
         provider:
+          type: string
+        providerId:
+          type: string
+        identityId:
+          type: string
+        identity:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        foreignKey: {}
+      additionalProperties: false
+      x-typescript-type: IdentityFilesWithRelations
+    TransactionsWithRelations:
+      title: TransactionsWithRelations
+      type: object
+      description: '(tsType: TransactionsWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
           type:
           - string
           - 'null'
-        taxType:
+          format: date-time
+        deletedBy:
           type:
           - string
           - 'null'
-        portfolioExpenseDescription:
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        amount:
+          type: number
+        status:
           type:
           - string
           - 'null'
-        partnershipRepresentativeDesignatedIndividualEmail:
+        providerData:
           type:
-          - string
+          - object
           - 'null'
         providerId:
           type:
           - string
           - 'null'
-        extensionFiled:
-          type: boolean
-        partnershipRepresentativeState:
+        description:
           type:
           - string
           - 'null'
-        organizationId:
+        authorizedAt:
+          type: string
+          format: date-time
+        postedAt:
+          type: string
+          format: date-time
+        investmentId:
           type:
           - string
           - 'null'
-        batch:
+        bankAccountId:
+          type: string
+        investment:
+          $ref: '#/components/schemas/InvestmentsWithRelations'
+        foreignKey: {}
+        bankAccount:
+          $ref: '#/components/schemas/BankAccountsWithRelations'
+      additionalProperties: false
+      x-typescript-type: TransactionsWithRelations
+    InvestmentsTaxesWithRelations:
+      title: InvestmentsTaxesWithRelations
+      type: object
+      description: '(tsType: InvestmentsTaxesWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        taxYear:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        investorIdentitiesId:
+          type:
+          - string
+          - 'null'
+        investorLegalName:
+          type:
+          - string
+          - 'null'
+        investorTaxId:
+          type:
+          - string
+          - 'null'
+        investorStreetAddress:
+          type:
+          - string
+          - 'null'
+        investorCity:
+          type:
+          - string
+          - 'null'
+        investorState:
+          type:
+          - string
+          - 'null'
+        investorPostalCode:
+          type:
+          - string
+          - 'null'
+        investorIsUsDomestic:
+          type:
+          - boolean
+          - 'null'
+        investorFcAndSoiAndDApplicable:
+          type:
+          - boolean
+          - 'null'
+        investorOtherDeductions:
           type:
           - number
           - 'null'
-        allocationsApproval:
+        investorContributions:
+          type: number
+          default: 0
+        investorDistributions:
+          type:
+          - number
+          - 'null'
+        dealId:
           type:
           - string
           - 'null'
-          format: date-time
-        fundManagerApprovalDate:
+        investorEntityType:
           type:
           - string
           - 'null'
-        1065FilesId:
+        investorEntityIsDisregarded:
+          type: boolean
+          default: false
+        investorDisregardedOwnerName:
           type:
           - string
           - 'null'
-        fundManagerApprovalEmail:
+        investorDisregardedOwnerTaxId:
           type:
           - string
           - 'null'
-        fundManagerInvited:
+        investorBeginningProfitPercentage:
+          type: number
+          default: 0
+        investorBeginningLossPercentage:
+          type: number
+          default: 0
+        investorBeginningCapitalPercentage:
+          type: number
+          default: 0
+        investorForeignTaxCreditLimitationApplicable:
           type:
           - boolean
           - 'null'
-        fundManagerApproval:
+          default: false
+        investorCountry:
           type:
-          - boolean
+          - string
+          - 'null'
+        investorEndingProfitPercentage:
+          type: number
+          default: 0
+        investorEndingLossPercentage:
+          type: number
+          default: 0
+        investorEndingCapitalPercentage:
+          type: number
+          default: 0
+        k1FilesId:
+          type:
+          - string
+          - 'null'
+        investorOwnershipPercent:
+          type: number
+          default: 0
+        investorCurrentYearNetIncomeLoss:
+          type: number
+          default: 0
+        investorEndingCapitalAccountAmount:
+          type: number
+          default: 0
+        investorBeginningCapitalAccountAmount:
+          type: number
+          default: 0
+        legacyRecordId:
+          type:
+          - string
           - 'null'
         calculatorVersion:
           type:
           - string
           - 'null'
-        irsSubmissionId:
+        partnerIndex:
+          type:
+          - number
+          - 'null'
+        investorEmail:
           type:
           - string
           - 'null'
+        lastPrintedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        createdAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updatedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        investmentId:
+          type: string
         entityId:
           type: string
-      required:
-      - isInitialReturn
-      - isAmendmentReturn
-      - isFinalReturn
-      - entitySatisfiesReceiptsAndAssets
-      - entityHasForeignInvestors
-      - hasNotifiedLps
-      - extensionFiled
+        investment:
+          $ref: '#/components/schemas/InvestmentsWithRelations'
+        foreignKey: {}
+        entities:
+          $ref: '#/components/schemas/EntitiesWithRelations'
       additionalProperties: false
-      x-typescript-type: EntitiesTaxes
+      x-typescript-type: InvestmentsTaxesWithRelations
+    LedgerEntries.IncludeFilter.Items:
+      title: LedgerEntries.IncludeFilter.Items
+      type: object
+      properties:
+        relation:
+          type: string
+          enum:
+          - user
+          - transaction
+          - account
+          - counterAccount
+          - ledger
+          - ledgerEntryRelationships
+        scope:
+          $ref: '#/components/schemas/LedgerEntries.ScopeFilter'
+    UsersWithRelations:
+      title: UsersWithRelations
+      type: object
+      description: '(tsType: UsersWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        mongoId:
+          type:
+          - string
+          - 'null'
+        email:
+          type: string
+        firstName:
+          type:
+          - string
+          - 'null'
+        investorType:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        isSuperAdmin:
+          type: boolean
+          default: false
+        isMigration:
+          type:
+          - boolean
+          - 'null'
+        birthdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        citizenshipCountry:
+          type:
+          - string
+          - 'null'
+        taxId:
+          type:
+          - string
+          - 'null'
+      required:
+      - email
+      additionalProperties: false
+      x-typescript-type: UsersWithRelations
+    AccreditationsWithRelations:
+      title: AccreditationsWithRelations
+      type: object
+      description: '(tsType: AccreditationsWithRelations, schemaOptions: { includeRelations: true })'
+      properties:
+        id:
+          type: string
+        deleted:
+          type: boolean
+        deletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        deletedBy:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userEmail:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+        user_investment_entity_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        description:
+          type:
+          - string
+          - 'null'
+        value:
+          type:
+          - string
+          - 'null'
+        identitiesId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        userId:
+          type: string
+        identity:
+          $ref: '#/components/schemas/IdentitiesWithRelations'
+        foreignKey: {}
+        user:
+          $ref: '#/components/schemas/UsersWithRelations'
+      additionalProperties: false
+      x-typescript-type: AccreditationsWithRelations
   securitySchemes:
     jwt:
       type: http

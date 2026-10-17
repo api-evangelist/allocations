@@ -566,10 +566,10 @@ components:
           title: Announcements.Fields
       additionalProperties: false
       x-typescript-type: '@loopback/repository#Filter<Announcements>'
-    CreateAnnouncementRequestBody:
-      title: CreateAnnouncementRequestBody
+    UpdateAnnouncementRequestBody:
+      title: UpdateAnnouncementRequestBody
       type: object
-      description: '(tsType: Omit<Announcements, ''id'' | ''createdAt'' | ''updatedAt'' | ''deleted'' | ''deletedOn'' | ''deletedBy''>, schemaOptions: { title: ''CreateAnnouncementRequestBody'', exclude: [ ''id'', ''createdAt'', ''updatedAt'', ''deleted'', ''deletedOn'', ''deletedBy'' ] })'
+      description: '(tsType: Omit<Partial<Announcements>, ''id'' | ''createdAt'' | ''updatedAt'' | ''deleted'' | ''deletedOn'' | ''deletedBy''>, schemaOptions: { title: ''UpdateAnnouncementRequestBody'', partial: true, exclude: [ ''id'', ''createdAt'', ''updatedAt'', ''deleted'', ''deletedOn'', ''deletedBy'' ] })'
       properties:
         slug:
           type:
@@ -592,7 +592,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-      x-typescript-type: Omit<Announcements, 'id' | 'createdAt' | 'updatedAt' | 'deleted' | 'deletedOn' | 'deletedBy'>
+      x-typescript-type: Omit<Partial<Announcements>, 'id' | 'createdAt' | 'updatedAt' | 'deleted' | 'deletedOn' | 'deletedBy'>
     Announcements:
       title: Announcements
       type: object
@@ -637,33 +637,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    UpdateAnnouncementRequestBody:
-      title: UpdateAnnouncementRequestBody
-      type: object
-      description: '(tsType: Omit<Partial<Announcements>, ''id'' | ''createdAt'' | ''updatedAt'' | ''deleted'' | ''deletedOn'' | ''deletedBy''>, schemaOptions: { title: ''UpdateAnnouncementRequestBody'', partial: true, exclude: [ ''id'', ''createdAt'', ''updatedAt'', ''deleted'', ''deletedOn'', ''deletedBy'' ] })'
-      properties:
-        slug:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-        enabled:
-          type:
-          - boolean
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        classes:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      x-typescript-type: Omit<Partial<Announcements>, 'id' | 'createdAt' | 'updatedAt' | 'deleted' | 'deletedOn' | 'deletedBy'>
     Announcements.Filter:
       type: object
       title: Announcements.Filter
@@ -731,6 +704,33 @@ components:
           title: Announcements.Fields
       additionalProperties: false
       x-typescript-type: '@loopback/repository#Filter<Announcements>'
+    CreateAnnouncementRequestBody:
+      title: CreateAnnouncementRequestBody
+      type: object
+      description: '(tsType: Omit<Announcements, ''id'' | ''createdAt'' | ''updatedAt'' | ''deleted'' | ''deletedOn'' | ''deletedBy''>, schemaOptions: { title: ''CreateAnnouncementRequestBody'', exclude: [ ''id'', ''createdAt'', ''updatedAt'', ''deleted'', ''deletedOn'', ''deletedBy'' ] })'
+      properties:
+        slug:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        enabled:
+          type:
+          - boolean
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        classes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      x-typescript-type: Omit<Announcements, 'id' | 'createdAt' | 'updatedAt' | 'deleted' | 'deletedOn' | 'deletedBy'>
   securitySchemes:
     jwt:
       type: http
