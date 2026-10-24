@@ -39,3 +39,46 @@ plans:
   billing_period: annual
   description: Migrate your Fund from another provider to Allocations.
 docs: https://www.allocations.com/fees
+x-canonical:
+  generated: '2026-10-23'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Standard SPV
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Premium SPV
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Fund
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Standard SPV Migration
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Premium SPV Migration
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Fund Migration
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []

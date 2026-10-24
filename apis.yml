@@ -25,6 +25,12 @@ created: '2026-09-24'
 modified: '2026-09-24'
 
 tags:
+- Fintech
+- Fund Administration
+- Private Markets
+- Software-as-a-Service
+- Investment Platform
+tags_raw:
 - FinTech
 - FundAdministration
 - PrivateMarkets
@@ -209,6 +215,8 @@ apis:
   humanURL: https://docs.allocations.com
   baseURL: https://api.allocations.com
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -229,6 +237,8 @@ apis:
   humanURL: https://docs.allocations.com
   baseURL: https://api.allocations.com
   tags:
+  - Investment
+  tags_raw:
   - Investments
   properties:
   - type: OpenAPI
@@ -249,6 +259,8 @@ apis:
   humanURL: https://docs.allocations.com
   baseURL: https://api.allocations.com
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
@@ -259,6 +271,8 @@ apis:
   humanURL: https://docs.allocations.com
   baseURL: https://api.allocations.com
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -299,6 +313,8 @@ apis:
   humanURL: https://docs.allocations.com
   baseURL: https://api.allocations.com
   tags:
+  - Tax
+  tags_raw:
   - Taxes
   properties:
   - type: OpenAPI
@@ -309,6 +325,8 @@ apis:
   humanURL: https://docs.allocations.com
   baseURL: https://api.allocations.com
   tags:
+  - TransferRequests
+  tags_raw:
   - Transfer Requests
   properties:
   - type: OpenAPI
